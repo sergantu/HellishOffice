@@ -77,7 +77,6 @@ public class HUD : MonoBehaviour
 
     private void Start()
     {
-        GameController.Instance.StartNewLevel(); //начало уровня
         LoadInventory(); //загруза инвентарных окон кнопками инвентаря
         LoadCraftButtons();
     }
@@ -710,7 +709,7 @@ public class HUD : MonoBehaviour
     /// </summary>
     /// <param name="nameWindow">string Название объекта окна</param>
     /// <returns></returns>
-    private GameObject GetWindow( string nameWindow ) //получить объект окна по его названию из списка
+    public GameObject GetWindow( string nameWindow ) //получить объект окна по его названию из списка
     {
         return windowsUI.Find(x => x.name.Contains(nameWindow));
     }
@@ -865,11 +864,43 @@ public class HUD : MonoBehaviour
     }
 
     /// <summary>
+    /// Показать окно информации
+    /// </summary>
+    public void ShowEventWindow()    //показать окно вывода информации
+    {
+        ShowWindow(GetWindow("EventWindow").GetComponent<CanvasGroup>());
+    }
+
+    /// <summary>
+    /// Скрыть окно информации
+    /// </summary>
+    public void HideEventWindow()    //скрыть окно вывода информации
+    {
+        HideWindow(GetWindow("EventWindow").GetComponent<CanvasGroup>());
+    }
+
+    /// <summary>
     /// Скрыть окно информации
     /// </summary>
     public void HideInfoWindow()    //скрыть окно вывода информации
     {
         HideWindow(GetWindow("InfoWindow").GetComponent<CanvasGroup>());
+    }
+
+    /// <summary>
+    /// Показать окно информации
+    /// </summary>
+    public void ShowDialogWindow()    //показать окно вывода информации
+    {
+        ShowWindow(GetWindow("DialogWindow").GetComponent<CanvasGroup>());
+    }
+
+    /// <summary>
+    /// Скрыть окно информации
+    /// </summary>
+    public void HideDialogWindow()    //скрыть окно вывода информации
+    {
+        HideWindow(GetWindow("DialogWindow").GetComponent<CanvasGroup>());
     }
 
     /// <summary>

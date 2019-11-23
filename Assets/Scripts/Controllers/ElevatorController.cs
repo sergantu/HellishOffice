@@ -35,5 +35,11 @@ public class ElevatorController : MonoBehaviour
         HUD.Instance.SetLock(false);
         CameraControl.Instance.AlignCameraWithPlayer();
         ////////////////////////////////////
+
+        int rnd = Random.Range(0, 5);
+        if (rnd == 0)
+        {
+            GameController.Instance.ShowElevatorEvent();
+        }
     }
 }

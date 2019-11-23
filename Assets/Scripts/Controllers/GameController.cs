@@ -29,7 +29,7 @@ public class GameController : MonoBehaviour
         }
     } //синглтон
 
-    private GameState state;
+    public GameState state;
     public GameState State //свойство установки на паузу
     {
         get { return state; }
@@ -75,6 +75,8 @@ public class GameController : MonoBehaviour
 
     [SerializeField] GameObject TimerIcon;
 
+    public SaveLoad saveLoad;
+
     private void Awake()
     {
         if (_instance == null)
@@ -94,11 +96,18 @@ public class GameController : MonoBehaviour
         LockClick = LockClick.False;
         InitializeAudioManager();
 
+        saveLoad = new SaveLoad();
+        saveLoad.SaveData( "string1", "teststring" );
+        saveLoad.SaveData("intttt", 5);
+        saveLoad.SaveChanges();
+
     }
 
     private void Start()
     {
         LoadEvents();
+
+        //StartNewLevel();
 
         AddTickAndUpdate();
         StartCoroutine(StartDateTime());
@@ -317,6 +326,20 @@ public class GameController : MonoBehaviour
             //наказание!
         }
 
+        if (time == 12)
+        {
+            ShowEverydayEvent();
+        }
+
+        if ( time != 12 )
+        {
+            int rnd = Random.Range(0, 24);
+            if(rnd == 0)
+            {
+                ShowRandomEvent();
+            }
+        }
+
     }
 
     private bool StartRandomTrapRat()
@@ -450,7 +473,7 @@ public class GameController : MonoBehaviour
     //таблица рандомных ивентов
     public int[][,] RandomEventEffects = new int[14][,]
     {
-          new int[,] { { 2, -1, 3, 1 } }
+          new int[,] { { 2, -1, -3, 1 } }
         , new int[,] { { 1, 6, 1, 1 } }
         , new int[,] { { 2, -1, 2, 1 }, { 1, 5, 1, 1 } }
         , new int[,] { { 0, 4, 1, 1 }, { 0, 11, 1, 1 } }
@@ -466,11 +489,130 @@ public class GameController : MonoBehaviour
         , new int[,] { { 0, 14, 100, 1 } }
     };
 
-
-
-
+    //таблица ежедневных ивентов с ответом да
     //typeEffect 0 - добавлен предмет, 1 - добавлен параметр игрока(5 - травма), 2 - добавлен проект
-    public void ReasliseEventEffects( int typeEffect, int id_param, int count, int IsAdd )
+    //тип, id, count, isadd
+    public int[][,] YesEverydayEventEffects = new int[14][,]
+    {
+          new int[,] { { 0, 7, 5, 0 }, { 0, 1, 1, 1 } }
+        , new int[,] { { 2, 0, 2, 1 } }
+        , new int[,] { { 1, 5, 1, 1 } }
+        , new int[,] { { 0, 8, 5, 1 } }
+        , new int[,] { { 2, 0, 2, 0 } }
+        , new int[,] { { 0, 6, 1, 1 }, { 0, 8, 2, 1 }, { 0, 0, 1, 1 }, { 1, 2, 10, 0 } }
+        , new int[,] { { 1, 5, 0, 1 } }
+        , new int[,] { { 1, 2, 10, 1 } }
+        , new int[,] { { 0, 8, 5, 1 }, { 0, 0, 1, 1 } }
+        , new int[,] { { 1, 5, 0, 1 } }
+        , new int[,] { { 0, 5, 1, 1 }, { 0, 0, 1, 0 } }
+        , new int[,] { { 0, 14, 50, 1 } }
+        , new int[,] { { 2, 0, 1, 1 }, { 1, 2, 5, 0 } }
+        , new int[,] { { 0, 14, 50, 0 } }
+    };
+
+    //таблица ежедневных ивентов с ответом нет
+    public int[][,] NoEverydayEventEffects = new int[14][,]
+    {
+          new int[,] { { 1, 2, 10, 0 } }
+        , new int[,] { { 1, 2, 10, 0 } }
+        , new int[,] { { 0, 5, 1, 0 } }
+        , new int[,] { { 1, 1, 10, 0 } }
+        , new int[,] { { 2, 0, 2, 1 } }
+        , new int[,] { { 1, 2, 20, 1 } }
+        , new int[,] { { 0, 4, 2, 0 } }
+        , new int[,] { { 1, 0, 10, 0 } }
+        , new int[,] { { 2, 0, 2, 1 } }
+        , new int[,] { { 1, 0, 5, 0 } }
+        , new int[,] { { 2, 0, 1, 1 } }
+        , new int[,] { { 1, 2, 5, 0 } }
+        , new int[,] { { 1, 2, 10, 1 } }
+        , new int[,] { { 2, 0, 1, 0 } }
+    };
+
+    //таблица ивентов в лифте
+    public int[][,] ElevatorEventEffects = new int[7][,]
+    {
+          new int[,] { { 1, 2, 5, 0 } }
+        , new int[,] { { 1, 2, 1, 0 } }
+        , new int[,] { { 1, 2, 5, 1 } }
+        , new int[,] { { 1, 1, 5, 1 } }
+        , new int[,] { { 1, 5, 0, 1 } }
+        , new int[,] { { 1, 2, 10, 1 } }
+        , new int[,] { { 1, 1, 10, 1 } }
+    };
+
+    private string textInfo = "";
+
+
+    public void ShowRandomEvent()
+    {
+        textInfo = "";
+        int rnd = Random.RandomRange(0, 14);
+
+        HUD.Instance.GetWindow("EventWindow").transform.GetChild(0).GetComponent<Text>().text = BbtStrings.GetStr("str_random_event_" + rnd);
+        HUD.Instance.ShowEventWindow();
+        HUD.Instance.SetLock(true);
+
+        for (int i = 0; i < RandomEventEffects[rnd].GetLength(0); i++)
+        {
+            RealiseEventEffects(RandomEventEffects[rnd][i, 0], RandomEventEffects[rnd][i, 1], RandomEventEffects[rnd][i, 2], RandomEventEffects[rnd][i, 3]);
+        }
+
+        HUD.Instance.GetWindow("InfoWindow").transform.GetChild(0).GetComponent<Text>().text = textInfo.ToString();
+    }
+
+    //сохранить
+    private int rndEverydayEvent = 0;
+
+    public void ShowEverydayEvent()
+    {
+        rndEverydayEvent = Random.Range(0, 14);
+
+        HUD.Instance.GetWindow("DialogWindow").transform.GetChild(0).GetComponent<Text>().text = BbtStrings.GetStr("str_everyday_event_" + rndEverydayEvent);
+        HUD.Instance.ShowDialogWindow();
+        HUD.Instance.SetLock(true);
+    }
+
+    public void RealizeEverydayEvent(bool answer)
+    {
+        textInfo = "";
+        if (answer)
+        {
+            for (int i = 0; i < YesEverydayEventEffects[rndEverydayEvent].GetLength(0); i++)
+            {
+                RealiseEventEffects(YesEverydayEventEffects[rndEverydayEvent][i, 0], YesEverydayEventEffects[rndEverydayEvent][i, 1], YesEverydayEventEffects[rndEverydayEvent][i, 2], YesEverydayEventEffects[rndEverydayEvent][i, 3]);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < NoEverydayEventEffects[rndEverydayEvent].GetLength(0); i++)
+            {
+                RealiseEventEffects(NoEverydayEventEffects[rndEverydayEvent][i, 0], NoEverydayEventEffects[rndEverydayEvent][i, 1], NoEverydayEventEffects[rndEverydayEvent][i, 2], NoEverydayEventEffects[rndEverydayEvent][i, 3]);
+            }
+        }
+
+        HUD.Instance.GetWindow("InfoWindow").transform.GetChild(0).GetComponent<Text>().text = textInfo.ToString();
+    }
+
+    public void ShowElevatorEvent()
+    {
+        textInfo = "";
+        int rnd = Random.RandomRange(0, 7);
+
+        HUD.Instance.GetWindow("EventWindow").transform.GetChild(0).GetComponent<Text>().text = BbtStrings.GetStr("str_elevator_event_" + rnd);
+        HUD.Instance.ShowEventWindow();
+        HUD.Instance.SetLock(true);
+
+        for (int i = 0; i < ElevatorEventEffects[rnd].GetLength(0); i++)
+        {
+            RealiseEventEffects(ElevatorEventEffects[rnd][i, 0], ElevatorEventEffects[rnd][i, 1], ElevatorEventEffects[rnd][i, 2], ElevatorEventEffects[rnd][i, 3]);
+        }
+
+        HUD.Instance.GetWindow("InfoWindow").transform.GetChild(0).GetComponent<Text>().text = textInfo.ToString();
+    }
+
+    //typeEffect 0 - добавлен предмет, 1 - добавлен параметр игрока(5 - травма), 2 - добавлен проект, 3 добавить?
+    private void RealiseEventEffects( int typeEffect, int id_param, int count, int IsAdd )
     {
         switch(typeEffect)
         {
@@ -478,12 +620,15 @@ public class GameController : MonoBehaviour
 
                 if ( IsAdd == 1 )
                 {
+                    textInfo += "+ ";
                     InventoryController.Instance.AddInventoryItemPLayer(id_param, count, 0);
                 }
                 else
                 {
+                    textInfo += "- ";
                     InventoryController.Instance.RemoveFromInventory(id_param, count, 0);
                 }
+                textInfo += count + " " + InventoryController.Instance.InventoryVariables[id_param].Name;
                 break;
 
             case 1: //параметры игрока
@@ -492,18 +637,23 @@ public class GameController : MonoBehaviour
                 {
                     if (IsAdd == 1)
                     {
+                        textInfo += "+ ";
                         Player.Instance.AddPlayerParameter(id_param, count);
                     }
                     else
                     {
+                        textInfo += "- ";
                         Player.Instance.RemovePlayerParameter(id_param, count);
                     }
+                    textInfo += count + " " + BbtStrings.GetStr("str_param_" + id_param);
                 }
                 else//травма
                 {
                     if ( IsAdd == 1 )
                     {
+                        textInfo += "+ " + BbtStrings.GetStr("str_desease_0");
                         Player.Instance.SetDesease(0, true);
+                        textInfo += count + " " + InventoryController.Instance.InventoryVariables[id_param].Name;
                     }
                 }
                 break;
@@ -512,12 +662,16 @@ public class GameController : MonoBehaviour
 
                 if (IsAdd == 1)
                 {
+                    textInfo += "+ ";
                     Player.Instance.AddProgress(count);
                 }
                 else
                 {
+                    textInfo += "- ";
                     Player.Instance.DeleteProgress(count);
                 }
+
+                textInfo += count + " " + BbtStrings.GetStr("str_project");
 
                 break;
 
@@ -525,11 +679,14 @@ public class GameController : MonoBehaviour
                 break;
         }
 
+        textInfo += System.Environment.NewLine;
 
     }
 
 
 
-    //
+    //вызов рандомного метода
+
+
 }
 

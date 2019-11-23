@@ -37,6 +37,14 @@ public static class BbtStrings
         ,{ "str_inv_humus",                     new string[]{ "Перегной",               "Humus" } }
         ,{ "str_inv_friedrat",                  new string[]{ "Жареная крыса",          "Fried rat" } }
 
+        //параметры
+        ,{ "str_param_0",                       new string[]{ "Жажда",               "Humus" } }
+        ,{ "str_param_1",                       new string[]{ "Сытость",               "Humus" } }
+        ,{ "str_param_2",                       new string[]{ "Энергия",               "Humus" } }
+        ,{ "str_param_3",                       new string[]{ "Здоровье",               "Humus" } }
+        ,{ "str_desease_0",                       new string[]{ "Рана",               "Humus" } }
+        ,{ "str_project",                       new string[]{ "Проект",               "Humus" } }
+
         //inventory description
         ,{ "str_inv_cure_desc",                 new string[]{ "Средство от легкой болезни",                                             "Cure" } }
         ,{ "str_inv_bandage_desc",              new string[]{ "Средство от физических ранений",                                         "Bandage" } }
