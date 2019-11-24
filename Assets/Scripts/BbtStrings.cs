@@ -5,6 +5,8 @@ using UnityEngine;
 public static class BbtStrings
 {
 
+    public static int language = 0;
+
     public static string GetStr( string bbt )
     {
         if ( STR.ContainsKey(bbt) )
@@ -114,6 +116,38 @@ public static class BbtStrings
         ,{ "str_everyday_event_11",             new string[]{ "Нашел дыру в стене. Посмотреть?",  "slave" } }
         ,{ "str_everyday_event_12",             new string[]{ "Решил слепить снеговика. Стоит ли?",  "slave" } }
         ,{ "str_everyday_event_13",             new string[]{ "Громко играл на электрогитаре. Разбить ее о стену?",  "slave" } }
+
+        //ответа да ежедневного выбора
+        ,{ "str_everyday_event_yes_0",              new string[]{ "Снял с него какие-то тряпки. Пригодятся в качестве бинтов.",  "slave" } }
+        ,{ "str_everyday_event_yes_1",              new string[]{ "Во сне случайно напечатал часть проекта.",  "slave" } }
+        ,{ "str_everyday_event_yes_2",              new string[]{ "Попробовал укусить. Оказалось это электрическая проводка.",  "slave" } }
+        ,{ "str_everyday_event_yes_3",              new string[]{ "Сработала система пожаротушения. Набрал немного воды.",  "slave" } }
+        ,{ "str_everyday_event_yes_4",              new string[]{ "Кто мог подумать, что его проект отличается от моего? Наделал много ошибок в своем.",  "slave" } }
+        ,{ "str_everyday_event_yes_5",              new string[]{ "Тараканы из всех щелей принесли мне угощение. Теперь не смогу уснуть.",  "slave" } }
+        ,{ "str_everyday_event_yes_6",              new string[]{ "Огонь в глазах, храбрость в сердце. И я побежден в битве 'один на один'.",  "slave" } }
+        ,{ "str_everyday_event_yes_7",              new string[]{ "Теперь долго не смогу уснуть.",  "slave" } }
+        ,{ "str_everyday_event_yes_8",              new string[]{ "Ура! Склад!",  "slave" } }
+        ,{ "str_everyday_event_yes_9",              new string[]{ "Ну почему я везде сую свой язык? Теперь он примерз.",  "slave" } }
+        ,{ "str_everyday_event_yes_10",             new string[]{ "Поговорили. Обменялись. Все довольны.",  "slave" } }
+        ,{ "str_everyday_event_yes_11",             new string[]{ "Ура! Заначка!",  "slave" } }
+        ,{ "str_everyday_event_yes_12",             new string[]{ "Потратил немало сил. Зато работать стало веселее.",  "slave" } }
+        ,{ "str_everyday_event_yes_13",             new string[]{ "Придется купить начальнику новую гитару.",  "slave" } }
+
+        //ответа нет ежедневного выбора
+        ,{ "str_everyday_event_no_0",              new string[]{ "Потратил силы чтобы отогнать наглого поросенка от моей еды.",  "slave" } }
+        ,{ "str_everyday_event_no_1",              new string[]{ "Как же хочется спать.",  "slave" } }
+        ,{ "str_everyday_event_no_2",              new string[]{ "От обиды съел свою лапшу.",  "slave" } }
+        ,{ "str_everyday_event_no_3",              new string[]{ "Правильно! Лучше буду больше кушать.",  "slave" } }
+        ,{ "str_everyday_event_no_4",              new string[]{ "Хе-хе. Сам написал.",  "slave" } }
+        ,{ "str_everyday_event_no_5",              new string[]{ "Нет. Я умный человек. Лучше сохраню энергию.",  "slave" } }
+        ,{ "str_everyday_event_no_6",              new string[]{ "Рейд тараконов прошел успешно.",  "slave" } }
+        ,{ "str_everyday_event_no_7",              new string[]{ "Неудовлетворенное любопытство вызвало жажду.",  "slave" } }
+        ,{ "str_everyday_event_no_8",              new string[]{ "Сказал об этом коллеге. Получил помощь в проекте.",  "slave" } }
+        ,{ "str_everyday_event_no_9",              new string[]{ "Ну как же хочется. Даже пить захотелось.",  "slave" } }
+        ,{ "str_everyday_event_no_10",             new string[]{ "Вместо лишних разговоров сделал приложил усилие в работе.",  "slave" } }
+        ,{ "str_everyday_event_no_11",             new string[]{ "Теперь по ночам на меня оттуда кто то смотрит.",  "slave" } }
+        ,{ "str_everyday_event_no_12",             new string[]{ "Сохранил силы для будущих свершений.",  "slave" } }
+        ,{ "str_everyday_event_no_13",             new string[]{ "Зануда! От скуки наделал новых ошибок.",  "slave" } }
 
         //фразы в лифте
         ,{ "str_elevator_event_0",              new string[]{ "Говорят, если прыгать в лифте, то он остановится. 2 часа прыгал. И правда застрял. Это весело. Потеряно 2 часа.",  "slave" } }

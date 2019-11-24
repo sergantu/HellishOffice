@@ -52,6 +52,9 @@ public class HUD : MonoBehaviour
 
     [SerializeField] GameObject warningLabel;
 
+    [SerializeField] Slider soundLevel;
+    [SerializeField] Slider musicLevel;
+
     public enum WindowState
     {
         PlayerInventory,
@@ -81,10 +84,30 @@ public class HUD : MonoBehaviour
         LoadCraftButtons();
     }
 
+    public float GetSoundLevel()
+    {
+        return soundLevel.value;
+    }
+
+    public void SetSoundLevel(float value)
+    {
+        soundLevel.value = value;
+    }
+
+    public float GetMusicLevel()
+    {
+        return musicLevel.value;
+    }
+
+    public void SetMusicLevel(float value)
+    {
+        musicLevel.value = value;
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////
     ///ОБНОВЛЕНИЕ ПРОГРЕССА
     ////////////////////////////////////////////////////////////////////////////////////
-    
+
     public void UpdateProgressSlider( float progress )
     {
         progressSlider.value = progress / Player.Instance.Max_progress;

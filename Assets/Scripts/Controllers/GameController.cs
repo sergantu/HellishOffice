@@ -47,6 +47,8 @@ public class GameController : MonoBehaviour
         }
     }
 
+    [SerializeField] JSONSave saveObj;
+
     private LockClick lockClick; //
     public LockClick LockClick
     {
@@ -75,8 +77,6 @@ public class GameController : MonoBehaviour
 
     [SerializeField] GameObject TimerIcon;
 
-    public SaveLoad saveLoad;
-
     private void Awake()
     {
         if (_instance == null)
@@ -90,30 +90,21 @@ public class GameController : MonoBehaviour
             }
         }
 
-        //DontDestroyOnLoad(gameObject);
-
         State = GameState.Play;
         LockClick = LockClick.False;
         InitializeAudioManager();
-
-        saveLoad = new SaveLoad();
-        saveLoad.SaveData( "string1", "teststring" );
-        saveLoad.SaveData("intttt", 5);
-        saveLoad.SaveChanges();
-
     }
 
     private void Start()
     {
         LoadEvents();
 
-        //StartNewLevel();
-
         AddTickAndUpdate();
         StartCoroutine(StartDateTime());
         AudioManager.PlayMusic(true);
 
         InventoryController.Instance.UpdateTempInventory();
+        saveObj.LoadData();
     }
 
     public bool IsEventDone(string eventName)
@@ -212,7 +203,7 @@ public class GameController : MonoBehaviour
     ///DateTime
     //////////////////////////////////////////////////////////////////////////////////////////////
 
-    int ticks;
+    public int ticks;
     string month;
     int date;
     public int time;
@@ -456,18 +447,6 @@ public class GameController : MonoBehaviour
     public int TrapWaterStatus = 0; //0 - не создан, 1 - создан и не заряжен, 2 - заряжен, 3 - получена вода
     public int TrapMushroomsStatus = 0; //0 - не создан, 1 - создан и не заряжен, 2 - заряжен, 3 - получена грибы
 
-
-    //зачем это??
-    int[][,] nums = new int[3][,]
-    {
-        new int[,] { {1,2}, {3,4} },
-        new int[,] { {1,2}, {3,6} },
-        new int[,] { {1,2}, {3,5}, {8, 13} }
-    };
-    //
-
-
-
     //система рандомных событий
 
     //таблица рандомных ивентов
@@ -578,6 +557,7 @@ public class GameController : MonoBehaviour
         textInfo = "";
         if (answer)
         {
+            textInfo += BbtStrings.GetStr("str_everyday_event_yes_" + rndEverydayEvent) + System.Environment.NewLine;
             for (int i = 0; i < YesEverydayEventEffects[rndEverydayEvent].GetLength(0); i++)
             {
                 RealiseEventEffects(YesEverydayEventEffects[rndEverydayEvent][i, 0], YesEverydayEventEffects[rndEverydayEvent][i, 1], YesEverydayEventEffects[rndEverydayEvent][i, 2], YesEverydayEventEffects[rndEverydayEvent][i, 3]);
@@ -585,6 +565,7 @@ public class GameController : MonoBehaviour
         }
         else
         {
+            textInfo += BbtStrings.GetStr("str_everyday_event_no_" + rndEverydayEvent) + System.Environment.NewLine;
             for (int i = 0; i < NoEverydayEventEffects[rndEverydayEvent].GetLength(0); i++)
             {
                 RealiseEventEffects(NoEverydayEventEffects[rndEverydayEvent][i, 0], NoEverydayEventEffects[rndEverydayEvent][i, 1], NoEverydayEventEffects[rndEverydayEvent][i, 2], NoEverydayEventEffects[rndEverydayEvent][i, 3]);
@@ -653,7 +634,6 @@ public class GameController : MonoBehaviour
                     {
                         textInfo += "+ " + BbtStrings.GetStr("str_desease_0");
                         Player.Instance.SetDesease(0, true);
-                        textInfo += count + " " + InventoryController.Instance.InventoryVariables[id_param].Name;
                     }
                 }
                 break;

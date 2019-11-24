@@ -80,6 +80,7 @@ public class InventoryController : MonoBehaviour
     };
 
     [HideInInspector]
+    [SerializeField]
     public List<List<int>> PlayerInventory = new List<List<int>>()  //бд с текущими инвентарными предметами ( id предмета, количество, id места )
     {
         ///////////////////////-5 - торговец вирутальный

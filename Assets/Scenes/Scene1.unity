@@ -15784,7 +15784,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.00018310547}
+  m_AnchoredPosition: {x: 0, y: -0.00015258789}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1312722245
@@ -16543,6 +16543,49 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1416406264
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1416406266}
+  - component: {fileID: 1416406265}
+  m_Layer: 0
+  m_Name: SaveController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1416406265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416406264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c31fb6780fc2ee54fa3a2ed863c7e061, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1416406266
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416406264}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1476535534}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1424021470
 GameObject:
   m_ObjectHideFlags: 0
@@ -17006,6 +17049,7 @@ Transform:
   - {fileID: 1362489589}
   - {fileID: 1149556890}
   - {fileID: 1611551619}
+  - {fileID: 1416406266}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19777,7 +19821,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.00018310547}
+  m_AnchoredPosition: {x: 0, y: -0.00015258789}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1709009517
@@ -33696,7 +33740,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.00012207031}
+  m_AnchoredPosition: {x: 0, y: 0.00012207031}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2071812101
@@ -40070,6 +40114,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1416406265}
+        m_MethodName: SaveData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3754497995923811611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42325,6 +42380,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f014e0a37ebc8044c94b9adc85cd675f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
+  saveObj: {fileID: 1416406265}
   audioManager:
     sounds:
     - {fileID: 8300000, guid: f3d9f14181524994ca3f1f579c182efb, type: 3}
@@ -42342,8 +42399,9 @@ MonoBehaviour:
     gameMusic: {fileID: 0}
   TimerIcon: {fileID: 6322492204874921705, guid: b241288e6a7bb8b41aaf321660e08bcb,
     type: 3}
+  ticks: 0
   time: 0
-  timePerHour: 5
+  timePerHour: 1
   SunLight: {fileID: 170076733}
   base_station: 1
   PlayerSpawn: {fileID: 1881354885}
@@ -45468,6 +45526,8 @@ MonoBehaviour:
   invRamka: {fileID: 2430057003005325677}
   progressSlider: {fileID: 1840306270}
   warningLabel: {fileID: 79312102}
+  soundLevel: {fileID: 436021874125420516}
+  musicLevel: {fileID: 3401446033227662796}
   OpenedWindow: 0
   datePanel: {fileID: 1892945942496888882}
 --- !u!1 &7590150034745399651
