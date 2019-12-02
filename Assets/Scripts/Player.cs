@@ -54,12 +54,11 @@ public class Player : MonoBehaviour
         NavMeshAgent = gameObject.GetComponent<NavMeshAgent>();
         AlignWithFloor = true;
         animator = GetComponent<Animator>();
-        
 
-        /*if (PlayerParametres == null)
-        {
-            ResetPlayerParametres();
-        }*/
+        NavMeshAgent.enabled = false;
+        JSONSave.Instance.LoadDataPlayer();
+        NavMeshAgent.enabled = true;
+
     }
 
     private void Update()
@@ -340,11 +339,13 @@ public class Player : MonoBehaviour
     public void AddProgress( float count)
     {
         Progress = Progress + count;
+        HUD.Instance.UpdateProgressSlider(GetCountProgress());
     }
 
     public void DeleteProgress(float count)
     {
         Progress = Progress + count;
+        HUD.Instance.UpdateProgressSlider(GetCountProgress());
     }
 
     public float GetCountProgress()
@@ -359,7 +360,7 @@ public class Player : MonoBehaviour
         {
             yield return new WaitForSeconds(GameController.Instance.TimePerHour/10);
             AddProgress(0.1f * GetKPD());
-            HUD.Instance.UpdateProgressSlider(GetCountProgress());
+            
             if ( CheckProgress() )
             {
                 StopWork();

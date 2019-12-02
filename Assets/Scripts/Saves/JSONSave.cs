@@ -4,12 +4,22 @@ using System;
 using System.Collections.Generic;
 
 public class JSONSave : MonoBehaviour
-{
+{ 
     private Save sv = new Save();
     private string path;
 
-    private void Start()
+    static JSONSave _instance;
+    public static JSONSave Instance
     {
+        get
+        {
+            return _instance;
+        }
+    } //синглтон
+
+    private void Awake()
+    {
+        _instance = this;
 #if UNITY_ANDROID && !UNITY_EDITOR
         path = Path.Combine(Application.persistentDataPath, "Save.json");
 #else
@@ -21,14 +31,27 @@ public class JSONSave : MonoBehaviour
         }
     }
 
-    private void OnApplicationPause()
+    private void OnApplicationPause(bool pauseStatus)
     {
-        SaveData();
+        if(pauseStatus)
+        {
+            SaveData();
+        }
     }
 
     private void OnApplicationQuit()
     {
-        SaveData();
+        SaveData(); 
+    }
+
+    public void SaveLanguage()
+    {
+        sv.language = BbtStrings.language;
+    }
+
+    public void SaveStartedGame(bool isStarted)
+    {
+        sv.hasStartedGame = isStarted;
     }
 
     public void SaveData()
@@ -39,7 +62,6 @@ public class JSONSave : MonoBehaviour
         sv.playerDisease = Player.Instance.PlayerDisease;
         sv.progress = Player.Instance.Progress;
         sv.ticks = GameController.Instance.ticks;
-        sv.language = BbtStrings.language;
 
         sv.playerInventory = new List<listSaved>();
         for (int i = 0; i < InventoryController.Instance.PlayerInventory.Count; i++)
@@ -56,10 +78,47 @@ public class JSONSave : MonoBehaviour
         sv.soundLevel = HUD.Instance.GetSoundLevel();
         sv.musicLevel = HUD.Instance.GetMusicLevel();
 
-        File.WriteAllText(path, JsonUtility.ToJson(sv);
+        File.WriteAllText(path, JsonUtility.ToJson(sv));
     }
 
-    public void LoadData()
+    private void OnDestroy()
+    {
+        //SaveData();
+    }
+
+    public bool LoadIsStartedGame()
+    {
+        bool trest1 = sv.hasStartedGame;
+        return sv.hasStartedGame;
+    }
+
+    public void LoadLanguage()
+    {
+        if (sv.language != 0)
+        {
+            BbtStrings.language = sv.language;
+        }
+    }
+
+    public void LoadDataGamecontroller()
+    {
+        if (sv.ticks != 0)
+        {
+            GameController.Instance.ticks = sv.ticks;
+        }
+        
+
+        if (sv.playEvents != null)
+        {
+            Dictionary<string, bool> gEvents = new Dictionary<string, bool>();
+            for (int i = 0; i < sv.playEvents.Count; i++)
+            {
+                gEvents.Add(sv.playEvents[i].param1, sv.playEvents[i].param2);
+            }
+        }
+    }
+
+    public void LoadDataPlayer()
     {
         if (sv.playerPosition != null)
         {
@@ -82,14 +141,10 @@ public class JSONSave : MonoBehaviour
         {
             Player.Instance.Progress = sv.progress;
         }
-        if (sv.ticks != 0)
-        {
-            GameController.Instance.ticks = sv.ticks;
-        }
-        if (sv.language != 0)
-        {
-            BbtStrings.language = sv.language;
-        }
+    }
+
+    public void LoadDataInventory()
+    {
         if (sv.playerInventory != null)
         {
             List<List<int>> PInventory = new List<List<int>>();
@@ -99,16 +154,10 @@ public class JSONSave : MonoBehaviour
             }
             InventoryController.Instance.PlayerInventory = PInventory;
         }
+    }
 
-        if (sv.playEvents != null)
-        {
-            Dictionary<string, bool> gEvents = new Dictionary<string, bool>();
-            for (int i = 0; i < sv.playEvents.Count; i++)
-            {
-                gEvents.Add(sv.playEvents[i].param1, sv.playEvents[i].param2);
-            }
-        }
-
+    public void LoadDataHud()
+    {
         if (sv.soundLevel != 0.0f)
         {
             HUD.Instance.SetSoundLevel(sv.soundLevel);
@@ -116,12 +165,18 @@ public class JSONSave : MonoBehaviour
         if (sv.musicLevel != 0.0f)
         {
             HUD.Instance.SetMusicLevel(sv.musicLevel);
-        }  
+        }
     }
+
+
+
+
 }
 [Serializable]
 public class Save
 {
+    public bool hasStartedGame;
+
     public Vector3 playerPosition;
     public int currentelevator;
     public List<float> playerParametres;

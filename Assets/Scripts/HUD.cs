@@ -75,7 +75,8 @@ public class HUD : MonoBehaviour
         InvRamka.transform.localScale = Vector3.zero;
         InvRamka.GetComponent<RectTransform>().offsetMax = Vector2.zero;
         InvRamka.GetComponent<RectTransform>().offsetMin = Vector2.zero;
-        
+
+        JSONSave.Instance.LoadDataHud();
     }
 
     private void Start()

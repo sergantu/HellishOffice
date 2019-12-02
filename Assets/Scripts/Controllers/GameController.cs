@@ -47,8 +47,6 @@ public class GameController : MonoBehaviour
         }
     }
 
-    [SerializeField] JSONSave saveObj;
-
     private LockClick lockClick; //
     public LockClick LockClick
     {
@@ -77,6 +75,22 @@ public class GameController : MonoBehaviour
 
     [SerializeField] GameObject TimerIcon;
 
+    //////////////////////////////////////////////////////////////////////////////////////////////
+    ///DateTime
+    //////////////////////////////////////////////////////////////////////////////////////////////
+
+    public int ticks;
+    string month;
+    int date;
+    public int time;
+    [SerializeField] float timePerHour = 30f;
+    [SerializeField] GameObject SunLight;
+    [SerializeField] int base_station = 1;
+
+    private bool statusIsNight = false;
+    public bool StatusIsNight { get => statusIsNight; set => statusIsNight = value; }
+    [SerializeField] Transform PlayerSpawn;
+
     private void Awake()
     {
         if (_instance == null)
@@ -97,6 +111,7 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        JSONSave.Instance.LoadDataGamecontroller();
         LoadEvents();
 
         AddTickAndUpdate();
@@ -104,7 +119,10 @@ public class GameController : MonoBehaviour
         AudioManager.PlayMusic(true);
 
         InventoryController.Instance.UpdateTempInventory();
-        saveObj.LoadData();
+
+
+        //загрузить все до этого момента
+        JSONSave.Instance.SaveStartedGame(true);
     }
 
     public bool IsEventDone(string eventName)
@@ -203,26 +221,14 @@ public class GameController : MonoBehaviour
     ///DateTime
     //////////////////////////////////////////////////////////////////////////////////////////////
 
-    public int ticks;
-    string month;
-    int date;
-    public int time;
-    [SerializeField] float timePerHour = 30f;
-    [SerializeField] GameObject SunLight;
-    [SerializeField] int base_station = 1;
-
-    private bool statusIsNight = false;
-    public bool StatusIsNight { get => statusIsNight; set => statusIsNight = value; }
-    [SerializeField] Transform PlayerSpawn;
-
-    private void ResetDateTime()
+    /*private void ResetDateTime()
     {
         ticks = -1;
         month = "декабря";
         date = 27;
         time = 9;
         Player.Instance.Current_station = 1;
-    }
+    }*/
 
     IEnumerator StartDateTime()
     {
@@ -526,7 +532,7 @@ public class GameController : MonoBehaviour
     public void ShowRandomEvent()
     {
         textInfo = "";
-        int rnd = Random.RandomRange(0, 14);
+        int rnd = Random.Range(0, 14);
 
         HUD.Instance.GetWindow("EventWindow").transform.GetChild(0).GetComponent<Text>().text = BbtStrings.GetStr("str_random_event_" + rnd);
         HUD.Instance.ShowEventWindow();
@@ -578,7 +584,7 @@ public class GameController : MonoBehaviour
     public void ShowElevatorEvent()
     {
         textInfo = "";
-        int rnd = Random.RandomRange(0, 7);
+        int rnd = Random.Range(0, 7);
 
         HUD.Instance.GetWindow("EventWindow").transform.GetChild(0).GetComponent<Text>().text = BbtStrings.GetStr("str_elevator_event_" + rnd);
         HUD.Instance.ShowEventWindow();
@@ -643,12 +649,12 @@ public class GameController : MonoBehaviour
                 if (IsAdd == 1)
                 {
                     textInfo += "+ ";
-                    Player.Instance.AddProgress(count);
+                    Player.Instance.AddProgress(count/100);
                 }
                 else
                 {
                     textInfo += "- ";
-                    Player.Instance.DeleteProgress(count);
+                    Player.Instance.DeleteProgress(count/100);
                 }
 
                 textInfo += count + " " + BbtStrings.GetStr("str_project");
