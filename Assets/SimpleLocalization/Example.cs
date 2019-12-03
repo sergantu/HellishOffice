@@ -9,8 +9,6 @@ namespace Assets.SimpleLocalization
 	/// </summary>
 	public class Example : MonoBehaviour
 	{
-		public Text FormattedText;
-
 		/// <summary>
 		/// Called on app start.
 		/// </summary>
@@ -30,12 +28,6 @@ namespace Assets.SimpleLocalization
 					LocalizationManager.Language = "English";
 					break;
 			}
-
-			// This way you can insert values to localized strings.
-			FormattedText.text = LocalizationManager.Localize("Settings.PlayTime", TimeSpan.FromHours(10.5f).TotalHours);
-
-			// This way you can subscribe to localization changed event.
-			LocalizationManager.LocalizationChanged += () => FormattedText.text = LocalizationManager.Localize("Settings.PlayTime", TimeSpan.FromHours(10.5f).TotalHours);
 		}
 
 		/// <summary>
