@@ -82,21 +82,47 @@ public class JSONSave : MonoBehaviour
 
     public void SaveGame()
     {
+        sgc.ticks = GameController.Instance.ticks;
 
+        sgc.playEvents = new List<dictionarySaved>();
+        foreach (KeyValuePair<string, bool> keyValue in GameController.Instance.gameEvents)
+        {
+            sgc.playEvents.Add(new dictionarySaved(keyValue.Key, keyValue.Value));
+        }
+
+        File.WriteAllText(pathsgc, JsonUtility.ToJson(sgc));
     }
 
     public void SavePlayer()
     {
+        spc.playerPosition = Player.Instance.gameObject.transform.position;
+        spc.currentelevator = Player.Instance.Current_station;
+        spc.playerParametres = Player.Instance.PlayerParametres;
+        spc.playerDisease = Player.Instance.PlayerDisease;
+        spc.progress = Player.Instance.Progress;
+        
 
+        File.WriteAllText(pathspc, JsonUtility.ToJson(spc));
     }
 
     public void SaveHud()
     {
+        shc.soundLevel = HUD.Instance.GetSoundLevel();
+        shc.musicLevel = HUD.Instance.GetMusicLevel();
+
+        File.WriteAllText(pathshc, JsonUtility.ToJson(shc));
 
     }
 
     public void SaveInventory()
-    { 
+    {
+        sic.playerInventory = new List<listSaved>();
+        for (int i = 0; i < InventoryController.Instance.PlayerInventory.Count; i++)
+        {
+            sic.playerInventory.Add(new listSaved(InventoryController.Instance.PlayerInventory[i]));
+        }
+
+        File.WriteAllText(pathsic, JsonUtility.ToJson(sic));
     }
 
     public void LoadLanguage()
