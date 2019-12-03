@@ -75,12 +75,11 @@ public class HUD : MonoBehaviour
         InvRamka.transform.localScale = Vector3.zero;
         InvRamka.GetComponent<RectTransform>().offsetMax = Vector2.zero;
         InvRamka.GetComponent<RectTransform>().offsetMin = Vector2.zero;
-
-        JSONSave.Instance.LoadDataHud();
     }
 
     private void Start()
     {
+        JSONSave.Instance.LoadDataHud();
         LoadInventory(); //загруза инвентарных окон кнопками инвентаря
         LoadCraftButtons();
     }
@@ -693,14 +692,6 @@ public class HUD : MonoBehaviour
     ////////////////////////////////////////////////////////////////////////////////////
 
     /// <summary>
-    /// Рестарт уровня
-    /// </summary>
-    public void ButtonRestart() // Рестарт уровня
-    {
-        GameController.Instance.RestartLevel();
-    }
-
-    /// <summary>
     /// Переход в главное меню
     /// </summary>
     public void ButtonMainMenu() // переход в галвное меню
@@ -954,5 +945,23 @@ public class HUD : MonoBehaviour
     public void SetMusicVolume(Slider slider)
     {
         GameController.Instance.AudioManager.MusicVolume = slider.value;
+    }
+
+    private void OnDestroy()
+    {
+        JSONSave.Instance.SaveHud();
+    }
+
+    private void OnApplicationPause(bool pauseStatus)
+    {
+        if (pauseStatus)
+        {
+            JSONSave.Instance.SaveHud();
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        JSONSave.Instance.SaveHud();
     }
 }

@@ -14,29 +14,7 @@ public class InventoryController : MonoBehaviour
         }
     }
 
-    [HideInInspector]
-    public List<ItemVar> InventoryVariables = new List<ItemVar>()   //бд с возможными инвентарными предметами ( название, стэк, спрайт, видимость, описание, id предмета )
-    {
-  /*0*/  new ItemVar( BbtStrings.GetStr("str_inv_cure"),           3, "cure",             true, BbtStrings.GetStr("str_inv_cure_desc"),           0 ),                                          
-  /*1*/  new ItemVar( BbtStrings.GetStr("str_inv_bandage"),        3, "bandage",          true, BbtStrings.GetStr("str_inv_bandage_desc"),        1 ),
-  /*2*/  new ItemVar( BbtStrings.GetStr("str_inv_antibiotic"),     1, "antibiotic",       true, BbtStrings.GetStr("str_inv_soupe_desc"),          2 ),
-  /*3*/  new ItemVar( BbtStrings.GetStr("str_inv_soupe"),          2, "soupe",            true, BbtStrings.GetStr("str_inv_soupe_desc"),          3 ),
-  /*4*/  new ItemVar( BbtStrings.GetStr("str_inv_energybar"),      5, "energybar",        true, BbtStrings.GetStr("str_inv_energybar_desc"),      4 ),
-  /*5*/  new ItemVar( BbtStrings.GetStr("str_inv_noodles"),        2, "noodles",          true, BbtStrings.GetStr("str_inv_noodles_desc"),        5 ),
-  /*6*/  new ItemVar( BbtStrings.GetStr("str_inv_rat"),            3, "rat",              true, BbtStrings.GetStr("str_inv_rat_desc"),            6 ),
-  /*7*/  new ItemVar( BbtStrings.GetStr("str_inv_mushrooms"),      8, "mushrooms",        true, BbtStrings.GetStr("str_inv_mushrooms_desc"),      7 ),
-  /*8*/  new ItemVar( BbtStrings.GetStr("str_inv_water"),          8, "water",            true, BbtStrings.GetStr("str_inv_water_desc"),          8 ),
-  /*9*/  new ItemVar( BbtStrings.GetStr("str_inv_coffee"),         2, "coffee",           true, BbtStrings.GetStr("str_inv_coffee_desc"),         9 ),
- /*10*/  new ItemVar( BbtStrings.GetStr("str_inv_juice"),          5, "juice",            true, BbtStrings.GetStr("str_inv_juice_desc"),          10 ),
- /*11*/  new ItemVar( BbtStrings.GetStr("str_inv_cola"),           5, "cola",             true, BbtStrings.GetStr("str_inv_cola_desc"),           11 ),
- /*12*/  new ItemVar( BbtStrings.GetStr("str_inv_axe"),            1, "axe",              true, BbtStrings.GetStr("str_inv_axe_desc"),            12 ),
- /*13*/  new ItemVar( BbtStrings.GetStr("str_inv_stuff"),         10, "stuff",            true, BbtStrings.GetStr("str_inv_stuff_desc"),          13 ),
- /*14*/  new ItemVar( BbtStrings.GetStr("str_inv_money"),       9999, "money",            true, BbtStrings.GetStr("str_inv_money_desc"),          14 ),
- /*15*/  new ItemVar( BbtStrings.GetStr("str_inv_humus"),          8, "humus",            true, BbtStrings.GetStr("str_inv_humus_desc"),          15 ),
- /*16*/  new ItemVar( BbtStrings.GetStr("str_inv_friedrat"),       3, "rat",              true, BbtStrings.GetStr("str_inv_friedrat_desc"),       16 )
-        //добавил? добавь и в таблицу InventoryCost
-    };
-
+    public List<ItemVar> InventoryVariables = new List<ItemVar>();
     [HideInInspector]
     public List<int> InventoryCost = new List<int>()   //бд с условными ценами на инвентарь у торговца
     {
@@ -62,10 +40,10 @@ public class InventoryController : MonoBehaviour
     [HideInInspector]
     public List<CraftVar> CraftVariables = new List<CraftVar>()   //бд с возможными крафтовыми предметами ( название, id или событие создаваемого, материалы, название спрайта, описание, время на создание )
     {
-  /*0*/  new CraftVar( "Топор",     "craftaxe",     new List<List<int>>(){ new List<int>(){ 7, 7 } },                             "axe",      "Полезный инструмент",                      50.0f ),
-  /*1*/  new CraftVar( "Бинт",      1,              new List<List<int>>(){ new List<int>(){ 7, 7 }, new List<int>(){ 8, 11 } },   "bandage",  "Средство от физических ранений",           30.0f  ),
-  /*3*/  new CraftVar( "Диван",     "craftsofa",    new List<List<int>>(){ new List<int>(){ 8, 20 }, new List<int>(){ 7, 1 } },   "sofa",     "Единсвенный и желанный в рабочее время",   100.0f  ),
-  /*4*/  new CraftVar( "Ключ",      "craftkey",     new List<List<int>>(){ new List<int>(){ 7, 10 } },                            "trap",     "Пустит на другой этаж",                    70.0f  )
+  /*0*/  new CraftVar( BbtStrings.GetStr("str_inv_axe"),        "craftaxe",     new List<List<int>>(){ new List<int>(){ 7, 7 } },                             "axe",      BbtStrings.GetStr("str_inv_axe_desc"),        50.0f ),
+  /*1*/  new CraftVar( BbtStrings.GetStr("str_inv_bandage"),    1,              new List<List<int>>(){ new List<int>(){ 7, 7 }, new List<int>(){ 8, 11 } },   "bandage",  BbtStrings.GetStr("str_inv_bandage_desc"),    30.0f  ),
+  /*3*/  new CraftVar( BbtStrings.GetStr("str_inv_sofa"),       "craftsofa",    new List<List<int>>(){ new List<int>(){ 8, 20 }, new List<int>(){ 7, 1 } },   "sofa",     BbtStrings.GetStr("str_inv_sofa_desc"),       100.0f  ),
+  /*4*/  new CraftVar( BbtStrings.GetStr("str_inv_trap"),       "craftkey",     new List<List<int>>(){ new List<int>(){ 7, 10 } },                            "trap",     BbtStrings.GetStr("str_inv_trap_desc"),       70.0f  )
     };
 
     List<int> Places = new List<int>() //таблица с id мест, где лежат предметы
@@ -139,8 +117,33 @@ public class InventoryController : MonoBehaviour
         _instance = this;
         ChoosedItem = null;
         OpenedPlace = 0;
+    }
 
+    private void Start()
+    {
         JSONSave.Instance.LoadDataInventory();
+
+
+
+        //бд с возможными инвентарными предметами ( название, стэк, спрайт, видимость, описание, id предмета )
+      /*0*/  InventoryVariables.Add(new ItemVar(BbtStrings.GetStr("str_inv_cure"), 3, "cure", true, BbtStrings.GetStr("str_inv_cure_desc"), 0));                 
+      /*1*/  InventoryVariables.Add(new ItemVar( BbtStrings.GetStr("str_inv_bandage"),        3, "bandage",          true, BbtStrings.GetStr("str_inv_bandage_desc"),        1 ));
+      /*2*/  InventoryVariables.Add(new ItemVar( BbtStrings.GetStr("str_inv_antibiotic"),     1, "antibiotic",       true, BbtStrings.GetStr("str_inv_soupe_desc"),          2 ));
+      /*3*/  InventoryVariables.Add(new ItemVar(BbtStrings.GetStr("str_inv_soupe"), 2, "soupe", true, BbtStrings.GetStr("str_inv_soupe_desc"), 3));
+      /*4*/  InventoryVariables.Add(new ItemVar(BbtStrings.GetStr("str_inv_energybar"), 5, "energybar", true, BbtStrings.GetStr("str_inv_energybar_desc"), 4));
+      /*5*/  InventoryVariables.Add(new ItemVar(BbtStrings.GetStr("str_inv_noodles"), 2, "noodles", true, BbtStrings.GetStr("str_inv_noodles_desc"), 5));
+      /*6*/  InventoryVariables.Add(new ItemVar(BbtStrings.GetStr("str_inv_rat"), 3, "rat", true, BbtStrings.GetStr("str_inv_rat_desc"), 6));
+      /*7*/  InventoryVariables.Add(new ItemVar(BbtStrings.GetStr("str_inv_mushrooms"), 8, "mushrooms", true, BbtStrings.GetStr("str_inv_mushrooms_desc"), 7));
+      /*8*/  InventoryVariables.Add(new ItemVar(BbtStrings.GetStr("str_inv_water"), 8, "water", true, BbtStrings.GetStr("str_inv_water_desc"), 8));
+      /*9*/  InventoryVariables.Add(new ItemVar(BbtStrings.GetStr("str_inv_coffee"), 2, "coffee", true, BbtStrings.GetStr("str_inv_coffee_desc"), 9));
+     /*10*/  InventoryVariables.Add(new ItemVar(BbtStrings.GetStr("str_inv_juice"), 5, "juice", true, BbtStrings.GetStr("str_inv_juice_desc"), 10));
+     /*11*/  InventoryVariables.Add(new ItemVar(BbtStrings.GetStr("str_inv_cola"), 5, "cola", true, BbtStrings.GetStr("str_inv_cola_desc"), 11));
+     /*12*/  InventoryVariables.Add(new ItemVar(BbtStrings.GetStr("str_inv_axe"), 1, "axe", true, BbtStrings.GetStr("str_inv_axe_desc"), 12));
+     /*13*/  InventoryVariables.Add(new ItemVar(BbtStrings.GetStr("str_inv_stuff"), 10, "stuff", true, BbtStrings.GetStr("str_inv_stuff_desc"), 13));
+     /*14*/  InventoryVariables.Add(new ItemVar(BbtStrings.GetStr("str_inv_money"), 9999, "money", true, BbtStrings.GetStr("str_inv_money_desc"), 14));
+     /*15*/  InventoryVariables.Add(new ItemVar(BbtStrings.GetStr("str_inv_humus"), 8, "humus", true, BbtStrings.GetStr("str_inv_humus_desc"), 15));
+     /*16*/  InventoryVariables.Add(new ItemVar(BbtStrings.GetStr("str_inv_friedrat"), 3, "rat", true, BbtStrings.GetStr("str_inv_friedrat_desc"), 16));
+            //добавил? добавь и в таблицу InventoryCost
     }
 
 
@@ -679,5 +682,23 @@ public class InventoryController : MonoBehaviour
         }
 
         CheckTrade();
+    }
+
+    private void OnDestroy()
+    {
+        JSONSave.Instance.SaveInventory();
+    }
+
+    private void OnApplicationPause(bool pauseStatus)
+    {
+        if (pauseStatus)
+        {
+            JSONSave.Instance.SaveInventory();
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        JSONSave.Instance.SaveInventory();
     }
 }

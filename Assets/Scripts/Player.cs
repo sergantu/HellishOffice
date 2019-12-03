@@ -37,6 +37,12 @@ public class Player : MonoBehaviour
     public NavMeshAgent NavMeshAgent { get => _navMeshAgent; set => _navMeshAgent = value; }
     public Vector3 newTarget; //в какую точку движется
 
+    private int current_station;
+    public int Current_station { get => current_station; set => current_station = value; }
+
+    public List<float> PlayerParametres = new List<float> { 36, 36, 36, 36 }; //0 вода, 1 еда, 2 энергия, 3 здоровье
+    public List<bool> PlayerDisease = new List<bool> { false, false }; //рана, болезнь
+
     private float[] floorCoors = { -1.8f, 1.2f, 4.2f, 7.2f, 10.2f, 13.2f }; // на каком этаже находится
     private Vector3 startClkPos; //координаты точки нажатия, но не отпускания
     private bool isOverUI = false; //тап произошел поверх UI
@@ -44,6 +50,15 @@ public class Player : MonoBehaviour
 
     [SerializeField] float pointInFloor = -18f; //на какой ширине этажа останавливается
     [SerializeField] float distDontMove = 0.05f; //координаты смещения, после которого перестает двигаться и начинается свайпиться
+
+    [SerializeField] private float progress = 0;
+    public float Progress { get => progress; set => progress = value; }
+    public float Max_progress { get => max_progress; set => max_progress = value; }
+
+    [SerializeField] private float max_progress = 100;
+    private IEnumerator coroutine;
+
+    public float KPD = 1.0f;
 
     public bool playerSleep = false;
     Animator animator;
@@ -54,11 +69,17 @@ public class Player : MonoBehaviour
         NavMeshAgent = gameObject.GetComponent<NavMeshAgent>();
         AlignWithFloor = true;
         animator = GetComponent<Animator>();
+    }
 
+    private void Start()
+    {
         NavMeshAgent.enabled = false;
         JSONSave.Instance.LoadDataPlayer();
         NavMeshAgent.enabled = true;
 
+        HUD.Instance.UpdateProgressSlider(GetCountProgress());
+
+        CameraControl.Instance.AlignCameraWithPlayer();
     }
 
     private void Update()
@@ -280,8 +301,7 @@ public class Player : MonoBehaviour
     ///ПАРАМЕТРЫ И БОНУСЫ ИГРОКА
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public List<float> PlayerParametres = new List<float> { 36, 36, 36, 36 }; //0 вода, 1 еда, 2 энергия, 3 здоровье
-    public List<bool> PlayerDisease = new List<bool> { false, false }; //рана, болезнь
+   
 
     List<float> CoefParam = new List<float> { 0.02f, 0.04f };
 
@@ -296,13 +316,6 @@ public class Player : MonoBehaviour
         {
             PlayerDisease[idDesease] = status;
         }
-    }
-
-    public void ResetPlayerParametres()
-    {
-        PlayerParametres = new List<float> { 36, 36, 36, 36 };
-        PlayerDisease = new List<bool> { false, false };
-        KPD = 1.0f;
     }
 
     public void AddPlayerParameter ( int type, float count )
@@ -329,12 +342,9 @@ public class Player : MonoBehaviour
     ///ПАРАМЕТРЫ ПРОГРЕССА ИГРЫ
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    [SerializeField] private float progress = 0;
-    public float Progress { get => progress; set => progress = value; }
-    public float Max_progress { get => max_progress; set => max_progress = value; }
+   
  
-    [SerializeField] private float max_progress = 100;
-    private IEnumerator coroutine;
+    
 
     public void AddProgress( float count)
     {
@@ -437,8 +447,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    public float KPD = 1.0f;
-
     public float GetKPD()
     {
         return KPD;
@@ -476,7 +484,21 @@ public class Player : MonoBehaviour
 
     }
 
-    private int current_station;
-    public int Current_station { get => current_station; set => current_station = value; }
+    private void OnDestroy()
+    {
+        JSONSave.Instance.SavePlayer();
+    }
 
+    private void OnApplicationPause(bool pauseStatus)
+    {
+        if (pauseStatus)
+        {
+            JSONSave.Instance.SavePlayer();
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        JSONSave.Instance.SavePlayer();
+    }
 }

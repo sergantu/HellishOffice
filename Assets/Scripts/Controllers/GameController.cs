@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -93,6 +94,9 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
+        State = GameState.Play;
+        LockClick = LockClick.False;
+     
         if (_instance == null)
         {
             _instance = this;
@@ -119,10 +123,6 @@ public class GameController : MonoBehaviour
         AudioManager.PlayMusic(true);
 
         InventoryController.Instance.UpdateTempInventory();
-
-
-        //загрузить все до этого момента
-        JSONSave.Instance.SaveStartedGame(true);
     }
 
     public bool IsEventDone(string eventName)
@@ -159,14 +159,6 @@ public class GameController : MonoBehaviour
     }
 
     /// <summary>
-    /// Рестарт уровня
-    /// </summary>
-    public void RestartLevel()
-    {
-        SceneManager.LoadScene("Scene1", LoadSceneMode.Single);
-    }
-
-    /// <summary>
     /// Переход в галвное меню
     /// </summary>
     public void LoadMainMenu()
@@ -179,6 +171,43 @@ public class GameController : MonoBehaviour
     /// </summary>
     public void LevelWon()
     {
+        string pathsgc;
+        string pathspc;
+        string pathsic;
+        string pathshc;
+
+#if UNITY_ANDROID && !UNITY_EDITOR
+        pathsgc = Path.Combine(Application.persistentDataPath, "SaveGame.json");
+        pathspc = Path.Combine(Application.persistentDataPath, "SavePlayer.json");
+        pathsic = Path.Combine(Application.persistentDataPath, "SaveInventory.json");
+        pathshc = Path.Combine(Application.persistentDataPath, "SaveHud.json");
+#else
+        pathsgc = Path.Combine(Application.dataPath, "SaveGame.json");
+        pathspc = Path.Combine(Application.dataPath, "SavePlayer.json");
+        pathsic = Path.Combine(Application.dataPath, "SaveInventory.json");
+        pathshc = Path.Combine(Application.dataPath, "SaveHud.json");
+#endif
+
+        if (File.Exists(pathsgc))
+        {
+            File.Delete(pathsgc);
+        }
+
+        if (File.Exists(pathspc))
+        {
+            File.Delete(pathspc);
+        }
+
+        if (File.Exists(pathsic))
+        {
+            File.Delete(pathsic);
+        }
+
+        if (File.Exists(pathshc))
+        {
+            File.Delete(pathshc);
+        }
+
         HUD.Instance.ShowLevelWonWindow();
     }
 
@@ -187,6 +216,42 @@ public class GameController : MonoBehaviour
     /// </summary>
     public void GameOver()
     {
+        string pathsgc;
+        string pathspc;
+        string pathsic;
+        string pathshc;
+
+#if UNITY_ANDROID && !UNITY_EDITOR
+        pathsgc = Path.Combine(Application.persistentDataPath, "SaveGame.json");
+        pathspc = Path.Combine(Application.persistentDataPath, "SavePlayer.json");
+        pathsic = Path.Combine(Application.persistentDataPath, "SaveInventory.json");
+        pathshc = Path.Combine(Application.persistentDataPath, "SaveHud.json");
+#else
+        pathsgc = Path.Combine(Application.dataPath, "SaveGame.json");
+        pathspc = Path.Combine(Application.dataPath, "SavePlayer.json");
+        pathsic = Path.Combine(Application.dataPath, "SaveInventory.json");
+        pathshc = Path.Combine(Application.dataPath, "SaveHud.json");
+#endif
+
+        if (File.Exists(pathsgc))
+        {
+            File.Delete(pathsgc);
+        }
+
+        if (File.Exists(pathspc))
+        {
+            File.Delete(pathspc);
+        }
+
+        if (File.Exists(pathsic))
+        {
+            File.Delete(pathsic);
+        }
+
+        if (File.Exists(pathshc))
+        {
+            File.Delete(pathshc);
+        }
         HUD.Instance.ShowLevelLoseWindow();
     }
 
@@ -671,8 +736,23 @@ public class GameController : MonoBehaviour
 
 
 
-    //вызов рандомного метода
+    private void OnDestroy()
+    {
+        JSONSave.Instance.SaveGame();
+    }
 
+    private void OnApplicationPause(bool pauseStatus)
+    {
+        if (pauseStatus)
+        {
+            JSONSave.Instance.SaveGame();
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        JSONSave.Instance.SaveGame();
+    }
 
 }
 
