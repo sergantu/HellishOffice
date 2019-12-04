@@ -286,15 +286,6 @@ public class GameController : MonoBehaviour
     ///DateTime
     //////////////////////////////////////////////////////////////////////////////////////////////
 
-    /*private void ResetDateTime()
-    {
-        ticks = -1;
-        month = "декабря";
-        date = 27;
-        time = 9;
-        Player.Instance.Current_station = 1;
-    }*/
-
     IEnumerator StartDateTime()
     {
         while (true)
@@ -369,7 +360,7 @@ public class GameController : MonoBehaviour
         }
 
         //проигрыш по истечению времени
-        if (ticks > 720)
+        if (ticks > 360)
         {
             //проигрыш
             HUD.Instance.ShowLevelLoseWindow();
@@ -391,6 +382,11 @@ public class GameController : MonoBehaviour
         if (time == 12)
         {
             ShowEverydayEvent();
+        }
+
+        if (time == 14)
+        {
+            InventoryController.Instance.ChangeDealerInventory();
         }
 
         if ( time != 12 )

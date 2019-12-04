@@ -123,8 +123,6 @@ public class InventoryController : MonoBehaviour
     {
         JSONSave.Instance.LoadDataInventory();
 
-
-
         //бд с возможными инвентарными предметами ( название, стэк, спрайт, видимость, описание, id предмета )
       /*0*/  InventoryVariables.Add(new ItemVar(BbtStrings.GetStr("str_inv_cure"), 3, "cure", true, BbtStrings.GetStr("str_inv_cure_desc"), 0));                 
       /*1*/  InventoryVariables.Add(new ItemVar( BbtStrings.GetStr("str_inv_bandage"),        3, "bandage",          true, BbtStrings.GetStr("str_inv_bandage_desc"),        1 ));
@@ -168,6 +166,78 @@ public class InventoryController : MonoBehaviour
 
         return count;
     }
+
+    public void ChangeDealerInventory()
+    {
+        RemoveDealerOldInventory();
+        AddingDealerInventory();
+    }
+
+    private void RemoveDealerOldInventory()
+    {
+        List<int> arrayForRemoving = new List<int>();
+
+        for(int i = 0; i < PlayerInventory.Count; i++)
+        {
+            if(PlayerInventory[i][2] == -3)
+            {
+                arrayForRemoving.Add(i);
+            }
+        }
+
+        for (int i = (arrayForRemoving.Count - 1); i >= 0; i--)
+        {
+            PlayerInventory.RemoveAt(arrayForRemoving[i]);
+        }
+    }
+
+    private void AddingDealerInventory()
+    {
+        List<List<int>> newInventory = GenerateDealerInventory();
+
+        for ( int i = 0; i < newInventory.Count; i++)
+        {
+            PlayerInventory.Add(newInventory[i]);
+        }
+    }
+
+    private List<List<int>> GenerateDealerInventory()
+    {
+        List<List<int>> newInventory = new List<List<int>>();
+        int minInvCount = 3;
+        int maxInvCount = 10;
+        int curInvCount = UnityEngine.Random.Range(minInvCount, maxInvCount+1);
+
+        for(int i = 0; i < curInvCount; i++)
+        {
+            int idNewInv = UnityEngine.Random.Range(0, InventoryVariables.Count);
+            while(HasCurrentInv(newInventory, idNewInv))
+            {
+                idNewInv = UnityEngine.Random.Range(0, InventoryVariables.Count);
+            }
+
+            int countItem =  UnityEngine.Random.Range(1, 21);
+            newInventory.Add(new List<int> { idNewInv, countItem, -3 });
+
+        }
+
+
+        return newInventory;
+    }
+
+    private bool HasCurrentInv(List<List<int>> newInventory, int id)
+    {
+        for (int i = 0; i < newInventory.Count; i++)
+        {
+            if(newInventory[i][0] == id)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 
     //перенос предметов из окошек торговли
     public void UpdateTempInventory( ) //произошла ли торговля?
