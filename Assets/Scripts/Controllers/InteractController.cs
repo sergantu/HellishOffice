@@ -184,12 +184,6 @@ public class InteractController : MonoBehaviour
         HUD.Instance.ShowInfoWindow();
     }
 
-
-
-
-
-
-
     /// <summary>
     /// Открытие торговца
     /// </summary>
@@ -206,13 +200,6 @@ public class InteractController : MonoBehaviour
         HUD.Instance.ShowDealerWindow();
         InventoryController.Instance.SetOpenedPlace(-3);
     }
-
-
-
-
-
-
-
 
     /// <summary>
     /// Открытие подбора предмета для ящика 1
