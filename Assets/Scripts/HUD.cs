@@ -592,7 +592,7 @@ public class HUD : MonoBehaviour
             invImage.sprite = Resources.Load<Sprite>( "UI/ItemIcons/" + item.ItemVarCur.SpriteRef);
             invLabel.text = item.ItemVarCur.Name;
             invDescription.text = item.ItemVarCur.Description;
-            invRamka.transform.SetParent(item.gameObject.transform);
+            invRamka.transform.SetParent(item.gameObject.transform.GetChild(1).transform);
             InvRamka.transform.localScale = Vector3.one;
         }
         else if ( OpenedWindow == WindowState.SwitchInventory )
@@ -601,12 +601,12 @@ public class HUD : MonoBehaviour
             switchImage.sprite = Resources.Load<Sprite>("UI/ItemIcons/" + item.ItemVarCur.SpriteRef);
             switchLabel.text = item.ItemVarCur.Name;
             switchDescription.text = item.ItemVarCur.Description;
-            invRamka.transform.SetParent(item.gameObject.transform);
+            invRamka.transform.SetParent(item.gameObject.transform.GetChild(1).transform);
             InvRamka.transform.localScale = Vector3.one;
         }
         else if (OpenedWindow == WindowState.TradeInventory)
         {
-            invRamka.transform.SetParent(item.gameObject.transform);
+            invRamka.transform.SetParent(item.gameObject.transform.GetChild(1).transform);
             InvRamka.transform.localScale = Vector3.one;
         }
         else
@@ -614,7 +614,7 @@ public class HUD : MonoBehaviour
             invLabel.transform.parent.gameObject.GetComponent<CanvasGroup>().alpha = 0;
             switchLabel.transform.parent.gameObject.GetComponent<CanvasGroup>().alpha = 0;
             InventoryController.Instance.ChoosedItem = null;
-            invRamka.transform.SetParent(gameObject.transform);
+            invRamka.transform.SetParent(gameObject.transform.GetChild(1).transform);
             InvRamka.transform.localScale = Vector3.zero;
         }
         InvRamka.GetComponent<RectTransform>().offsetMax = Vector2.zero;

@@ -162,3 +162,11 @@ Update Mode: updateDependencies
 The following packages were updated:
   com.unity.ide.rider from version 1.1.0 to 1.1.4
   com.unity.textmeshpro from version 2.0.1 to 3.0.0-preview.1
+
+=== Mon Dec  9 06:25:13 2019
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were added:
+  com.unity.ide.visualstudio@2.0.0
