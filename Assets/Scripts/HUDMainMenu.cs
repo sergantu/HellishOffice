@@ -16,6 +16,13 @@ public class HUDMainMenu : MonoBehaviour
     [SerializeField] Button ContinueGame;
     [SerializeField] Text languageText;
 
+    [SerializeField] Text mainLabelText;
+    [SerializeField] Text continueText;
+    [SerializeField] Text newgameText;
+    [SerializeField] Text optionsText;
+    [SerializeField] Text developersText;
+    [SerializeField] Text exitText;
+
     private Languages currentLanguage = Languages.RU;
     string pathsgc;
     string pathspc;
@@ -42,6 +49,14 @@ public class HUDMainMenu : MonoBehaviour
 
         ContinueGame.interactable = File.Exists(pathsgc);
         Time.timeScale = 1.0f;
+
+        mainLabelText.text = BbtStrings.GetStr("mainLabelText");
+        continueText.text = BbtStrings.GetStr("continueText");
+        newgameText.text = BbtStrings.GetStr("newgameText");
+        optionsText.text = BbtStrings.GetStr("optionsText");
+        developersText.text = BbtStrings.GetStr("developersText");
+        exitText.text = BbtStrings.GetStr("exitText");
+
     }
 
     public void ContinueLevel()
@@ -92,7 +107,7 @@ public class HUDMainMenu : MonoBehaviour
         languageText.text = currentLanguage.ToString();
         JSONSave.Instance.SaveLanguage();
 
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
 
-        
     }
 }

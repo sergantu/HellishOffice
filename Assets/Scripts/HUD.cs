@@ -81,7 +81,7 @@ public class HUD : MonoBehaviour
     {
         JSONSave.Instance.LoadDataHud();
         LoadInventory(); //загруза инвентарных окон кнопками инвентаря
-        LoadCraftButtons();
+        //LoadCraftButtons();
     }
 
     public float GetSoundLevel()

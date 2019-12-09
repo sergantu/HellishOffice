@@ -300,11 +300,11 @@ public class GameController : MonoBehaviour
     {
         if (ticks > 110)
         {
-            month = "января";
+            month = BbtStrings.GetStr("str_january");
         }
         else
         {
-            month = "декабря";
+            month = BbtStrings.GetStr("str_december");
         }
 
         time = ((ticks + 9) % 24);

@@ -11,7 +11,7 @@ public static class BbtStrings
     {
         if ( STR.ContainsKey(bbt) )
         {
-            return STR[bbt][0];
+            return STR[bbt][language];
         }
 
         return bbt;
@@ -158,6 +158,51 @@ public static class BbtStrings
         ,{ "str_elevator_event_5",              new string[]{ "Лифт засосало в черную дыру. Из-за физических законов вернулся в прошлое.",  "slave" } }
         ,{ "str_elevator_event_6",              new string[]{ "Встретил крысу. Решили обменяться хвостами, чтобы накормить друг друга. Добавлена сытость.",  "slave" } }
 
+
+
+
+
+
+
+
+
+
+
+        //GUI
+        ,{ "str_december",              new string[]{ "декабря",  "December" } }
+        ,{ "str_january",              new string[]{ "января",  "January" } }
+
+        //mainmenu
+        ,{ "mainLabelText",              new string[]{ "Адский офис",  "Hellish Office" } }
+        ,{ "continueText",              new string[]{ "Продолжить",  "Continue" } }
+        ,{ "newgameText",              new string[]{ "Новая игра",  "New Game" } }
+        ,{ "optionsText",              new string[]{ "Настройки",  "Options" } }
+        ,{ "developersText",              new string[]{ "Создатели",  "Developers" } }
+        ,{ "exitText",              new string[]{ "Выход",  "Exit" } }
+
+        //HUD
+        ,{ "str_winLabel",              new string[]{ "Победа!",  "Congratulations" } }
+        ,{ "str_winMenu",              new string[]{ "Меню",  "Menu" } }
+        ,{ "str_yesDialog",              new string[]{ "Да",  "Yes" } }
+        ,{ "str_noDialog",              new string[]{ "Нет",  "No" } }
+        ,{ "str_itemsCraft",              new string[]{ "Инвентарь",  "Inventory" } }
+        ,{ "str_labelMenu",              new string[]{ "Пауза",  "Pause" } }
+        ,{ "str_optionsMenu",              new string[]{ "Настройки",  "Options" } }
+        ,{ "str_menuMenu",              new string[]{ "Меню",  "Menu" } }
+        ,{ "str_backMenu",              new string[]{ "Назад",  "Back" } }
+        ,{ "str_labelLose",              new string[]{ "Ты проиграл...",  "You lose..." } }
+        ,{ "str_menuLose",              new string[]{ "Меню",  "Menu" } }
+        ,{ "str_soundLabel",              new string[]{ "Громкость звуков",  "Sound Volume" } }
+        ,{ "str_muteSound",              new string[]{ "Отключить",  "Mute" } }
+        ,{ "str_musicLabel",              new string[]{ "Громкость музыки",  "Music Volume" } }
+        ,{ "str_muteMusic",              new string[]{ "Отключить",  "Mute" } }
+        ,{ "str_chooseElevator",              new string[]{ "Выберите этаж",  "Choose elevator" } }
+        ,{ "str_dealerLabel",              new string[]{ "Продавец",  "Dealer" } }
+        ,{ "str_playerDealer",              new string[]{ "Ты",  "You" } }
+        ,{ "str_newitemsLabel",              new string[]{ "Найденные предметы",  "Finded items" } }
+        ,{ "str_playerItems",              new string[]{ "Инвентарь",  "Inventory" } }
+        ,{ "str_playerInfo",              new string[]{ "Ты",  "You" } }
+        ,{ "str_craftLabel",              new string[]{ "Создать предмет",  "Craft item" } }
 
     };
 
