@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,7 +27,7 @@ public class InventoryUIButton : MonoBehaviour
 
     private void Start()
     {
-        Image1.sprite = Resources.Load<Sprite>("UI/ItemIcons/" + ItemVarCur.SpriteRef);
+        Image1.sprite = InventoryController.Instance.inventoryIcons.Single(s => s.name == ItemVarCur.SpriteRef);
         Description = ItemVarCur.Description;
         Label.text = ItemVarCur.Name;
         Count.text = NewCount.ToString();

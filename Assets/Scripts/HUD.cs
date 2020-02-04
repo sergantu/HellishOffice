@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,11 @@ public class HUD : MonoBehaviour
             return _instance;
         }
     }
+
+    public Animator inventoryButton;
+
+    public Image travmaIcon;
+    public Image deseaseIcon;
 
     [SerializeField] List<GameObject> windowsUI;  //список UI окон
     [SerializeField] InventoryUIButton inventoryItemPrefab; //перфаб кнопки в инвентаре
@@ -588,8 +594,8 @@ public class HUD : MonoBehaviour
     {
         if ( OpenedWindow == WindowState.PlayerInventory )
         {
-            invLabel.transform.parent.gameObject.GetComponent<CanvasGroup>().alpha = 1;
-            invImage.sprite = Resources.Load<Sprite>( "UI/ItemIcons/" + item.ItemVarCur.SpriteRef);
+            invLabel.transform.parent.parent.gameObject.GetComponent<CanvasGroup>().alpha = 1;
+            invImage.sprite = InventoryController.Instance.inventoryIcons.Single(s => s.name == item.ItemVarCur.SpriteRef);
             invLabel.text = item.ItemVarCur.Name;
             invDescription.text = item.ItemVarCur.Description;
             invRamka.transform.SetParent(item.gameObject.transform.GetChild(1).transform);
@@ -597,8 +603,8 @@ public class HUD : MonoBehaviour
         }
         else if ( OpenedWindow == WindowState.SwitchInventory )
         {
-            switchLabel.transform.parent.gameObject.GetComponent<CanvasGroup>().alpha = 1;
-            switchImage.sprite = Resources.Load<Sprite>("UI/ItemIcons/" + item.ItemVarCur.SpriteRef);
+            switchLabel.transform.parent.parent.gameObject.GetComponent<CanvasGroup>().alpha = 1;
+            switchImage.sprite = InventoryController.Instance.inventoryIcons.Single(s => s.name == item.ItemVarCur.SpriteRef);
             switchLabel.text = item.ItemVarCur.Name;
             switchDescription.text = item.ItemVarCur.Description;
             invRamka.transform.SetParent(item.gameObject.transform.GetChild(1).transform);
@@ -611,8 +617,8 @@ public class HUD : MonoBehaviour
         }
         else
         {
-            invLabel.transform.parent.gameObject.GetComponent<CanvasGroup>().alpha = 0;
-            switchLabel.transform.parent.gameObject.GetComponent<CanvasGroup>().alpha = 0;
+            invLabel.transform.parent.parent.gameObject.GetComponent<CanvasGroup>().alpha = 0;
+            switchLabel.transform.parent.parent.gameObject.GetComponent<CanvasGroup>().alpha = 0;
             InventoryController.Instance.ChoosedItem = null;
             invRamka.transform.SetParent(gameObject.transform.GetChild(1).transform);
             InvRamka.transform.localScale = Vector3.zero;
@@ -822,6 +828,12 @@ public class HUD : MonoBehaviour
         OpenedWindow = WindowState.Closed;
         UpdateChoosedItem(null);
         HideWindow(GetWindow("SwitchItemsWindow").GetComponent<CanvasGroup>());
+
+        if(!InventoryController.Instance.HasItemsInPlace())
+        {
+            GameController.Instance.SetEventDone("get_item" + InventoryController.Instance.OpenedPlace);
+        }
+
         InventoryController.Instance.SetOpenedPlace(0);
 
     }

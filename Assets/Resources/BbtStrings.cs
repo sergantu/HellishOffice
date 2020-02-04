@@ -159,15 +159,6 @@ public static class BbtStrings
         ,{ "str_elevator_event_6",              new string[]{ "Встретил крысу. Решили обменяться хвостами, чтобы накормить друг друга. Добавлена сытость.",  "slave" } }
 
 
-
-
-
-
-
-
-
-
-
         //GUI
         ,{ "str_december",              new string[]{ "декабря",  "December" } }
         ,{ "str_january",              new string[]{ "января",  "January" } }
@@ -203,6 +194,19 @@ public static class BbtStrings
         ,{ "str_playerItems",              new string[]{ "Инвентарь",  "Inventory" } }
         ,{ "str_playerInfo",              new string[]{ "Ты",  "You" } }
         ,{ "str_craftLabel",              new string[]{ "Создать предмет",  "Craft item" } }
+
+
+        //окна информации
+        ,{ "str_info",              new string[]{ "инфо",  "info" } }
+        ,{ "str_info1",              new string[]{ "инфо1",  "info1" } }
+        ,{ "str_info2",              new string[]{ "инфо2",  "info2" } }
+        ,{ "str_info3",              new string[]{ "инфо3",  "info3" } }
+        ,{ "str_info4",              new string[]{ "инфо4",  "info4" } }
+        ,{ "str_info5",              new string[]{ "инфо5",  "info5" } }
+        ,{ "str_info6",              new string[]{ "инфо6",  "info6" } }
+        ,{ "str_info7",              new string[]{ "инфо7",  "info7" } }
+        ,{ "str_info8",              new string[]{ "инфо8",  "info8" } }
+        ,{ "str_info9",              new string[]{ "инфо9",  "info9" } }
 
     };
 

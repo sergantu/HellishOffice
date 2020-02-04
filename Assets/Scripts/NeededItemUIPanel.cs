@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,7 +19,7 @@ public class NeededItemUIPanel : MonoBehaviour
 
     private void Start()
     {
-        IconNeededItem.sprite = Resources.Load<Sprite>("UI/ItemIcons/" + InventoryController.Instance.InventoryVariables[ material[0]].SpriteRef);
+        IconNeededItem.sprite = InventoryController.Instance.inventoryIcons.Single(s => s.name == InventoryController.Instance.InventoryVariables[material[0]].SpriteRef);
 
         if ( InventoryController.Instance.GetCountItem( Material[0] ) < Material[1] )
         {

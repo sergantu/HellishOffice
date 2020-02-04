@@ -80,6 +80,8 @@ public class Player : MonoBehaviour
         HUD.Instance.UpdateProgressSlider(GetCountProgress());
 
         CameraControl.Instance.AlignCameraWithPlayer();
+
+        UpdateDesease();
     }
 
     private void Update()
@@ -91,6 +93,27 @@ public class Player : MonoBehaviour
 
         MovePlayer();
         
+    }
+
+    void UpdateDesease()
+    {
+        if (PlayerDisease[0])
+        {
+            HUD.Instance.travmaIcon.color = new Color(1, 1, 1, 1);
+        }
+        else
+        {
+            HUD.Instance.travmaIcon.color = new Color(1, 1, 1, 0);
+        }
+
+        if (PlayerDisease[1])
+        {
+            HUD.Instance.deseaseIcon.color = new Color(1, 1, 1, 1);
+        }
+        else
+        {
+            HUD.Instance.deseaseIcon.color = new Color(1, 1, 1, 0);
+        }
     }
 
     public void SetAnimWalk()
@@ -312,6 +335,30 @@ public class Player : MonoBehaviour
 
     public void SetDesease( int idDesease, bool status )
     {
+        if(idDesease == 0)
+        {
+            if( status )
+            {
+                HUD.Instance.travmaIcon.color = new Color(1, 1, 1, 1);
+            }
+            else
+            {
+                HUD.Instance.travmaIcon.color = new Color(1, 1, 1, 0);
+            }
+            
+        }
+        else
+        {
+            if (status)
+            {
+                HUD.Instance.deseaseIcon.color = new Color(1, 1, 1, 1);
+            }
+            else
+            {
+                HUD.Instance.deseaseIcon.color = new Color(1, 1, 1, 0);
+            }
+        }
+
         if ( GetDesease(idDesease) != status)
         {
             PlayerDisease[idDesease] = status;
@@ -369,7 +416,7 @@ public class Player : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(GameController.Instance.TimePerHour/10);
-            AddProgress(0.1f * GetKPD());
+            AddProgress(0.09f * GetKPD());
             
             if ( CheckProgress() )
             {
@@ -417,7 +464,7 @@ public class Player : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(GameController.Instance.TimePerHour / 10);
+            yield return new WaitForSeconds(1);
             AddPlayerParameter( 2, 0.3f * GetKPD());
             if (GetCountPlayerParameter(2) >= 35.9 )
             {

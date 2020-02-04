@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.U2D;
 using UnityEngine.UI;
 
 public enum GameState { Play, Pause }
@@ -63,13 +64,178 @@ public class GameController : MonoBehaviour
     public Dictionary<string, bool> gameEvents = new Dictionary<string, bool>()
     {
         { "craftsofa", false }
-        ,{ "craftkey", false }
+        ,{ "craftkey1", false }
+        ,{ "craftkey2", false }
+        ,{ "craftkey4", false }
+        ,{ "craftkey5", false }
         ,{ "craftaxe", false }
-        ,{ "get_keylevel5", false }
-        ,{ "get_keylevel2", false }
-        ,{ "get_keylevel3", false }
-        ,{ "get_keylevel4", false }
+        ,{ "craftcomputer", false }
+        ,{ "craftcondey", false }
+        ,{ "craftcrafttable", false }
+        ,{ "craftfir", false }
+        ,{ "craftkreslo", false }
+        ,{ "craftmonitor", false }
+        ,{ "craftmushtrap", false }
+        ,{ "craftrattrap", false }
+        ,{ "craftwatertrap", false }
+
+        ,{ "get_destroy", false }
+        ,{ "get_destroy2", false }
+        ,{ "get_destroy3", false }
+        ,{ "get_destroy4", false }
+        ,{ "get_destroy5", false }
+        ,{ "get_destroy6", false }
+        ,{ "get_destroy7", false }
+        ,{ "get_destroy8", false }
+        ,{ "get_destroy9", false }
+        ,{ "get_destroy10", false }
     };
+
+    //////////////////////////////////////////////////////////////////////////////////////////////
+    ///GAME EVENTS
+    //////////////////////////////////////////////////////////////////////////////////////////////
+    ///
+    private void get_destroy1_end()
+    {
+        GameObject objForRemove = InteractController.Instance.FindInterectObj("UseDestroy");
+        Destroy(objForRemove.transform.parent.parent.parent.gameObject);
+    }
+
+    private void get_destroy2_end()
+    {
+        GameObject objForRemove = InteractController.Instance.FindInterectObj("UseDestroy2");
+        Destroy(objForRemove.transform.parent.parent.parent.gameObject);
+    }
+
+    private void get_destroy3_end()
+    {
+        GameObject objForRemove = InteractController.Instance.FindInterectObj("UseDestroy3");
+        Destroy(objForRemove.transform.parent.parent.parent.gameObject);
+    }
+
+    private void get_destroy4_end()
+    {
+        GameObject objForRemove = InteractController.Instance.FindInterectObj("UseDestroy4");
+        Destroy(objForRemove.transform.parent.parent.parent.gameObject);
+    }
+
+    private void get_destroy5_end()
+    {
+        GameObject objForRemove = InteractController.Instance.FindInterectObj("UseDestroy5");
+        Destroy(objForRemove.transform.parent.parent.parent.gameObject);
+    }
+
+    private void get_destroy6_end()
+    {
+        GameObject objForRemove = InteractController.Instance.FindInterectObj("UseDestroy6");
+        Destroy(objForRemove.transform.parent.parent.parent.gameObject);
+    }
+
+    private void get_destroy7_end()
+    {
+        GameObject objForRemove = InteractController.Instance.FindInterectObj("UseDestroy7");
+        Destroy(objForRemove.transform.parent.parent.parent.gameObject);
+    }
+
+    private void get_destroy8_end()
+    {
+        GameObject objForRemove = InteractController.Instance.FindInterectObj("UseDestroy8");
+        Destroy(objForRemove.transform.parent.parent.parent.gameObject);
+    }
+
+    private void get_destroy9_end()
+    {
+        GameObject objForRemove = InteractController.Instance.FindInterectObj("UseDestroy9");
+        Destroy(objForRemove.transform.parent.parent.parent.gameObject);
+    }
+
+    private void get_destroy10_end()
+    {
+        GameObject objForRemove = InteractController.Instance.FindInterectObj("UseDestroy10");
+        Destroy(objForRemove.transform.parent.parent.parent.gameObject);
+    }
+
+    private void craftsofa_end()
+    {
+
+    }
+
+    private void craftaxe_end()
+    {
+
+    }
+
+    private void craftcomputer_end()
+    {
+
+    }
+
+    private void craftcondey_end()
+    {
+
+    }
+
+    private void craftcrafttable_end()
+    {
+
+    }
+
+    private void craftfir_end()
+    {
+
+    }
+
+    private void craftkreslo_end()
+    {
+
+    }
+
+    private void craftmonitor_end()
+    {
+
+    }
+
+    private void craftmushtrap_end()
+    {
+
+    }
+
+    private void craftrattrap_end()
+    {
+
+    }
+
+    private void craftwatertrap_end()
+    {
+
+    }
+
+    private void craftkey1_end()
+    {
+        Button curButton = GameObject.Find("btn_elevator1").GetComponent<Button>();
+        curButton.interactable = true;
+    }
+
+    private void craftkey2_end()
+    {
+        Button curButton = GameObject.Find("btn_elevator2").GetComponent<Button>();
+        curButton.interactable = true;
+    }
+
+    private void craftkey4_end()
+    {
+        Button curButton = GameObject.Find("btn_elevator4").GetComponent<Button>();
+        curButton.interactable = true;
+    }
+
+    private void craftkey5_end()
+    {
+        Button curButton = GameObject.Find("btn_elevator5").GetComponent<Button>();
+        curButton.interactable = true;
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////
 
     [SerializeField] private Audio audioManager;
     public Audio AudioManager { get => audioManager; set => audioManager = value; }
@@ -257,32 +423,6 @@ public class GameController : MonoBehaviour
 
 
     //////////////////////////////////////////////////////////////////////////////////////////////
-    ///GAME EVENTS
-    //////////////////////////////////////////////////////////////////////////////////////////////
-
-    private void craftsofa_end()
-    {
-
-    }
-
-    private void craftaxe_end()
-    {
-
-    }
-
-    private void craftkey_end()
-    {
-        Button curButton = GameObject.Find("btn_elevator4").GetComponent<Button>();
-        curButton.interactable = true;
-    }
-
-    //////////////////////////////////////////////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-    //////////////////////////////////////////////////////////////////////////////////////////////
     ///DateTime
     //////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -404,7 +544,7 @@ public class GameController : MonoBehaviour
     {
         int result = Random.Range(0, 100);
 
-        if (result < 11)
+        if (result < 10)
         {
             return true;
         }
@@ -595,7 +735,7 @@ public class GameController : MonoBehaviour
         textInfo = "";
         int rnd = Random.Range(0, 14);
 
-        HUD.Instance.GetWindow("EventWindow").transform.GetChild(0).GetComponent<Text>().text = BbtStrings.GetStr("str_random_event_" + rnd);
+        HUD.Instance.GetWindow("EventWindow").transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = BbtStrings.GetStr("str_random_event_" + rnd);
         HUD.Instance.ShowEventWindow();
         HUD.Instance.SetLock(true);
 
@@ -604,7 +744,7 @@ public class GameController : MonoBehaviour
             RealiseEventEffects(RandomEventEffects[rnd][i, 0], RandomEventEffects[rnd][i, 1], RandomEventEffects[rnd][i, 2], RandomEventEffects[rnd][i, 3]);
         }
 
-        HUD.Instance.GetWindow("InfoWindow").transform.GetChild(0).GetComponent<Text>().text = textInfo.ToString();
+        HUD.Instance.GetWindow("InfoWindow").transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = textInfo.ToString();
     }
 
     //сохранить
@@ -614,7 +754,7 @@ public class GameController : MonoBehaviour
     {
         rndEverydayEvent = Random.Range(0, 14);
 
-        HUD.Instance.GetWindow("DialogWindow").transform.GetChild(0).GetComponent<Text>().text = BbtStrings.GetStr("str_everyday_event_" + rndEverydayEvent);
+        HUD.Instance.GetWindow("DialogWindow").transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = BbtStrings.GetStr("str_everyday_event_" + rndEverydayEvent);
         HUD.Instance.ShowDialogWindow();
         HUD.Instance.SetLock(true);
     }
@@ -639,7 +779,7 @@ public class GameController : MonoBehaviour
             }
         }
 
-        HUD.Instance.GetWindow("InfoWindow").transform.GetChild(0).GetComponent<Text>().text = textInfo.ToString();
+        HUD.Instance.GetWindow("InfoWindow").transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = textInfo.ToString();
     }
 
     public void ShowElevatorEvent()
@@ -647,7 +787,7 @@ public class GameController : MonoBehaviour
         textInfo = "";
         int rnd = Random.Range(0, 7);
 
-        HUD.Instance.GetWindow("EventWindow").transform.GetChild(0).GetComponent<Text>().text = BbtStrings.GetStr("str_elevator_event_" + rnd);
+        HUD.Instance.GetWindow("EventWindow").transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = BbtStrings.GetStr("str_elevator_event_" + rnd);
         HUD.Instance.ShowEventWindow();
         HUD.Instance.SetLock(true);
 
@@ -656,7 +796,7 @@ public class GameController : MonoBehaviour
             RealiseEventEffects(ElevatorEventEffects[rnd][i, 0], ElevatorEventEffects[rnd][i, 1], ElevatorEventEffects[rnd][i, 2], ElevatorEventEffects[rnd][i, 3]);
         }
 
-        HUD.Instance.GetWindow("InfoWindow").transform.GetChild(0).GetComponent<Text>().text = textInfo.ToString();
+        HUD.Instance.GetWindow("InfoWindow").transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = textInfo.ToString();
     }
 
     //typeEffect 0 - добавлен предмет, 1 - добавлен параметр игрока(5 - травма), 2 - добавлен проект, 3 добавить?
