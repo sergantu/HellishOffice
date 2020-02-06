@@ -51,7 +51,7 @@ LightmapSettings:
     m_IndirectOutputScale: 1
     m_AlbedoBoost: 1
     m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 1
+    m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
     serializedVersion: 12
@@ -25771,7 +25771,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6322492206520030738, guid: 727b04166123055469f73528588a8ea5,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bb1c50851e28ccc4aa4edee3439acb21,
+        type: 3}
+    m_RemovedComponents:
+    - {fileID: 6322492204874921711, guid: 727b04166123055469f73528588a8ea5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 727b04166123055469f73528588a8ea5, type: 3}
 --- !u!1 &1190976490
 GameObject:

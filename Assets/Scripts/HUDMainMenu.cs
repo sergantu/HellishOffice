@@ -23,6 +23,15 @@ public class HUDMainMenu : MonoBehaviour
     [SerializeField] Text developersText;
     [SerializeField] Text exitText;
 
+    [SerializeField] Text instruction;
+    [SerializeField] Text developers;
+
+    [SerializeField]
+    GameObject developersWindow;
+
+    [SerializeField]
+    GameObject instructionWindow;
+
     private Languages currentLanguage = Languages.RU;
     string pathsgc;
     string pathspc;
@@ -57,6 +66,39 @@ public class HUDMainMenu : MonoBehaviour
         developersText.text = BbtStrings.GetStr("developersText");
         exitText.text = BbtStrings.GetStr("exitText");
 
+        developers.text = BbtStrings.GetStr("developers");
+        instruction.text = BbtStrings.GetStr("instruction");
+
+        developersWindow.GetComponent<RectTransform>().offsetMin = new Vector2(0, 0);
+        developersWindow.GetComponent<RectTransform>().offsetMax = new Vector2(0, 0);
+        HideWindow(developersWindow.GetComponent<CanvasGroup>());
+
+        instructionWindow.GetComponent<RectTransform>().offsetMin = new Vector2(0, 0);
+        instructionWindow.GetComponent<RectTransform>().offsetMax = new Vector2(0, 0);
+        HideWindow(instructionWindow.GetComponent<CanvasGroup>());
+
+    }
+
+    /// <summary>
+    /// Показать окно по CanvasGroup
+    /// </summary>
+    /// <param name="window">Окно UI для показа</param>
+    public void ShowWindow(CanvasGroup window) // показать окно
+    {
+        window.alpha = 1f;
+        window.blocksRaycasts = true;
+        window.interactable = true;
+    }
+
+    /// <summary>
+    /// Скрыть окно по CanvasGroup
+    /// </summary>
+    /// <param name="window">Окно UI для скрытия</param>
+    public void HideWindow(CanvasGroup window)  //скрыть окно
+    {
+        window.alpha = 0f;
+        window.blocksRaycasts = false;
+        window.interactable = false;
     }
 
     public void ContinueLevel()
