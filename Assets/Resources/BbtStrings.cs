@@ -167,9 +167,11 @@ public static class BbtStrings
         ,{ "mainLabelText",              new string[]{ "Адский офис",  "Hellish Office" } }
         ,{ "continueText",              new string[]{ "Продолжить",  "Continue" } }
         ,{ "newgameText",              new string[]{ "Новая игра",  "New Game" } }
-        ,{ "optionsText",              new string[]{ "Настройки",  "Options" } }
+        ,{ "optionsText",              new string[]{ "Инструкция",  "Instruction" } }
         ,{ "developersText",              new string[]{ "Создатели",  "Developers" } }
         ,{ "exitText",              new string[]{ "Выход",  "Exit" } }
+        ,{ "developers",              new string[]{ "Титры",  "titri" } }
+        ,{ "instruction",              new string[]{ "Текст инструкции",  "Instruction Text" } }
 
         //HUD
         ,{ "str_winLabel",              new string[]{ "Победа!",  "Congratulations" } }
