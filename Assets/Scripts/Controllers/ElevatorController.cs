@@ -41,5 +41,12 @@ public class ElevatorController : MonoBehaviour
         {
             GameController.Instance.ShowElevatorEvent();
         }
+
+        int realFloor = newFloor++;
+
+        if(realFloor != 3 && !GameController.Instance.IsEventDone("opn_floor" + realFloor))
+        {
+            GameController.Instance.SetEventDone("opn_floor" + realFloor);
+        }
     }
 }

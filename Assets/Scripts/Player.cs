@@ -416,7 +416,25 @@ public class Player : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(GameController.Instance.TimePerHour/10);
-            AddProgress(0.09f * GetKPD());
+            float allKPD = 0.09f * GetKPD();
+            float part = allKPD / 10;
+
+            if (GameController.Instance.IsEventDone("craftcomputer"))
+            {
+                allKPD += part;
+            }
+
+            if (GameController.Instance.IsEventDone("craftmonitor"))
+            {
+                allKPD += part;
+            }
+
+            if (GameController.Instance.IsEventDone("craftkreslo"))
+            {
+                allKPD += part;
+            }
+
+            AddProgress(allKPD);
             
             if ( CheckProgress() )
             {
@@ -465,7 +483,14 @@ public class Player : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(1);
-            AddPlayerParameter( 2, 0.3f * GetKPD());
+
+            float newKpdSleep = 0.3f * GetKPD();
+            if (GameController.Instance.IsEventDone("craftsofa"))
+            {
+                newKpdSleep *= 1.5f;
+            }
+
+            AddPlayerParameter( 2, newKpdSleep);
             if (GetCountPlayerParameter(2) >= 35.9 )
             {
                 StopSleep();
@@ -525,7 +550,15 @@ public class Player : MonoBehaviour
             }
         }
 
-        //если построена кровать, компьютер и кондей
+        if (GameController.Instance.IsEventDone("craftfir"))
+        {
+            KPD += 0.1f;
+        }
+
+        if (GameController.Instance.IsEventDone("craftcondey"))
+        {
+            KPD += 0.1f;
+        }
 
         KPD += offsetKPD;
 

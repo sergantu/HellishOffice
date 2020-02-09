@@ -28,15 +28,15 @@ public class JSONSave : MonoBehaviour
     {
         _instance = this;
 #if UNITY_ANDROID && !UNITY_EDITOR
-        pathsgc = Path.Combine(Application.persistentDataPath, "SaveGame.json");
-        pathspc = Path.Combine(Application.persistentDataPath, "SavePlayer.json");
-        pathsic = Path.Combine(Application.persistentDataPath, "SaveInventory.json");
-        pathshc = Path.Combine(Application.persistentDataPath, "SaveHud.json");
+        pathsgc = Path.Combine(Application.persistentDataPath, "saves\\SaveGame.json");
+        pathspc = Path.Combine(Application.persistentDataPath, "saves\\SavePlayer.json");
+        pathsic = Path.Combine(Application.persistentDataPath, "saves\\SaveInventory.json");
+        pathshc = Path.Combine(Application.persistentDataPath, "saves\\SaveHud.json");
 #else
-        pathsgc = Path.Combine(Application.dataPath, "SaveGame.json");
-        pathspc = Path.Combine(Application.dataPath, "SavePlayer.json");
-        pathsic = Path.Combine(Application.dataPath, "SaveInventory.json");
-        pathshc = Path.Combine(Application.dataPath, "SaveHud.json");
+        pathsgc = Path.Combine(Application.dataPath, "saves\\SaveGame.json");
+        pathspc = Path.Combine(Application.dataPath, "saves\\SavePlayer.json");
+        pathsic = Path.Combine(Application.dataPath, "saves\\SaveInventory.json");
+        pathshc = Path.Combine(Application.dataPath, "saves\\SaveHud.json");
 #endif
         if (File.Exists(pathsgc))
         {

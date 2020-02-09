@@ -634,7 +634,7 @@ public class InventoryController : MonoBehaviour
 
                 if (PlayerInventory[idCurPlayInv][1] <= 0)
                 {
-                    HUD.Instance.InvRamka.transform.SetParent(gameObject.transform.GetChild(1).transform);
+                    HUD.Instance.InvRamka.transform.SetParent(gameObject.transform);
                     HUD.Instance.InvRamka.transform.localScale = Vector3.zero;
                     HUD.Instance.InvRamka.GetComponent<RectTransform>().offsetMax = Vector2.zero;
                     HUD.Instance.InvRamka.GetComponent<RectTransform>().offsetMin = Vector2.zero;
@@ -672,7 +672,7 @@ public class InventoryController : MonoBehaviour
                 PlayerInventory[idCurPlayInv][1]--;
                 if (PlayerInventory[idCurPlayInv][1] <= 0)
                 {
-                    HUD.Instance.InvRamka.transform.SetParent(gameObject.transform.GetChild(1).transform);
+                    HUD.Instance.InvRamka.transform.SetParent(gameObject.transform);
                     HUD.Instance.InvRamka.transform.localScale = Vector3.zero;
                     HUD.Instance.InvRamka.GetComponent<RectTransform>().offsetMax = Vector2.zero;
                     HUD.Instance.InvRamka.GetComponent<RectTransform>().offsetMin = Vector2.zero;
@@ -765,7 +765,12 @@ public class InventoryController : MonoBehaviour
     {
         HUD.Instance.HideCraftWindow();
         HUD.Instance.SetLock(false);
-        GameController.Instance.StartTimerCraft(CraftVariables[craft.CraftVarCur.IdCraftedItem].TimeForCraft, EndCreateCraftItem, craft);
+        float newKpd = Player.Instance.GetKPD();
+        if (GameController.Instance.IsEventDone("craftcrafttable"))
+        {
+            newKpd += 0.3f;
+        }
+        GameController.Instance.StartTimerCraft(CraftVariables[craft.CraftVarCur.IdCraftedItem].TimeForCraft * newKpd, EndCreateCraftItem, craft);
     }
 
     private void EndCreateCraftItem(CraftUIButton craft)

@@ -61,6 +61,19 @@ public class GameController : MonoBehaviour
 
     public float TimePerHour { get => timePerHour; set => timePerHour = value; }
 
+    [SerializeField]
+    GameObject floorShadow1;
+
+    [SerializeField]
+    GameObject floorShadow2;
+
+    [SerializeField]
+    GameObject floorShadow4;
+
+    [SerializeField]
+    GameObject floorShadow5;
+
+
     public Dictionary<string, bool> gameEvents = new Dictionary<string, bool>()
     {
         { "craftsofa", false }
@@ -89,12 +102,37 @@ public class GameController : MonoBehaviour
         ,{ "get_destroy8", false }
         ,{ "get_destroy9", false }
         ,{ "get_destroy10", false }
+
+        ,{ "opn_floor1", false }
+        ,{ "opn_floor2", false }
+        ,{ "opn_floor4", false }
+        ,{ "opn_floor5", false }
     };
 
     //////////////////////////////////////////////////////////////////////////////////////////////
     ///GAME EVENTS
     //////////////////////////////////////////////////////////////////////////////////////////////
     ///
+    private void opn_floor1()
+    {
+        Destroy(floorShadow1);
+    }
+
+    private void opn_floor2()
+    {
+        Destroy(floorShadow2);
+    }
+
+    private void opn_floor4()
+    {
+        Destroy(floorShadow4);
+    }
+
+    private void opn_floor5()
+    {
+        Destroy(floorShadow5);
+    }
+
     private void get_destroy1_end()
     {
         GameObject objForRemove = InteractController.Instance.FindInterectObj("UseDestroy");
@@ -343,15 +381,15 @@ public class GameController : MonoBehaviour
         string pathshc;
 
 #if UNITY_ANDROID && !UNITY_EDITOR
-        pathsgc = Path.Combine(Application.persistentDataPath, "SaveGame.json");
-        pathspc = Path.Combine(Application.persistentDataPath, "SavePlayer.json");
-        pathsic = Path.Combine(Application.persistentDataPath, "SaveInventory.json");
-        pathshc = Path.Combine(Application.persistentDataPath, "SaveHud.json");
+        pathsgc = Path.Combine(Application.persistentDataPath, "saves\\SaveGame.json");
+        pathspc = Path.Combine(Application.persistentDataPath, "saves\\SavePlayer.json");
+        pathsic = Path.Combine(Application.persistentDataPath, "saves\\SaveInventory.json");
+        pathshc = Path.Combine(Application.persistentDataPath, "saves\\SaveHud.json");
 #else
-        pathsgc = Path.Combine(Application.dataPath, "SaveGame.json");
-        pathspc = Path.Combine(Application.dataPath, "SavePlayer.json");
-        pathsic = Path.Combine(Application.dataPath, "SaveInventory.json");
-        pathshc = Path.Combine(Application.dataPath, "SaveHud.json");
+        pathsgc = Path.Combine(Application.dataPath, "saves\\SaveGame.json");
+        pathspc = Path.Combine(Application.dataPath, "saves\\SavePlayer.json");
+        pathsic = Path.Combine(Application.dataPath, "saves\\SaveInventory.json");
+        pathshc = Path.Combine(Application.dataPath, "saves\\SaveHud.json");
 #endif
 
         if (File.Exists(pathsgc))
@@ -388,15 +426,15 @@ public class GameController : MonoBehaviour
         string pathshc;
 
 #if UNITY_ANDROID && !UNITY_EDITOR
-        pathsgc = Path.Combine(Application.persistentDataPath, "SaveGame.json");
-        pathspc = Path.Combine(Application.persistentDataPath, "SavePlayer.json");
-        pathsic = Path.Combine(Application.persistentDataPath, "SaveInventory.json");
-        pathshc = Path.Combine(Application.persistentDataPath, "SaveHud.json");
+        pathsgc = Path.Combine(Application.persistentDataPath, "saves\\SaveGame.json");
+        pathspc = Path.Combine(Application.persistentDataPath, "saves\\SavePlayer.json");
+        pathsic = Path.Combine(Application.persistentDataPath, "saves\\SaveInventory.json");
+        pathshc = Path.Combine(Application.persistentDataPath, "saves\\SaveHud.json");
 #else
-        pathsgc = Path.Combine(Application.dataPath, "SaveGame.json");
-        pathspc = Path.Combine(Application.dataPath, "SavePlayer.json");
-        pathsic = Path.Combine(Application.dataPath, "SaveInventory.json");
-        pathshc = Path.Combine(Application.dataPath, "SaveHud.json");
+        pathsgc = Path.Combine(Application.dataPath, "saves\\SaveGame.json");
+        pathspc = Path.Combine(Application.dataPath, "saves\\SavePlayer.json");
+        pathsic = Path.Combine(Application.dataPath, "saves\\SaveInventory.json");
+        pathshc = Path.Combine(Application.dataPath, "saves\\SaveHud.json");
 #endif
 
         if (File.Exists(pathsgc))
@@ -516,7 +554,16 @@ public class GameController : MonoBehaviour
             Player.Instance.NavMeshAgent.enabled = true;
             CameraControl.Instance.AlignCameraWithPlayer();
 
-            //наказание!
+            if(ticks > 3)
+            {
+                TextController.Instance.SetInfoLabelText(BbtStrings.GetStr("str_late"));
+                HUD.Instance.ShowInfoWindow();
+                ticks++;
+                AddTickAndUpdate();
+                ticks++;
+                AddTickAndUpdate();
+                //наказание!
+            }
         }
 
         if (time == 12)

@@ -210,6 +210,8 @@ public static class BbtStrings
         ,{ "str_info8",              new string[]{ "инфо8",  "info8" } }
         ,{ "str_info9",              new string[]{ "инфо9",  "info9" } }
 
+        ,{ "str_late",              new string[]{ "Сработала сигнализация. Охрана задержала вас. Вы потеряли несколько часов.",  "late" } }
+
     };
 
 

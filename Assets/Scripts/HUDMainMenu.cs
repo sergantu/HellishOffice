@@ -1,5 +1,7 @@
 ﻿
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -32,25 +34,30 @@ public class HUDMainMenu : MonoBehaviour
     [SerializeField]
     GameObject instructionWindow;
 
+    [SerializeField]
+    CanvasGroup introWindow;
+
     private Languages currentLanguage = Languages.RU;
     string pathsgc;
     string pathspc;
     string pathsic;
     string pathshc;
 
+    private SaveHudClass shc = new SaveHudClass();
+
     private void Start()
     {
 
 #if UNITY_ANDROID && !UNITY_EDITOR
-        pathsgc = Path.Combine(Application.persistentDataPath, "SaveGame.json");
-        pathspc = Path.Combine(Application.persistentDataPath, "SavePlayer.json");
-        pathsic = Path.Combine(Application.persistentDataPath, "SaveInventory.json");
-        pathshc = Path.Combine(Application.persistentDataPath, "SaveHud.json");
+        pathsgc = Path.Combine(Application.persistentDataPath, "saves\\SaveGame.json");
+        pathspc = Path.Combine(Application.persistentDataPath, "saves\\SavePlayer.json");
+        pathsic = Path.Combine(Application.persistentDataPath, "saves\\SaveInventory.json");
+        pathshc = Path.Combine(Application.persistentDataPath, "saves\\SaveHud.json");
 #else
-        pathsgc = Path.Combine(Application.dataPath, "SaveGame.json");
-        pathspc = Path.Combine(Application.dataPath, "SavePlayer.json");
-        pathsic = Path.Combine(Application.dataPath, "SaveInventory.json");
-        pathshc = Path.Combine(Application.dataPath, "SaveHud.json");
+        pathsgc = Path.Combine(Application.dataPath, "saves\\SaveGame.json");
+        pathspc = Path.Combine(Application.dataPath, "saves\\SavePlayer.json");
+        pathsic = Path.Combine(Application.dataPath, "saves\\SaveInventory.json");
+        pathshc = Path.Combine(Application.dataPath, "saves\\SaveHud.json");
 #endif
         JSONSave.Instance.LoadLanguage();
         currentLanguage = (Languages)BbtStrings.language;
@@ -76,6 +83,10 @@ public class HUDMainMenu : MonoBehaviour
         instructionWindow.GetComponent<RectTransform>().offsetMin = new Vector2(0, 0);
         instructionWindow.GetComponent<RectTransform>().offsetMax = new Vector2(0, 0);
         HideWindow(instructionWindow.GetComponent<CanvasGroup>());
+
+        introWindow.GetComponent<RectTransform>().offsetMin = new Vector2(0, 0);
+        introWindow.GetComponent<RectTransform>().offsetMax = new Vector2(0, 0);
+        HideWindow(introWindow);
 
     }
 
@@ -127,7 +138,15 @@ public class HUDMainMenu : MonoBehaviour
         {
             File.Delete(pathshc);
         }
-        
+
+
+        StartCoroutine(StartLevel1());
+    }
+
+    IEnumerator StartLevel1()
+    {
+        ShowWindow(introWindow);
+        yield return new WaitForSeconds(8.0f);
         SceneManager.LoadScene("Scene1", LoadSceneMode.Single);
     }
 
@@ -151,5 +170,15 @@ public class HUDMainMenu : MonoBehaviour
 
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
 
+    }
+
+    public void SetSoundLevel(float value)
+    {
+        //soundLevel.value = value;
+    }
+
+    public void SetMusicLevel(float value)
+    {
+        //musicLevel.value = value;
     }
 }
