@@ -74,6 +74,8 @@ public class GameController : MonoBehaviour
     GameObject floorShadow5;
 
 
+
+
     public Dictionary<string, bool> gameEvents = new Dictionary<string, bool>()
     {
         { "craftsofa", false }
@@ -113,22 +115,22 @@ public class GameController : MonoBehaviour
     ///GAME EVENTS
     //////////////////////////////////////////////////////////////////////////////////////////////
     ///
-    private void opn_floor1()
+    private void opn_floor1_end()
     {
         Destroy(floorShadow1);
     }
 
-    private void opn_floor2()
+    private void opn_floor2_end()
     {
         Destroy(floorShadow2);
     }
 
-    private void opn_floor4()
+    private void opn_floor4_end()
     {
         Destroy(floorShadow4);
     }
 
-    private void opn_floor5()
+    private void opn_floor5_end()
     {
         Destroy(floorShadow5);
     }
@@ -324,7 +326,7 @@ public class GameController : MonoBehaviour
 
         AddTickAndUpdate();
         StartCoroutine(StartDateTime());
-        AudioManager.PlayMusic(true);
+        AudioManager.PlayMusic();
 
         InventoryController.Instance.UpdateTempInventory();
     }
@@ -619,7 +621,6 @@ public class GameController : MonoBehaviour
     {
         audioManager.SourceSFX = gameObject.AddComponent<AudioSource>();
         audioManager.SourceMusic = gameObject.AddComponent<AudioSource>();
-        audioManager.SourceRandomPitchSFX = gameObject.AddComponent<AudioSource>();
         gameObject.AddComponent<AudioSource>();
     }
 

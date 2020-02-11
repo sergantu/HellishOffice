@@ -330,56 +330,171 @@ public class DefaultInventory : SaveInventoryClass
 
     public DefaultInventory()
     {
-        List<List<int>> PlayerInventory = new List<List<int>>()  //бд с текущими инвентарными предметами ( id предмета, количество, id места )
-        {
-            ///////////////////////-5 - торговец вирутальный
-            ///////////////////////-4 - игрок вирутальный
-            new List<int>(){ 1, 6, -3 },//торговец
-            new List<int>(){ 2, 3, -3 },//торговец
-            new List<int>(){ 3, 4, -3 },//торговец
-            new List<int>(){ 4, 3, -3 },//торговец
-            new List<int>(){ 5, 2, -3 },//торговец
-            new List<int>(){ 6, 1, -3 },//торговец
+         List<List<int>> PlayerInventory = new List<List<int>>()  //бд с текущими инвентарными предметами ( id предмета, количество, id места )
+    {
+        ///////////////////////-5 - торговец вирутальный
+        ///////////////////////-4 - игрок вирутальный
+        new List<int>(){ 1, 6, -3 },//торговец
+        new List<int>(){ 2, 3, -3 },//торговец
+        new List<int>(){ 3, 4, -3 },//торговец
+        new List<int>(){ 4, 3, -3 },//торговец
+        new List<int>(){ 5, 2, -3 },//торговец
+        new List<int>(){ 6, 1, -3 },//торговец
 
-            new List<int>(){ 1, 5, 0 },
-            new List<int>(){ 2, 10, 0 },
-            new List<int>(){ 3, 15, 0 },
-            new List<int>(){ 4, 20, 0 },
-            new List<int>(){ 6, 25, 0 },
-            new List<int>(){ 7, 30, 0 },
-            new List<int>(){ 8, 8, 0 },
-            new List<int>(){ 9, 9, 0 },
-            new List<int>(){ 10, 11, 0 },
-            new List<int>(){ 11, 12, 0 },
-            new List<int>(){ 13, 13, 0 },
-            new List<int>(){ 14, 14, 0 },
-            new List<int>(){ 15, 14, 0 },
-            new List<int>(){ 16, 16, 0 },
+        new List<int>(){ 1, 5, 0 },
+        new List<int>(){ 2, 10, 0 },
+        new List<int>(){ 3, 15, 0 },
+        new List<int>(){ 4, 20, 0 },
+        new List<int>(){ 6, 25, 0 },
+        new List<int>(){ 7, 30, 0 },
+        new List<int>(){ 8, 8, 0 },
+        new List<int>(){ 9, 9, 0 },
+        new List<int>(){ 10, 11, 0 },
+        new List<int>(){ 11, 12, 0 },
+        new List<int>(){ 13, 13, 0 },
+        new List<int>(){ 14, 14, 0 },
+        new List<int>(){ 15, 14, 0 },
+        new List<int>(){ 16, 16, 0 },
 
-            new List<int>(){ 8, 8, 1 },
-            new List<int>(){ 5, 1, 1 },
+        new List<int>(){ 2, 1, 1 },
+        new List<int>(){ 8, 2, 1 },
+        new List<int>(){ 16, 3, 1 },
+        new List<int>(){ 14, 60, 1 },
 
-            new List<int>(){ 7, 15, 2 },
+        new List<int>(){ 1, 1, 2 },
+        new List<int>(){ 4, 1, 2 },
+        new List<int>(){ 15, 10, 2 },
 
-            new List<int>(){ 7, 10, 3 },
-            new List<int>(){ 8, 3, 3 },
-            new List<int>(){ 0, 3, 3 },
-            new List<int>(){ 1, 8, 3 },
+        new List<int>(){ 0, 1, 3 },
+        new List<int>(){ 0, 2, 3 },
+        new List<int>(){ 0, 100, 3 },
 
-            new List<int>(){ 7, 1, 4 },
-            new List<int>(){ 8, 2, 4 },
-            new List<int>(){ 0, 3, 4 },
-            new List<int>(){ 1, 4, 4 },
+        new List<int>(){ 0, 1, 4 },
+        new List<int>(){ 16, 1, 4 },
+        new List<int>(){ 33, 7, 4 },
 
-            new List<int>(){ 7, 20, 5 },
-            new List<int>(){ 8, 50, 5 },
-            new List<int>(){ 0, 15, 5 },
-            new List<int>(){ 1, 37, 5 }  
-        
-                                            //6 - крысиная ловушка
-        };
+        new List<int>(){ 11, 1, 5 },
+        new List<int>(){ 10, 1, 5 },
+        new List<int>(){ 19, 7, 5 },
+        new List<int>(){ 34, 5, 5 },
 
-        playerInventory = new List<listSaved>();
+        new List<int>(){ 1, 1, 6 },
+        new List<int>(){ 3, 2, 6 },
+        new List<int>(){ 13, 19, 6 },
+
+        new List<int>(){ 2, 1, 7 },
+        new List<int>(){ 8, 2, 7 },
+        new List<int>(){ 14, 50, 7 },
+
+        new List<int>(){ 11, 1, 8 },
+        new List<int>(){ 5, 1, 8 },
+        new List<int>(){ 19, 4, 8 },
+        new List<int>(){ 33, 4, 8 },
+
+        new List<int>(){ 1, 1, 9 },
+        new List<int>(){ 24, 2, 9 },
+        new List<int>(){ 15, 7, 9 },
+
+        new List<int>(){ 9, 1, 10 },
+        new List<int>(){ 7, 2, 10 },
+        new List<int>(){ 19, 6, 10 },
+        new List<int>(){ 13, 13, 10 },
+
+        new List<int>(){ 5, 1, 11 },
+        new List<int>(){ 4, 2, 11 },
+        new List<int>(){ 8, 2, 11 },
+        new List<int>(){ 14, 40, 11 },
+
+        new List<int>(){ 13, 10, 12 },
+        new List<int>(){ 34, 9, 12 },
+        new List<int>(){ 9, 1, 12 },
+
+        new List<int>(){ 0, 1, 13 },
+        new List<int>(){ 1, 1, 13 },
+        new List<int>(){ 11, 1, 13 },
+        new List<int>(){ 6, 1, 13 },
+
+        new List<int>(){ 11, 1, 14 },
+        new List<int>(){ 19, 4, 14 },
+        new List<int>(){ 15, 10, 14 },
+        new List<int>(){ 33, 5, 14 },
+
+        new List<int>(){ 1, 1, 15 },
+        new List<int>(){ 10, 1, 15 },
+        new List<int>(){ 15, 13, 15 },
+        new List<int>(){ 33, 3, 15 },
+
+        new List<int>(){ 13, 7, 16 },
+        new List<int>(){ 33, 7, 16 },
+        new List<int>(){ 34, 7, 16 },
+        new List<int>(){ 15, 10, 16 },
+
+        new List<int>(){ 0, 1, 17 },
+        new List<int>(){ 11, 1, 17 },
+        new List<int>(){ 24, 2, 17 },
+
+        new List<int>(){ 6, 1, 18 },
+        new List<int>(){ 5, 1, 18 },
+        new List<int>(){ 19, 6, 18 },
+        new List<int>(){ 13, 17, 18 },
+
+        new List<int>(){ 1, 1, 19 },
+        new List<int>(){ 8, 2, 19 },
+        new List<int>(){ 19, 8, 19 },
+        new List<int>(){ 34, 5, 19 },
+
+        new List<int>(){ 11, 1, 20 },
+        new List<int>(){ 6, 1, 20 },
+        new List<int>(){ 14, 50, 20 },
+        new List<int>(){ 33, 5, 20 },
+
+        new List<int>(){ 2, 1, 21 },
+        new List<int>(){ 10, 1, 21 },
+        new List<int>(){ 14, 50, 21 },
+
+        new List<int>(){ 11, 1, 22 },
+        new List<int>(){ 4, 3, 22 },
+        new List<int>(){ 13, 7, 22 },
+
+        new List<int>(){ 9, 1, 23 },
+        new List<int>(){ 7, 3, 23 },
+        new List<int>(){ 15, 17, 23 },
+        new List<int>(){ 33, 5, 23 },
+
+        new List<int>(){ 0, 1, 24 },
+        new List<int>(){ 24, 2, 24 },
+        new List<int>(){ 34, 6, 24 },
+
+        new List<int>(){ 11, 1, 25 },
+        new List<int>(){ 10, 1, 25 },
+        new List<int>(){ 14, 50, 25 },
+
+        new List<int>(){ 1, 1, 26 },
+        new List<int>(){ 16, 2, 26 },
+        new List<int>(){ 13, 13, 26 },
+
+        new List<int>(){ 2, 1, 27 },
+        new List<int>(){ 8, 2, 27 },
+        new List<int>(){ 13, 50, 27 },
+        new List<int>(){ 33, 6, 27 },
+
+        new List<int>(){ 9, 1, 28 },
+        new List<int>(){ 7, 2, 28 },
+        new List<int>(){ 19, 2, 28 },
+        new List<int>(){ 34, 5, 28 },
+
+        new List<int>(){ 1, 1, 29 },
+        new List<int>(){ 7, 3, 29 },
+        new List<int>(){ 15, 13, 29 },
+        new List<int>(){ 14, 50, 29 },
+
+        new List<int>(){ 13, 4, 30 },
+        new List<int>(){ 33, 3, 30 },
+        new List<int>(){ 34, 5, 30 },
+        new List<int>(){ 24, 2, 30 },
+    };
+
+    playerInventory = new List<listSaved>();
         for (int i = 0; i < PlayerInventory.Count; i++)
         {
             playerInventory.Add(new listSaved(PlayerInventory[i]));

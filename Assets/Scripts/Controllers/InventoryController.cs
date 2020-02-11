@@ -76,8 +76,6 @@ public class InventoryController : MonoBehaviour
         new List<int>(){ 15, 14, 0 },
         new List<int>(){ 16, 16, 0 },
 
-        new List<int>(){ 0, 0, 0 },
-
         new List<int>(){ 2, 1, 1 },
         new List<int>(){ 8, 2, 1 },
         new List<int>(){ 16, 3, 1 },
@@ -274,7 +272,7 @@ public class InventoryController : MonoBehaviour
     private void Start()
     {
         JSONSave.Instance.LoadDataInventory();
-   
+
         CraftVariables[0].Name = BbtStrings.GetStr("str_inv_axe");
         CraftVariables[0].Description = BbtStrings.GetStr("str_inv_axe_desc");
         CraftVariables[1].Name = BbtStrings.GetStr("str_inv_bandage");

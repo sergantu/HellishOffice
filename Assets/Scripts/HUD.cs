@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -87,7 +88,7 @@ public class HUD : MonoBehaviour
     {
         JSONSave.Instance.LoadDataHud();
         LoadInventory(); //загруза инвентарных окон кнопками инвентаря
-        //LoadCraftButtons();
+        LoadCraftButtons();
     }
 
     public float GetSoundLevel()
@@ -97,7 +98,16 @@ public class HUD : MonoBehaviour
 
     public void SetSoundLevel(float value)
     {
-        soundLevel.value = value;
+        try
+        {
+            soundLevel.value = value;
+        }
+        catch(Exception e)
+        {
+            Debug.Log(e.Message);
+        }
+
+        
     }
 
     public float GetMusicLevel()
@@ -107,7 +117,14 @@ public class HUD : MonoBehaviour
 
     public void SetMusicLevel(float value)
     {
-        musicLevel.value = value;
+        try
+        {
+            musicLevel.value = value;
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e.Message);
+        }
     }
 
     ////////////////////////////////////////////////////////////////////////////////////
