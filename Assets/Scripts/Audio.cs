@@ -143,8 +143,7 @@ using Random = UnityEngine.Random;
     /// <param name="menu">Для главного меню</param>
     public void PlayMusic()
     {
-        int random = Random.Range(2, 3);
-        SourceMusic.clip = GetSound("MUS" + random);
+        SourceMusic.clip = GetSound("RABOTAI");
         SourceMusic.volume = MusicVolume;
         SourceMusic.loop = true;
         SourceMusic.Play();
