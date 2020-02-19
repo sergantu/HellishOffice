@@ -281,7 +281,6 @@ GameObject:
   - component: {fileID: 3587323751987762685}
   - component: {fileID: 4427944278496376077}
   - component: {fileID: 4983837017857005324}
-  - component: {fileID: 6567256355070209938}
   m_Layer: 5
   m_Name: CraftItem
   m_TagString: Untagged
@@ -373,26 +372,6 @@ MonoBehaviour:
     eventName: 
     timeForCraft: 0
     idCraftedItem: 0
---- !u!114 &6567256355070209938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5787944440568847843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreLayout: 0
-  m_MinWidth: 1
-  m_MinHeight: 100
-  m_PreferredWidth: -1
-  m_PreferredHeight: 230
-  m_FlexibleWidth: 1
-  m_FlexibleHeight: 230
-  m_LayoutPriority: 50
 --- !u!1 &7210578989226099215
 GameObject:
   m_ObjectHideFlags: 0
