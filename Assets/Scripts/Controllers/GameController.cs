@@ -138,60 +138,100 @@ public class GameController : MonoBehaviour
     private void get_destroy1_end()
     {
         GameObject objForRemove = InteractController.Instance.FindInterectObj("UseDestroy");
+        if(objForRemove == null)
+        {
+            return;
+        }
         Destroy(objForRemove.transform.parent.parent.parent.gameObject);
     }
 
     private void get_destroy2_end()
     {
         GameObject objForRemove = InteractController.Instance.FindInterectObj("UseDestroy2");
+        if (objForRemove == null)
+        {
+            return;
+        }
         Destroy(objForRemove.transform.parent.parent.parent.gameObject);
     }
 
     private void get_destroy3_end()
     {
         GameObject objForRemove = InteractController.Instance.FindInterectObj("UseDestroy3");
+        if (objForRemove == null)
+        {
+            return;
+        }
         Destroy(objForRemove.transform.parent.parent.parent.gameObject);
     }
 
     private void get_destroy4_end()
     {
         GameObject objForRemove = InteractController.Instance.FindInterectObj("UseDestroy4");
+        if (objForRemove == null)
+        {
+            return;
+        }
         Destroy(objForRemove.transform.parent.parent.parent.gameObject);
     }
 
     private void get_destroy5_end()
     {
         GameObject objForRemove = InteractController.Instance.FindInterectObj("UseDestroy5");
+        if (objForRemove == null)
+        {
+            return;
+        }
         Destroy(objForRemove.transform.parent.parent.parent.gameObject);
     }
 
     private void get_destroy6_end()
     {
         GameObject objForRemove = InteractController.Instance.FindInterectObj("UseDestroy6");
+        if (objForRemove == null)
+        {
+            return;
+        }
         Destroy(objForRemove.transform.parent.parent.parent.gameObject);
     }
 
     private void get_destroy7_end()
     {
         GameObject objForRemove = InteractController.Instance.FindInterectObj("UseDestroy7");
+        if (objForRemove == null)
+        {
+            return;
+        }
         Destroy(objForRemove.transform.parent.parent.parent.gameObject);
     }
 
     private void get_destroy8_end()
     {
         GameObject objForRemove = InteractController.Instance.FindInterectObj("UseDestroy8");
+        if (objForRemove == null)
+        {
+            return;
+        }
         Destroy(objForRemove.transform.parent.parent.parent.gameObject);
     }
 
     private void get_destroy9_end()
     {
         GameObject objForRemove = InteractController.Instance.FindInterectObj("UseDestroy9");
+        if (objForRemove == null)
+        {
+            return;
+        }
         Destroy(objForRemove.transform.parent.parent.parent.gameObject);
     }
 
     private void get_destroy10_end()
     {
         GameObject objForRemove = InteractController.Instance.FindInterectObj("UseDestroy10");
+        if (objForRemove == null)
+        {
+            return;
+        }
         Destroy(objForRemove.transform.parent.parent.parent.gameObject);
     }
 
@@ -252,26 +292,22 @@ public class GameController : MonoBehaviour
 
     private void craftkey1_end()
     {
-        Button curButton = GameObject.Find("btn_elevator1").GetComponent<Button>();
-        curButton.interactable = true;
+        ElevatorController.Instance.elevator1.interactable = true;
     }
 
     private void craftkey2_end()
     {
-        Button curButton = GameObject.Find("btn_elevator2").GetComponent<Button>();
-        curButton.interactable = true;
+        ElevatorController.Instance.elevator2.interactable = true;
     }
 
     private void craftkey4_end()
     {
-        Button curButton = GameObject.Find("btn_elevator4").GetComponent<Button>();
-        curButton.interactable = true;
+        ElevatorController.Instance.elevator4.interactable = true;
     }
 
     private void craftkey5_end()
     {
-        Button curButton = GameObject.Find("btn_elevator5").GetComponent<Button>();
-        curButton.interactable = true;
+        ElevatorController.Instance.elevator5.interactable = true;
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////

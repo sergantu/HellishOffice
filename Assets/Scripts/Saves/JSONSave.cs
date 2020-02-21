@@ -114,6 +114,11 @@ public class JSONSave : MonoBehaviour
 
     }
 
+    public float GetMusicVolume()
+    {
+        return shc.musicLevel;
+    }
+
     public void SaveInventory()
     {
         sic.playerInventory = new List<listSaved>();
@@ -234,6 +239,11 @@ public class SaveHudClass
 {
     public float soundLevel;
     public float musicLevel;
+
+    public float GetMusicLevel()
+    {
+        return musicLevel;
+    }
 }
 
 [Serializable]
@@ -504,12 +514,9 @@ public class DefaultInventory : SaveInventoryClass
 
 public class DefaultHud : SaveHudClass
 {
-    public new float soundLevel;
-    public new float musicLevel;
-
     public DefaultHud()
     {
-        soundLevel = 0.3f;
-        musicLevel = 0.3f;
+        soundLevel = 0.5f;
+        musicLevel = 0.15f;
     }
 }

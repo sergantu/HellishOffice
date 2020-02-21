@@ -189,7 +189,7 @@ public static class BbtStrings
         ,{ "str_muteSound",              new string[]{ "Отключить",  "Mute" } }
         ,{ "str_musicLabel",              new string[]{ "Громкость музыки",  "Music Volume" } }
         ,{ "str_muteMusic",              new string[]{ "Отключить",  "Mute" } }
-        ,{ "str_chooseElevator",              new string[]{ "Выберите этаж",  "Choose elevator" } }
+        ,{ "str_chooseElevator",              new string[]{ "Выберите этаж \n У вас должен быть электронный ключ",  "Choose elevator" } }
         ,{ "str_dealerLabel",              new string[]{ "Продавец",  "Dealer" } }
         ,{ "str_playerDealer",              new string[]{ "Ты",  "You" } }
         ,{ "str_newitemsLabel",              new string[]{ "Найденные предметы",  "Finded items" } }

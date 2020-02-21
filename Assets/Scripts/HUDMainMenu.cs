@@ -37,6 +37,9 @@ public class HUDMainMenu : MonoBehaviour
     [SerializeField]
     CanvasGroup introWindow;
 
+    [SerializeField]
+    AudioSource music;
+
     private Languages currentLanguage = Languages.RU;
     string pathsgc;
     string pathspc;
@@ -62,6 +65,9 @@ public class HUDMainMenu : MonoBehaviour
         JSONSave.Instance.LoadLanguage();
         currentLanguage = (Languages)BbtStrings.language;
         languageText.text = currentLanguage.ToString();
+
+        float test1 = JSONSave.Instance.GetMusicVolume();
+        music.volume = JSONSave.Instance.GetMusicVolume();
 
         ContinueGame.interactable = File.Exists(pathsgc);
         Time.timeScale = 1.0f;

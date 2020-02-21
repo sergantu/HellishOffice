@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class ElevatorController : MonoBehaviour
 {
@@ -14,6 +15,11 @@ public class ElevatorController : MonoBehaviour
         }
     }
     float[] coors = { 1.2f, 3.2f, 7.2f, 10.2f, 13.2f }; //координаты точек расположения полов этажей
+
+    public Button elevator1;
+    public Button elevator2;
+    public Button elevator4;
+    public Button elevator5;
 
     private void Awake()
     {

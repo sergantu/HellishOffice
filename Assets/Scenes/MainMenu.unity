@@ -2907,6 +2907,7 @@ MonoBehaviour:
   developersWindow: {fileID: 1596638547}
   instructionWindow: {fileID: 2104832610}
   introWindow: {fileID: 403872904}
+  music: {fileID: 1020505471}
 --- !u!1 &6808795238687396693
 GameObject:
   m_ObjectHideFlags: 0
