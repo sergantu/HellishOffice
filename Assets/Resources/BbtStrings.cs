@@ -24,7 +24,7 @@ public static class BbtStrings
          { "str_inv_cure",                      new string[]{ "Лекарство",              "Cure" } }
         ,{ "str_inv_bandage",                   new string[]{ "Бинт",                   "Bandage" } }
         ,{ "str_inv_antibiotic",                new string[]{ "Антибиотик",             "Antibiotic" } }
-        ,{ "str_inv_soupe",                     new string[]{ "Суп",                    "Soupe" } }
+        ,{ "str_inv_friedmushrooms",            new string[]{ "Жареные грибы",          "Soupe" } }
         ,{ "str_inv_energybar",                 new string[]{ "Батончик",               "Energybar" } }
         ,{ "str_inv_noodles",                   new string[]{ "Доширак",                "Noodles" } }
         ,{ "str_inv_rat",                       new string[]{ "Крыса",                  "Rat" } }
@@ -34,10 +34,28 @@ public static class BbtStrings
         ,{ "str_inv_juice",                     new string[]{ "Сок",                    "Juice" } }
         ,{ "str_inv_cola",                      new string[]{ "Кола",                   "Cola" } }
         ,{ "str_inv_axe",                       new string[]{ "Топор",                  "Axe" } }
-        ,{ "str_inv_stuff",                     new string[]{ "Хлам",                   "Stuff" } }
+        ,{ "str_inv_stuff",                     new string[]{ "Компоненты",             "Stuff" } }
         ,{ "str_inv_money",                     new string[]{ "Деньги",                 "Money" } }
         ,{ "str_inv_humus",                     new string[]{ "Перегной",               "Humus" } }
         ,{ "str_inv_friedrat",                  new string[]{ "Жареная крыса",          "Fried rat" } }
+        ,{ "str_inv_computer",                  new string[]{ "Компьютер",              "Fried rat" } }
+        ,{ "str_inv_crafttable",                new string[]{ "Крафтовый стол",         "Fried rat" } }
+        ,{ "str_inv_wires",                     new string[]{ "Провода",                "Fried rat" } }
+        ,{ "str_inv_fir",                       new string[]{ "Елочка",                 "Fried rat" } }
+        ,{ "str_inv_key1",                      new string[]{ "Ключ 1 этаж",            "Fried rat" } }
+        ,{ "str_inv_key2",                      new string[]{ "Ключ 2 этаж",            "Fried rat" } }
+        ,{ "str_inv_condey",                    new string[]{ "Кондиционер",            "Fried rat" } }
+        ,{ "str_inv_corob",                     new string[]{ "Коробки",                "Fried rat" } }
+        ,{ "str_inv_key4",                      new string[]{ "Ключ 4 этаж",            "Fried rat" } }
+        ,{ "str_inv_key5",                      new string[]{ "Ключ 5 этаж",            "Fried rat" } }
+        ,{ "str_inv_kreslo",                    new string[]{ "Кресло",                 "Fried rat" } }
+        ,{ "str_inv_sofa",                      new string[]{ "Диван",                  "Fried rat" } }
+        ,{ "str_inv_monitor",                   new string[]{ "Монитор",                "Fried rat" } }
+        ,{ "str_inv_mushtrap",                  new string[]{ "Грибной сад",            "Fried rat" } }
+        ,{ "str_inv_rattrap",                   new string[]{ "Крысиная ловушка",       "Fried rat" } }
+        ,{ "str_inv_watertrap",                 new string[]{ "Водяной фильтр",         "Fried rat" } }
+        ,{ "str_inv_wood",                      new string[]{ "Дерево",                 "Fried rat" } }
+        ,{ "str_inv_zapchasti",                 new string[]{ "Запчасти",               "Fried rat" } }
 
         //параметры
         ,{ "str_param_0",                       new string[]{ "Жажда",                  "Humus" } }
@@ -45,13 +63,14 @@ public static class BbtStrings
         ,{ "str_param_2",                       new string[]{ "Энергия",                "Humus" } }
         ,{ "str_param_3",                       new string[]{ "Здоровье",               "Humus" } }
         ,{ "str_desease_0",                     new string[]{ "Рана",                   "Humus" } }
+        ,{ "str_desease_1",                     new string[]{ "Болезнь",                "Humus" } }
         ,{ "str_project",                       new string[]{ "Проект",                 "Humus" } }
 
         //inventory description
         ,{ "str_inv_cure_desc",                 new string[]{ "Средство от легкой болезни",                                             "Cure" } }
         ,{ "str_inv_bandage_desc",              new string[]{ "Средство от физических ранений",                                         "Bandage" } }
         ,{ "str_inv_antibiotic_desc",           new string[]{ "Средство от тяжелой формы болезни",                                      "Antibiotic" } }
-        ,{ "str_inv_soupe_desc",                new string[]{ "Вкусный суп из грибочков",                                               "Soupe" } }
+        ,{ "str_inv_friedmushrooms_desc",       new string[]{ "Вкусные жареные грибочки",                                               "Soupe" } }
         ,{ "str_inv_energybar_desc",            new string[]{ "Энергетический батончик не только восполняет сытость, но и энергию",     "Energybar" } }
         ,{ "str_inv_noodles_desc",              new string[]{ "Питательная лапша быстрого приготовления",                               "Noodles" } }
         ,{ "str_inv_rat_desc",                  new string[]{ "Не считая дивана, единственное мясо в этом офисе",                       "Rat" } }
@@ -65,6 +84,24 @@ public static class BbtStrings
         ,{ "str_inv_money_desc",                new string[]{ "Не в них сила",                                                          "Money" } }
         ,{ "str_inv_humus_desc",                new string[]{ "Сила в перегное!",                                                       "Humus" } }
         ,{ "str_inv_friedrat_desc",             new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
+        ,{ "str_inv_computer_desc",             new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
+        ,{ "str_inv_crafttable_desc",           new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
+        ,{ "str_inv_wires_desc",                new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
+        ,{ "str_inv_fir_desc",                  new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
+        ,{ "str_inv_key1_desc",                 new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
+        ,{ "str_inv_key2_desc",                 new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
+        ,{ "str_inv_condey_desc",               new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
+        ,{ "str_inv_corob_desc",                new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
+        ,{ "str_inv_key4_desc",                 new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
+        ,{ "str_inv_key5_desc",                 new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
+        ,{ "str_inv_kreslo_desc",               new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
+        ,{ "str_inv_sofa_desc",                 new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
+        ,{ "str_inv_monitor_desc",              new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
+        ,{ "str_inv_mushtrap_desc",             new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
+        ,{ "str_inv_rattrap_desc",              new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
+        ,{ "str_inv_watertrap_desc",            new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
+        ,{ "str_inv_wood_desc",                 new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
+        ,{ "str_inv_zapchasti_desc",            new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
 
 
         //фразы торговца
