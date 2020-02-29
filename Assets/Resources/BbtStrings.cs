@@ -74,34 +74,34 @@ public static class BbtStrings
         ,{ "str_inv_energybar_desc",            new string[]{ "Энергетический батончик не только восполняет сытость, но и энергию",     "Energybar" } }
         ,{ "str_inv_noodles_desc",              new string[]{ "Питательная лапша быстрого приготовления",                               "Noodles" } }
         ,{ "str_inv_rat_desc",                  new string[]{ "Не считая дивана, единственное мясо в этом офисе",                       "Rat" } }
-        ,{ "str_inv_mushrooms_desc",            new string[]{ "Нету сушей, нету пиццы, ешьте вы пучки грибицы",                         "Mushrooms" } }
+        ,{ "str_inv_mushrooms_desc",            new string[]{ "Нету суши, нету пиццы, ешьте вы пучки грибицы",                         "Mushrooms" } }
         ,{ "str_inv_water_desc",                new string[]{ "Чистейшая вода",                                                         "Water" } }
         ,{ "str_inv_coffee_desc",               new string[]{ "Топливо для программиста",                                               "Coffee" } }
         ,{ "str_inv_juice_desc",                new string[]{ "Кто додумался давить сок из чеснока?",                                   "Juice" } }
         ,{ "str_inv_cola_desc",                 new string[]{ "Не употреблять вместе с кофе!",                                          "Cola" } }
         ,{ "str_inv_axe_desc",                  new string[]{ "Убойный инструмент против босса",                                        "Axe" } }
         ,{ "str_inv_stuff_desc",                new string[]{ "Из гвоздя, скрепки и бумажки сделаю спутниковое ТВ",                     "Stuff" } }
-        ,{ "str_inv_money_desc",                new string[]{ "Не в них сила",                                                          "Money" } }
+        ,{ "str_inv_money_desc",                new string[]{ "Программисту заплатите чеканной... Кхм",                                 "Money" } }
         ,{ "str_inv_humus_desc",                new string[]{ "Сила в перегное!",                                                       "Humus" } }
-        ,{ "str_inv_friedrat_desc",             new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
-        ,{ "str_inv_computer_desc",             new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
-        ,{ "str_inv_crafttable_desc",           new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
-        ,{ "str_inv_wires_desc",                new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
-        ,{ "str_inv_fir_desc",                  new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
-        ,{ "str_inv_key1_desc",                 new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
-        ,{ "str_inv_key2_desc",                 new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
-        ,{ "str_inv_condey_desc",               new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
-        ,{ "str_inv_corob_desc",                new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
-        ,{ "str_inv_key4_desc",                 new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
-        ,{ "str_inv_key5_desc",                 new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
-        ,{ "str_inv_kreslo_desc",               new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
-        ,{ "str_inv_sofa_desc",                 new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
-        ,{ "str_inv_monitor_desc",              new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
-        ,{ "str_inv_mushtrap_desc",             new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
-        ,{ "str_inv_rattrap_desc",              new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
-        ,{ "str_inv_watertrap_desc",            new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
-        ,{ "str_inv_wood_desc",                 new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
-        ,{ "str_inv_zapchasti_desc",            new string[]{ "С хрустящим хвостиком!",                                                 "Fried rat" } }
+        ,{ "str_inv_friedrat_desc",             new string[]{ "С хрустящим хвостиком!", "With a crispy ponytail!" } }
+        ,{ "str_inv_computer_desc",             new string[]{ "Играть в рабочее время станет намного веселее", "Play during working hours will be much more fun" } }
+        ,{ "str_inv_crafttable_desc",           new string[]{ "Поможет быстрее мастерить предметы", "It will help to craft items faster." } }
+        ,{ "str_inv_wires_desc",                new string[]{ "Проводимость проверена языком", "Conductivity checked by licking" } }
+        ,{ "str_inv_fir_desc",                  new string[]{ "Главная красавица. Помогает быстрее работать.", "The main beauty. Helps to work faster." } }
+        ,{ "str_inv_key1_desc",                 new string[]{ "Электронный ключ от 1 этажа", "Electronic key from the 1st floor" } }
+        ,{ "str_inv_key2_desc",                 new string[]{ "Электронный ключ от 2 этажа", "Electronic key from the 2nd floor" } }
+        ,{ "str_inv_condey_desc",               new string[]{ "Повышает эффективность лени", "Increases the effectiveness of laziness" } }
+        ,{ "str_inv_corob_desc",                new string[]{ "Домик котиков :З", "Feline house :3" } }
+        ,{ "str_inv_key4_desc",                 new string[]{ "Электронный ключ от 4 этажа", "Electronic key from the 4th floor" } }
+        ,{ "str_inv_key5_desc",                 new string[]{ "Электронный ключ от 5 этажа", "Electronic key from the 5th floor" } }
+        ,{ "str_inv_kreslo_desc",               new string[]{ "Перевернутая табуретка и то удобнее", "Inverted stool and it’s more convenient" } }
+        ,{ "str_inv_sofa_desc",                 new string[]{ "Самое посещаемое место на работе", "Most visited place at work" } }
+        ,{ "str_inv_monitor_desc",              new string[]{ "Настоящий! Даже с подсветкой!", "Cool! Even with backlight!" } }
+        ,{ "str_inv_mushtrap_desc",             new string[]{ "Здесь можно выращивать грибочки. Бугагашенька!", "Here you can grow mushrooms. Bazinga!" } }
+        ,{ "str_inv_rattrap_desc",              new string[]{ "Гуманная ловушка для крыс", "Humane Rat Trap" } }
+        ,{ "str_inv_watertrap_desc",            new string[]{ "Помогает фильтровать воду из самых неприятных мест", "Helps filter water from the most unpleasant places" } }
+        ,{ "str_inv_wood_desc",                 new string[]{ "Ну дерево и дерево. Что бубнить то?", "Well tree and tree. What to mutter then?" } }
+        ,{ "str_inv_zapchasti_desc",            new string[]{ "Лишние детали после ремонта любой техники", "Extra parts after repair of any equipment" } }
 
 
         //фразы торговца
@@ -201,14 +201,23 @@ public static class BbtStrings
         ,{ "str_january",              new string[]{ "января",  "January" } }
 
         //mainmenu
-        ,{ "mainLabelText",              new string[]{ "Адский офис",  "Hellish Office" } }
+        ,{ "mainLabelText",              new string[]{ "Новогодний офис", "Christmas office" } }
         ,{ "continueText",              new string[]{ "Продолжить",  "Continue" } }
         ,{ "newgameText",              new string[]{ "Новая игра",  "New Game" } }
         ,{ "optionsText",              new string[]{ "Инструкция",  "Instruction" } }
         ,{ "developersText",              new string[]{ "Создатели",  "Developers" } }
         ,{ "exitText",              new string[]{ "Выход",  "Exit" } }
         ,{ "developers",              new string[]{ "Титры",  "Developers" } }
-        ,{ "instruction",              new string[]{ "Текст инструкции",  "Instruction Text" } }
+        ,{ "instruction",              new string[]{ "    Ваш босс запер вас на новогодние праздники. Вы должны успеть доделать проект до 9:00 11 января. Прогресс проекта показывается полоской внизу экрана." + 
+"\n    На своем 3 этаже вы можете перемещаться свободно." +
+"Чтобы попасть на другие этажи, вы должны сделать электронный ключ на необходимый этаж и дождаться вечера. Именно тогда охрана начинает праздновать. Ночью вы можете собирать предметы на других этажах." + "Но в 9:00 вы обязаны вернуться на свой этаж, иначе охрана вас поймает." +
+"\n    Вам следует иногда кушать, пить, спать, лечить травмы и болезни. В слесарном столе можно построить много нужных и не очень вещей." + "Здесь можно собрать топор, которым вы можете разрушать мусорные кучи. Они препятствуют передвижению по другим офисам. Если при действии иконка инвентаря в правом верхнем углу мигает, значит вам не хватает ресурсов." +
+ "\n   Приятной игры!",
+            "    Your boss has locked you on New Year's holidays. You must have time to complete the project before 9:00 on January 11. Project progress is indicated by a bar at the bottom of the screen. " +
+ "\n   On your 3rd floor you can move around freely." + "To get to other floors, you must make an electronic key to the required floor and wait for the evening. It is then that the guards begin to celebrate. At night, you can collect items on other floors." +
+"But at 9:00 you must return to your floor, otherwise the security will catch you." +
+ "\n   You should sometimes eat, drink, sleep, treat injuries and illnesses. In a bench table you can build a lot of necessary and not so things." + "Here you can assemble an ax with which you can destroy garbage heaps. They impede movement to other offices. If during the action the inventory icon in the upper right corner flashes, then you do not have enough resources." +
+ "\n   Have a nice game!" } }
 
         //HUD
         ,{ "str_winLabel",              new string[]{ "Победа!",  "Congratulations" } }
@@ -236,17 +245,16 @@ public static class BbtStrings
 
 
         //окна информации
-        ,{ "str_info",              new string[]{ "инфо",  "info" } }
-        ,{ "str_info1",              new string[]{ "инфо1",  "info1" } }
-        ,{ "str_info2",              new string[]{ "инфо2",  "info2" } }
-        ,{ "str_info3",              new string[]{ "инфо3",  "info3" } }
-        ,{ "str_info4",              new string[]{ "инфо4",  "info4" } }
-        ,{ "str_info5",              new string[]{ "инфо5",  "info5" } }
-        ,{ "str_info6",              new string[]{ "инфо6",  "info6" } }
-        ,{ "str_info7",              new string[]{ "инфо7",  "info7" } }
-        ,{ "str_info8",              new string[]{ "инфо8",  "info8" } }
-        ,{ "str_info9",              new string[]{ "инфо9",  "info9" } }
-        ,{ "str_instruction",        new string[]{ "инфо9",  "info9" } }
+        ,{ "str_info",              new string[]{ "Ого! Тут коллега по несчастью. Может мне удастся обменяться с ним предметами?", "Wow! Here is a colleague in misfortune. Can I manage to exchange objects with him?" } }
+        ,{ "str_info1",              new string[]{ "Неужели это древнейший вид работников нашей компании? Системный аадминистратор. Говорят, что он появился здесь задолго до строительства здания.", "Is it really the oldest kind of employees of our company? System Administrator. They say that he appeared here long before the construction of the building." } }
+        ,{ "str_info2",              new string[]{ "Здесь открывается прекрасный вид на праздничный город. Интересно, кто эти люди большой рогаткой на крыше? И почему с ними свинья?", "It offers a beautiful view of the festive city. I wonder who these people are big slingshot on the roof? And why a pig with them?" } }
+        ,{ "str_info3",              new string[]{ "Ого! Я вижу здесь много забытых и никому ненужных вещей. Пожалуй, заберу все себе.", "Wow! I see here a lot of forgotten and unnecessary things to nobody. Perhaps I’ll take everything for myself." } }
+        ,{ "str_info4",              new string[]{ "Кричал о помощи и махал руками прохожим. Прохожие радостно кричали и махали руками мне в ответ.", "Shouted for help and waved hands to passers-by. Passers-by shouted joyfully and waved their hands at me in response." } }
+        ,{ "str_info5",              new string[]{ "Тень человека с гитарой кажется такой величественной.", "The shadow of a man with a guitar seems so magnificent." } }
+        ,{ "str_info6",              new string[]{ "Табличка. \n\"Кучу мусора перед входом не трогать! Это не мусор, а многомиллионный проект! \" \n Наверное я зря ее разломал.", "Nameplate. \n \"Do not touch the pile of rubbish in front of the entrance!This is not rubbish, but a multi - million dollar project! \" \n I guess I broke it in vain." } }
+        ,{ "str_info7",              new string[]{ "Название компании \"Davay Tselovay\". Интересно, почему так назвали?", "Company name \"Davay Tselovay \". I wonder why they called it that?" } }
+        ,{ "str_info8",              new string[]{ "Сам себе вылечил зубы. Из-за работы 10 лет не был у стоматолога.", "I have cured my teeth. Because of work, I have not visited a dentist for 10 years." } }
+        ,{ "str_info9",              new string[]{ "Это же парень из нашей компании. Он пропал после корпоративного праздника. Не стоит злоупотреблять вишневым соком!", "This is the guy from our company. He disappeared after a corporate holiday. Do not abuse cherry juice!" } }
 
 
         ,{ "str_late",              new string[]{ "Сработала сигнализация. Охрана задержала вас. Вы потеряли несколько часов.", "The alarm went off. The guard has delayed you. You have lost a few hours." } }

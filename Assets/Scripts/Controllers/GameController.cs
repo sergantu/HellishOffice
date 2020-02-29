@@ -109,6 +109,38 @@ public class GameController : MonoBehaviour
         ,{ "opn_floor2", false }
         ,{ "opn_floor4", false }
         ,{ "opn_floor5", false }
+
+        /*{ "craftsofa", true }
+        ,{ "craftkey1", true }
+        ,{ "craftkey2", true }
+        ,{ "craftkey4", true }
+        ,{ "craftkey5", true }
+        ,{ "craftaxe", true }
+        ,{ "craftcomputer", true }
+        ,{ "craftcondey", true }
+        ,{ "craftcrafttable", true }
+        ,{ "craftfir", true }
+        ,{ "craftkreslo", true }
+        ,{ "craftmonitor", true }
+        ,{ "craftmushtrap", true }
+        ,{ "craftrattrap", true }
+        ,{ "craftwatertrap", true }
+
+        ,{ "get_destroy", false }
+        ,{ "get_destroy2", false }
+        ,{ "get_destroy3", false }
+        ,{ "get_destroy4", false }
+        ,{ "get_destroy5", false }
+        ,{ "get_destroy6", false }
+        ,{ "get_destroy7", false }
+        ,{ "get_destroy8", false }
+        ,{ "get_destroy9", false }
+        ,{ "get_destroy10", false }
+
+        ,{ "opn_floor1", true }
+        ,{ "opn_floor2", true }
+        ,{ "opn_floor4", true }
+        ,{ "opn_floor5", true }*/
     };
 
     //////////////////////////////////////////////////////////////////////////////////////////////
@@ -522,7 +554,7 @@ public class GameController : MonoBehaviour
 
         string finalDate = date.ToString() + " " + month + " " + time.ToString() + ":00";
 
-        for (int i = 0; i < Player.Instance.PlayerParametres.Count; i++)
+        /*for (int i = 0; i < Player.Instance.PlayerParametres.Count; i++)
         {
             if (i == 2 && Player.Instance.playerSleep)
             {
@@ -545,7 +577,7 @@ public class GameController : MonoBehaviour
         else
         {
             SunLight.transform.rotation = Quaternion.Euler(50, 63, 0);
-        }
+        }*/
 
         HUD.Instance.UpdateDateTime(finalDate);
         HUD.Instance.UpdateMainParamIcons();
@@ -591,7 +623,7 @@ public class GameController : MonoBehaviour
 
         if (time == 12)
         {
-            ShowEverydayEvent();
+            //ShowEverydayEvent();
         }
 
         if (time == 14)
@@ -604,7 +636,7 @@ public class GameController : MonoBehaviour
             int rnd = Random.Range(0, 24);
             if(rnd == 0)
             {
-                ShowRandomEvent();
+                //ShowRandomEvent();
             }
         }
 
