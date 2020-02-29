@@ -21,6 +21,11 @@ public class HUD : MonoBehaviour
     public Image travmaIcon;
     public Image deseaseIcon;
 
+    [SerializeField] GameObject Outro;
+
+    [SerializeField] Text thinksLabel;
+    [SerializeField] Text thinksDescription;
+
     [SerializeField] List<GameObject> windowsUI;  //список UI окон
     [SerializeField] InventoryUIButton inventoryItemPrefab; //перфаб кнопки в инвентаре
     [SerializeField] CraftUIButton craftButtonPrefab;
@@ -793,6 +798,13 @@ public class HUD : MonoBehaviour
     {
         GameController.Instance.AudioManager.PlaySFX("aud_clk_button_menu_1");
         ShowWindow(GetWindow("LevelWonWindow").GetComponent<CanvasGroup>());
+        StartCoroutine(CloseOutro());
+    }
+
+    IEnumerator CloseOutro()
+    {
+        yield return new WaitForSeconds(8.0f);
+        Destroy(Outro);
     }
 
     /// <summary>
@@ -967,6 +979,9 @@ public class HUD : MonoBehaviour
     {
         if ( !CameraControl.Instance.AlignCameraWithPlayer() )
         {
+            thinksLabel.text = BbtStrings.GetStr("thinks");
+            string rnd = "str_status_player_" +  UnityEngine.Random.Range(0, 9);
+            thinksDescription.text = BbtStrings.GetStr(rnd);
             ShowWindow(GetWindow("PlayerWindow").GetComponent<CanvasGroup>());
         }
     }

@@ -112,6 +112,7 @@ public static class BbtStrings
         ,{ "str_good_trade_3",                  new string[]{ "Какая щедрость!", "What a generosity!" } }
 
         //фразы состояния
+        ,{ "thinks",               new string[]{ "Мысли", "Thoughts" } }
         ,{ "str_status_player_0",               new string[]{ "Моя лень меня бережет!", "My laziness protects me!" } }
         ,{ "str_status_player_1",               new string[]{ "От голода скоро начну грызть стулья", "From hunger I will begin to gnaw on chairs." } }
         ,{ "str_status_player_2",               new string[]{ "Ради еды готов прогрызть выход наружу.", "For food, ready to gnaw a way out." } }
@@ -210,17 +211,21 @@ public static class BbtStrings
         ,{ "developers",              new string[]{ "Титры",  "Developers" } }
         ,{ "instruction",              new string[]{ "    Ваш босс запер вас на новогодние праздники. Вы должны успеть доделать проект до 9:00 11 января. Прогресс проекта показывается полоской внизу экрана." + 
 "\n    На своем 3 этаже вы можете перемещаться свободно." +
-"Чтобы попасть на другие этажи, вы должны сделать электронный ключ на необходимый этаж и дождаться вечера. Именно тогда охрана начинает праздновать. Ночью вы можете собирать предметы на других этажах." + "Но в 9:00 вы обязаны вернуться на свой этаж, иначе охрана вас поймает." +
-"\n    Вам следует иногда кушать, пить, спать, лечить травмы и болезни. В слесарном столе можно построить много нужных и не очень вещей." + "Здесь можно собрать топор, которым вы можете разрушать мусорные кучи. Они препятствуют передвижению по другим офисам. Если при действии иконка инвентаря в правом верхнем углу мигает, значит вам не хватает ресурсов." +
+"Чтобы попасть на другие этажи, вы должны сделать электронный ключ на необходимый этаж и дождаться вечера. Именно тогда охрана начинает праздновать. Ночью вы можете собирать предметы на других этажах." +
+ "Но в 9:00 вы обязаны вернуться на свой этаж, иначе охрана вас поймает." +
+"\n    Вам следует иногда кушать, пить, спать, лечить травмы и болезни. В слесарном столе можно построить много нужных и не очень вещей." +
+ "Здесь можно собрать топор, которым вы можете разрушать мусорные кучи. Они препятствуют передвижению по другим офисам. Если при действии иконка инвентаря в правом верхнем углу мигает, значит вам не хватает ресурсов." +
  "\n   Приятной игры!",
             "    Your boss has locked you on New Year's holidays. You must have time to complete the project before 9:00 on January 11. Project progress is indicated by a bar at the bottom of the screen. " +
- "\n   On your 3rd floor you can move around freely." + "To get to other floors, you must make an electronic key to the required floor and wait for the evening. It is then that the guards begin to celebrate. At night, you can collect items on other floors." +
+ "\n   On your 3rd floor you can move around freely." +
+ "To get to other floors, you must make an electronic key to the required floor and wait for the evening. It is then that the guards begin to celebrate. At night, you can collect items on other floors." +
 "But at 9:00 you must return to your floor, otherwise the security will catch you." +
- "\n   You should sometimes eat, drink, sleep, treat injuries and illnesses. In a bench table you can build a lot of necessary and not so things." + "Here you can assemble an ax with which you can destroy garbage heaps. They impede movement to other offices. If during the action the inventory icon in the upper right corner flashes, then you do not have enough resources." +
+ "\n   You should sometimes eat, drink, sleep, treat injuries and illnesses. In a bench table you can build a lot of necessary and not so things." +
+ "Here you can assemble an ax with which you can destroy garbage heaps. They impede movement to other offices. If during the action the inventory icon in the upper right corner flashes, then you do not have enough resources." +
  "\n   Have a nice game!" } }
 
         //HUD
-        ,{ "str_winLabel",              new string[]{ "Победа!",  "Congratulations" } }
+        ,{ "str_winLabel",              new string[]{ "Поздравляем! Вы вовремя завершили проект. К сожалению, после ваших действий офис не подлежит восстановлению.", "Congratulations! You completed the project on time. Unfortunately, after your actions, the office cannot be restored." } }
         ,{ "str_winMenu",              new string[]{ "Меню",  "Menu" } }
         ,{ "str_yesDialog",              new string[]{ "Да",  "Yes" } }
         ,{ "str_noDialog",              new string[]{ "Нет",  "No" } }
