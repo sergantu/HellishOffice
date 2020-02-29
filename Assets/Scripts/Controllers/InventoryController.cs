@@ -272,20 +272,10 @@ public class InventoryController : MonoBehaviour
     private void Start()
     {
         JSONSave.Instance.LoadDataInventory();
-
-        CraftVariables[0].Name = BbtStrings.GetStr("str_inv_axe");
-        CraftVariables[0].Description = BbtStrings.GetStr("str_inv_axe_desc");
-        CraftVariables[1].Name = BbtStrings.GetStr("str_inv_bandage");
-        CraftVariables[1].Description = BbtStrings.GetStr("str_inv_bandage_desc");
-        CraftVariables[2].Name = BbtStrings.GetStr("str_inv_sofa");
-        CraftVariables[2].Description = BbtStrings.GetStr("str_inv_sofa_desc");
-        CraftVariables[3].Name = BbtStrings.GetStr("str_inv_trap");
-        CraftVariables[3].Description = BbtStrings.GetStr("str_inv_trap_desc");
-
         //бд с возможными инвентарными предметами ( название, стэк, спрайт, видимость, описание, id предмета )
       /*0*/  InventoryVariables.Add(new ItemVar(BbtStrings.GetStr("str_inv_cure"),              3, "cure",              true, BbtStrings.GetStr("str_inv_cure_desc"),           0));                 
       /*1*/  InventoryVariables.Add(new ItemVar(BbtStrings.GetStr("str_inv_bandage"),           3, "bandage",           true, BbtStrings.GetStr("str_inv_bandage_desc"),        1));
-      /*2*/  InventoryVariables.Add(new ItemVar(BbtStrings.GetStr("str_inv_antibiotic"),        1, "antibiotic",        true, BbtStrings.GetStr("str_inv_soupe_desc"),          2));
+      /*2*/  InventoryVariables.Add(new ItemVar(BbtStrings.GetStr("str_inv_antibiotic"),        1, "antibiotic",        true, BbtStrings.GetStr("str_inv_antibiotic_desc"),          2));
       /*3*/  InventoryVariables.Add(new ItemVar(BbtStrings.GetStr("str_inv_friedmushrooms"),    2, "friedmushrooms",    true, BbtStrings.GetStr("str_inv_friedmushrooms_desc"), 3));
       /*4*/  InventoryVariables.Add(new ItemVar(BbtStrings.GetStr("str_inv_energybar"),         5, "energybar",         true, BbtStrings.GetStr("str_inv_energybar_desc"),      4));
       /*5*/  InventoryVariables.Add(new ItemVar(BbtStrings.GetStr("str_inv_noodles"),           2, "noodles",           true, BbtStrings.GetStr("str_inv_noodles_desc"),        5));

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,7 +25,7 @@ public class CraftUIButton : MonoBehaviour
 
     private void Start()
     {
-        Image.sprite = Resources.Load<Sprite>("UI/ItemIcons/" + craftVarCur.SpriteRef);
+        Image.sprite = InventoryController.Instance.inventoryIcons.Single(s => s.name == craftVarCur.SpriteRef);
         Description.text = craftVarCur.Description;
         Label.text = craftVarCur.Name;
         craftButton.onClick.AddListener(() => callback(this));
