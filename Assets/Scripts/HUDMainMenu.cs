@@ -79,7 +79,6 @@ public class HUDMainMenu : MonoBehaviour
         developersText.text = BbtStrings.GetStr("developersText");
         exitText.text = BbtStrings.GetStr("exitText");
 
-        developers.text = BbtStrings.GetStr("developers");
         instruction.text = BbtStrings.GetStr("instruction");
 
         developersWindow.GetComponent<RectTransform>().offsetMin = new Vector2(0, 0);
@@ -180,5 +179,10 @@ public class HUDMainMenu : MonoBehaviour
     public void SetMusicLevel(float value)
     {
         //musicLevel.value = value;
+    }
+
+    public void GoVK()
+    {
+        Application.OpenURL("https://vk.com/id226025590");
     }
 }
