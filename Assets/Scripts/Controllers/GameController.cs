@@ -362,6 +362,7 @@ public class GameController : MonoBehaviour
 
         AddTickAndUpdate();
         StartCoroutine(StartDateTime());
+        AudioManager.PlayOkr();
         AudioManager.PlayMusic();
 
         InventoryController.Instance.UpdateTempInventory();
@@ -657,6 +658,7 @@ public class GameController : MonoBehaviour
     {
         audioManager.SourceSFX = gameObject.AddComponent<AudioSource>();
         audioManager.SourceMusic = gameObject.AddComponent<AudioSource>();
+        audioManager.SourceOkr = gameObject.AddComponent<AudioSource>();
         gameObject.AddComponent<AudioSource>();
     }
 

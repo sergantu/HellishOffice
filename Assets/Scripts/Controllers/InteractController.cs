@@ -196,7 +196,7 @@ public class InteractController : MonoBehaviour
     /// </summary>
     private void OpenCraftTableWindow()
     {
-        GameController.Instance.AudioManager.PlaySound("aud_clk_trech_out");
+        GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         HUD.Instance.ShowCraftWindow();
     }
 

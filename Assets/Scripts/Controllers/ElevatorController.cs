@@ -32,7 +32,7 @@ public class ElevatorController : MonoBehaviour
     /// <param name="newFloor">Новый этаж</param>
     public void MoveToFloor( int newFloor )
     {
-        GameController.Instance.AudioManager.PlaySound("aud_clk_button_menu_1");
+        GameController.Instance.AudioManager.PlaySFX("aud_clk_button_menu_1");
         Player.Instance.gameObject.transform.position = new Vector3(Player.Instance.gameObject.transform.position.x, coors[newFloor], Player.Instance.gameObject.transform.position.z);
         Player.Instance.Current_station = newFloor + 1;
 

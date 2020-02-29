@@ -17,6 +17,8 @@ using Random = UnityEngine.Random;
     //ссылка на источник звука для воспроизведения звуков со случайной частотой
     private AudioSource sourceRandomPitchSFX;
 
+    private AudioSource sourceOkr;
+
     //громкость музыки
     private float musicVolume = 1f;
 
@@ -38,6 +40,7 @@ using Random = UnityEngine.Random;
     public AudioSource SourceSFX { get => sourceSFX; set => sourceSFX = value; }
     public AudioSource SourceMusic { get => sourceMusic; set => sourceMusic = value; }
     public AudioSource SourceRandomPitchSFX { get => sourceRandomPitchSFX; set => sourceRandomPitchSFX = value; }
+    public AudioSource SourceOkr { get => sourceOkr; set => sourceOkr = value; }
     public float MusicVolume
     {
         get { return musicVolume; }
@@ -54,7 +57,7 @@ using Random = UnityEngine.Random;
         {
             sfxVolume = value;
             SourceSFX.volume = sfxVolume;
-            SourceRandomPitchSFX.volume = sfxVolume;
+            SourceOkr.volume = sfxVolume;
         }
     }
 
@@ -82,11 +85,6 @@ using Random = UnityEngine.Random;
     ///Воспроизведение звука из массива
     /// </summary>
     /// <param name="clipName"> Имя звука </param>
-    public void PlaySound( string clipName )
-    {
-        SourceSFX.clip = null;
-        SourceSFX.PlayOneShot( GetSound( clipName ), SfxVolume );
-    }
 
     public void PlaySFX(string clipName)
     {
@@ -147,6 +145,14 @@ using Random = UnityEngine.Random;
         SourceMusic.volume = MusicVolume;
         SourceMusic.loop = true;
         SourceMusic.Play();
+    }
+
+    public void PlayOkr()
+    {
+        SourceOkr.clip = GetSound("winter");
+        SourceOkr.volume = SfxVolume;
+        SourceOkr.loop = true;
+        SourceOkr.Play();
     }
 
 }

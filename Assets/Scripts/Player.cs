@@ -118,13 +118,16 @@ public class Player : MonoBehaviour
 
     public void SetAnimWalk()
     {
-        GameController.Instance.AudioManager.PlaySoundLoop("aud_player_steps_1");
         animator.SetBool( "isWalk", true );
+    }
+
+    public void DoStepSound()
+    {
+        GameController.Instance.AudioManager.PlaySFX("aud_player_steps_3");
     }
 
     public void SetAnimIdle()
     {
-        GameController.Instance.AudioManager.StopSoundLoop("aud_player_steps_1");
         animator.SetBool("isWalk", false);
     }
     /// <summary>
@@ -446,6 +449,7 @@ public class Player : MonoBehaviour
 
     public void StartWork()
     {
+        GameController.Instance.AudioManager.StopAllSfx();
         GameController.Instance.AudioManager.PlaySoundLoop("aud_see_player_work");
         coroutine = StartWorkCour();
         StartCoroutine(coroutine);

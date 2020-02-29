@@ -780,7 +780,7 @@ public class HUD : MonoBehaviour
     /// </summary>
     public void ShowLevelWonWindow() //показать окно победы
     {
-        GameController.Instance.AudioManager.PlaySound("aud_clk_button_menu_1");
+        GameController.Instance.AudioManager.PlaySFX("aud_clk_button_menu_1");
         ShowWindow(GetWindow("LevelWonWindow").GetComponent<CanvasGroup>());
     }
 
@@ -789,7 +789,7 @@ public class HUD : MonoBehaviour
     /// </summary>
     public void ShowLevelLoseWindow() //показать окно поражения
     {
-        GameController.Instance.AudioManager.PlaySound("aud_clk_button_menu_1");
+        GameController.Instance.AudioManager.PlaySFX("aud_clk_button_menu_1");
         ShowWindow(GetWindow("LevelLoseWindow").GetComponent<CanvasGroup>());
     }
 
