@@ -7,7 +7,7 @@ TextureImporter:
     second: wires
   - first:
       213: -3860515135949180240
-    second: waterfilter
+    second: watertrap
   - first:
       213: -6734734834790175173
     second: water
@@ -16,7 +16,7 @@ TextureImporter:
     second: stuff
   - first:
       213: -3913403896141990040
-    second: traprat
+    second: rattrap
   - first:
       213: -1393458340566893849
     second: zapchasti
@@ -70,7 +70,7 @@ TextureImporter:
     second: condey
   - first:
       213: -1160798593736239838
-    second: key3
+    second: key5
   - first:
       213: -2761068690825735088
     second: computer
@@ -272,7 +272,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: waterfilter
+      name: watertrap
       rect:
         serializedVersion: 2
         x: 107
@@ -335,7 +335,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: traprat
+      name: rattrap
       rect:
         serializedVersion: 2
         x: 422
@@ -713,7 +713,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: key3
+      name: key5
       rect:
         serializedVersion: 2
         x: 240

@@ -167,8 +167,17 @@ public class HUD : MonoBehaviour
     ////////////////////////////////////////////////////////////////////////////////////
     ///ОБНОВЛЕНИЕ ИКОНОК ПАРАМЕТРОВ ИГРОКА
     ////////////////////////////////////////////////////////////////////////////////////
+    ///
 
-    public void UpdateMainParamIcons()
+    Dictionary<int, string> PARAMS = new Dictionary<int, string>
+    {
+        {0, "water" },
+        {1, "food" },
+        {2, "energy" },
+        {3, "health" }
+    };
+
+    public void UpdateMainParamIcons() //воды еда энергия здоровье
     {
         for ( int i = 0; i < Player.Instance.PlayerParametres.Count; i++ )
         {
@@ -189,7 +198,9 @@ public class HUD : MonoBehaviour
             else //умер
             {
                 curParamObj.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
-                ShowLevelLoseWindow();
+                GameController.Instance.CleanSaves();
+                ShowLevelLoseWindow(PARAMS[i]);
+                return;
             }
 
         }
@@ -787,9 +798,11 @@ public class HUD : MonoBehaviour
     /// <summary>
     /// Показать окно проигрыша
     /// </summary>
-    public void ShowLevelLoseWindow() //показать окно поражения
+    public void ShowLevelLoseWindow(string loseType) //показать окно поражения
     {
         GameController.Instance.AudioManager.PlaySFX("aud_clk_button_menu_1");
+        string loseText = "str_" + loseType + "_lose"; 
+        TextController.Instance.SetLoseLabel(loseText);
         ShowWindow(GetWindow("LevelLoseWindow").GetComponent<CanvasGroup>());
     }
 

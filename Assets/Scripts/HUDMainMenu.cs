@@ -140,12 +140,6 @@ public class HUDMainMenu : MonoBehaviour
             File.Delete(pathsic);
         }
 
-        if (File.Exists(pathshc))
-        {
-            File.Delete(pathshc);
-        }
-
-
         StartCoroutine(StartLevel1());
     }
 

@@ -92,4 +92,9 @@ public class TextController : MonoBehaviour
     {
         tradeFrase.text = BbtStrings.GetStr(mainText);
     }
+
+    public void SetLoseLabel(string loseLabel)
+    {
+        labelLose.text = BbtStrings.GetStr(loseLabel);
+    }
 }

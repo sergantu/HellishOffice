@@ -417,7 +417,6 @@ public class GameController : MonoBehaviour
         string pathsgc;
         string pathspc;
         string pathsic;
-        string pathshc;
 
 #if UNITY_ANDROID && !UNITY_EDITOR
         pathsgc = Path.Combine(Application.persistentDataPath, "saves\\SaveGame.json");
@@ -428,7 +427,6 @@ public class GameController : MonoBehaviour
         pathsgc = Path.Combine(Application.dataPath, "saves\\SaveGame.json");
         pathspc = Path.Combine(Application.dataPath, "saves\\SavePlayer.json");
         pathsic = Path.Combine(Application.dataPath, "saves\\SaveInventory.json");
-        pathshc = Path.Combine(Application.dataPath, "saves\\SaveHud.json");
 #endif
 
         if (File.Exists(pathsgc))
@@ -444,60 +442,10 @@ public class GameController : MonoBehaviour
         if (File.Exists(pathsic))
         {
             File.Delete(pathsic);
-        }
-
-        if (File.Exists(pathshc))
-        {
-            File.Delete(pathshc);
         }
 
         HUD.Instance.ShowLevelWonWindow();
     }
-
-    /// <summary>
-    /// Игра проиграна
-    /// </summary>
-    public void GameOver()
-    {
-        string pathsgc;
-        string pathspc;
-        string pathsic;
-        string pathshc;
-
-#if UNITY_ANDROID && !UNITY_EDITOR
-        pathsgc = Path.Combine(Application.persistentDataPath, "saves\\SaveGame.json");
-        pathspc = Path.Combine(Application.persistentDataPath, "saves\\SavePlayer.json");
-        pathsic = Path.Combine(Application.persistentDataPath, "saves\\SaveInventory.json");
-        pathshc = Path.Combine(Application.persistentDataPath, "saves\\SaveHud.json");
-#else
-        pathsgc = Path.Combine(Application.dataPath, "saves\\SaveGame.json");
-        pathspc = Path.Combine(Application.dataPath, "saves\\SavePlayer.json");
-        pathsic = Path.Combine(Application.dataPath, "saves\\SaveInventory.json");
-        pathshc = Path.Combine(Application.dataPath, "saves\\SaveHud.json");
-#endif
-
-        if (File.Exists(pathsgc))
-        {
-            File.Delete(pathsgc);
-        }
-
-        if (File.Exists(pathspc))
-        {
-            File.Delete(pathspc);
-        }
-
-        if (File.Exists(pathsic))
-        {
-            File.Delete(pathsic);
-        }
-
-        if (File.Exists(pathshc))
-        {
-            File.Delete(pathshc);
-        }
-        HUD.Instance.ShowLevelLoseWindow();
-    }
-
 
     //////////////////////////////////////////////////////////////////////////////////////////////
     ///DateTime
@@ -510,6 +458,39 @@ public class GameController : MonoBehaviour
             yield return new WaitForSeconds(TimePerHour);
             ticks++;
             AddTickAndUpdate();
+        }
+    }
+
+    public void CleanSaves()
+    {
+        string pathsgc;
+        string pathspc;
+        string pathsic;
+
+#if UNITY_ANDROID && !UNITY_EDITOR
+        pathsgc = Path.Combine(Application.persistentDataPath, "saves\\SaveGame.json");
+        pathspc = Path.Combine(Application.persistentDataPath, "saves\\SavePlayer.json");
+        pathsic = Path.Combine(Application.persistentDataPath, "saves\\SaveInventory.json");
+        pathshc = Path.Combine(Application.persistentDataPath, "saves\\SaveHud.json");
+#else
+        pathsgc = Path.Combine(Application.dataPath, "saves\\SaveGame.json");
+        pathspc = Path.Combine(Application.dataPath, "saves\\SavePlayer.json");
+        pathsic = Path.Combine(Application.dataPath, "saves\\SaveInventory.json");
+#endif
+
+        if (File.Exists(pathsgc))
+        {
+            File.Delete(pathsgc);
+        }
+
+        if (File.Exists(pathspc))
+        {
+            File.Delete(pathspc);
+        }
+
+        if (File.Exists(pathsic))
+        {
+            File.Delete(pathsic);
         }
     }
 
@@ -580,19 +561,15 @@ public class GameController : MonoBehaviour
         if (ticks > 360)
         {
             //проигрыш
-            HUD.Instance.ShowLevelLoseWindow();
+            CleanSaves();
+            HUD.Instance.ShowLevelLoseWindow("time");
+            return;
         }
 
         Player.Instance.UpdateKPD();
 
         if ( time > 8 && time < 18 && Player.Instance.Current_station != base_station)
         {
-            Player.Instance.NavMeshAgent.enabled = false;
-            Player.Instance.Current_station = base_station;
-            Player.Instance.gameObject.transform.position = PlayerSpawn.position;
-            Player.Instance.NavMeshAgent.enabled = true;
-            CameraControl.Instance.AlignCameraWithPlayer();
-
             if(ticks > 3)
             {
                 TextController.Instance.SetInfoLabelText(BbtStrings.GetStr("str_late"));
@@ -603,6 +580,13 @@ public class GameController : MonoBehaviour
                 AddTickAndUpdate();
                 //наказание!
             }
+
+            Player.Instance.NavMeshAgent.enabled = false;
+            Player.Instance.Current_station = base_station;
+            Player.Instance.gameObject.transform.position = PlayerSpawn.position;
+            Player.Instance.NavMeshAgent.enabled = true;
+            CameraControl.Instance.AlignCameraWithPlayer();
+
         }
 
         if (time == 12)
