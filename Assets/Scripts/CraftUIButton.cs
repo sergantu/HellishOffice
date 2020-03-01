@@ -25,6 +25,7 @@ public class CraftUIButton : MonoBehaviour
 
     private void Start()
     {
+        transform.localScale = Vector3.one;
         Image.sprite = InventoryController.Instance.inventoryIcons.Single(s => s.name == craftVarCur.SpriteRef);
         Description.text = craftVarCur.Description;
         Label.text = craftVarCur.Name;

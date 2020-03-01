@@ -27,6 +27,7 @@ public class InventoryUIButton : MonoBehaviour
 
     private void Start()
     {
+        transform.localScale = Vector3.one;
         Image1.sprite = InventoryController.Instance.inventoryIcons.Single(s => s.name == ItemVarCur.SpriteRef);
         Description = ItemVarCur.Description;
         Label.text = ItemVarCur.Name;
