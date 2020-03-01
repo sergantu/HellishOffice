@@ -19,6 +19,8 @@ using Random = UnityEngine.Random;
 
     private AudioSource sourceOkr;
 
+    private AudioSource stepsAudio;
+
     //громкость музыки
     private float musicVolume = 1f;
 
@@ -41,6 +43,7 @@ using Random = UnityEngine.Random;
     public AudioSource SourceMusic { get => sourceMusic; set => sourceMusic = value; }
     public AudioSource SourceRandomPitchSFX { get => sourceRandomPitchSFX; set => sourceRandomPitchSFX = value; }
     public AudioSource SourceOkr { get => sourceOkr; set => sourceOkr = value; }
+    public AudioSource StepsAudio { get => stepsAudio; set => stepsAudio = value; }
     public float MusicVolume
     {
         get { return musicVolume; }
@@ -58,6 +61,7 @@ using Random = UnityEngine.Random;
             sfxVolume = value;
             SourceSFX.volume = sfxVolume;
             SourceOkr.volume = sfxVolume;
+            StepsAudio.volume = sfxVolume;
         }
     }
 
@@ -91,7 +95,7 @@ using Random = UnityEngine.Random;
         SourceSFX.loop = false;
         SourceSFX.clip = GetSound(clipName);
         SourceSFX.volume = SfxVolume;
-        SourceSFX.Play();
+        SourceSFX.PlayOneShot(GetSound(clipName));
 
     }
 
@@ -153,6 +157,14 @@ using Random = UnityEngine.Random;
         SourceOkr.volume = SfxVolume;
         SourceOkr.loop = true;
         SourceOkr.Play();
+    }
+
+    public void PlaySteps()
+    {
+        StepsAudio.clip = GetSound("aud_player_steps_3");
+        StepsAudio.volume = SfxVolume;
+        StepsAudio.loop = false;
+        StepsAudio.Play();
     }
 
 }

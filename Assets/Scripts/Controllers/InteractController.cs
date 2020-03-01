@@ -21,8 +21,8 @@ public class InteractController : MonoBehaviour
 
     [SerializeField] Dictionary<string, float> scaleBorders = new Dictionary<string, float> //границы размера кнопки при скролле
     {
-        ["forward"] = 0.7f,
-        ["back"] = 1.5f
+        ["forward"] = 0.9f,
+        ["back"] = 1.7f
     };
 
     private string nameEndMethod = ""; //имя метода, который выполнится после достижения кнопки (например откроется окно подбора)
@@ -229,6 +229,7 @@ public class InteractController : MonoBehaviour
     {
         if (InventoryController.Instance.GetCountItem(16) > 0.9)
         {
+            Player.Instance.AnimEat(true);
             GameController.Instance.AudioManager.PlaySFX("aud_eat_something");
             GameController.Instance.StartTimer(interactObjs[51], interactTimes["rat"] * Player.Instance.GetKPD(), AddEatRat);
             return;
@@ -239,6 +240,7 @@ public class InteractController : MonoBehaviour
 
     public void AddEatRat()
     {
+        Player.Instance.AnimEat(false);
         Player.Instance.AddPlayerParameter(1, 20);
         InventoryController.Instance.RemoveFromInventory(16, 1, 0);
 
@@ -249,6 +251,7 @@ public class InteractController : MonoBehaviour
     {
         if (InventoryController.Instance.GetCountItem(4) > 0.9)
         {
+            Player.Instance.AnimEat(true);
             GameController.Instance.AudioManager.PlaySFX("aud_eat_something");
             GameController.Instance.StartTimer(interactObjs[52], interactTimes["energybar"] * Player.Instance.GetKPD(), AddEatEnergybar);
             return;
@@ -259,6 +262,7 @@ public class InteractController : MonoBehaviour
 
     public void AddEatEnergybar()
     {
+        Player.Instance.AnimEat(false);
         Player.Instance.AddPlayerParameter(1, 15);
         InventoryController.Instance.RemoveFromInventory(4, 1, 0);
 
@@ -269,6 +273,7 @@ public class InteractController : MonoBehaviour
     {
         if (InventoryController.Instance.GetCountItem(5) > 0.9)
         {
+            Player.Instance.AnimEat(true);
             GameController.Instance.AudioManager.PlaySFX("aud_eat_something");
             GameController.Instance.StartTimer(interactObjs[53], interactTimes["noodles"] * Player.Instance.GetKPD(), AddEatNoodles);
             return;
@@ -279,6 +284,7 @@ public class InteractController : MonoBehaviour
 
     public void AddEatNoodles()
     {
+        Player.Instance.AnimEat(false);
         Player.Instance.AddPlayerParameter(1, 25);
         InventoryController.Instance.RemoveFromInventory(5, 1, 0);
 
@@ -289,6 +295,7 @@ public class InteractController : MonoBehaviour
     {
         if (InventoryController.Instance.GetCountItem(7) > 0.9)
         {
+            Player.Instance.AnimEat(true);
             GameController.Instance.AudioManager.PlaySFX("aud_eat_something");
             GameController.Instance.StartTimer(interactObjs[54], interactTimes["mushrooms"] * Player.Instance.GetKPD(), AddEatMushrooms);
             return;
@@ -299,6 +306,7 @@ public class InteractController : MonoBehaviour
 
     public void AddEatMushrooms()
     {
+        Player.Instance.AnimEat(false);
         Player.Instance.AddPlayerParameter(1, 10);
         InventoryController.Instance.RemoveFromInventory(3, 1, 0);
 
@@ -309,6 +317,7 @@ public class InteractController : MonoBehaviour
     {
         if (InventoryController.Instance.GetCountItem(8) > 0.9)
         {
+            Player.Instance.AnimDrink(true);
             GameController.Instance.AudioManager.PlaySFX("aud_drink_something");
             GameController.Instance.StartTimer(interactObjs[55], interactTimes["water"] * Player.Instance.GetKPD(), AddDrinkWater);
             return;
@@ -319,6 +328,7 @@ public class InteractController : MonoBehaviour
 
     private void AddDrinkWater()
     {
+        Player.Instance.AnimDrink(false);
         Player.Instance.AddPlayerParameter(0, 15);
         InventoryController.Instance.RemoveFromInventory(8, 1, 0);
 
@@ -329,6 +339,7 @@ public class InteractController : MonoBehaviour
     {
         if (InventoryController.Instance.GetCountItem(9) > 0.9)
         {
+            Player.Instance.AnimDrink(true);
             GameController.Instance.AudioManager.PlaySFX("aud_drink_something");
             GameController.Instance.StartTimer(interactObjs[56], interactTimes["coffee"] * Player.Instance.GetKPD(), AddDrinkCoffee);
             return;
@@ -339,6 +350,7 @@ public class InteractController : MonoBehaviour
 
     private void AddDrinkCoffee()
     {
+        Player.Instance.AnimDrink(false);
         Player.Instance.AddPlayerParameter(0, 5);
         InventoryController.Instance.RemoveFromInventory(9, 1, 0);
 
@@ -349,6 +361,7 @@ public class InteractController : MonoBehaviour
     {
         if (InventoryController.Instance.GetCountItem(10) > 0.9)
         {
+            Player.Instance.AnimDrink(true);
             GameController.Instance.AudioManager.PlaySFX("aud_drink_something");
             GameController.Instance.StartTimer(interactObjs[57], interactTimes["juice"] * Player.Instance.GetKPD(), AddDrinkJuice);
             return;
@@ -359,6 +372,7 @@ public class InteractController : MonoBehaviour
 
     private void AddDrinkJuice()
     {
+        Player.Instance.AnimDrink(false);
         Player.Instance.AddPlayerParameter(0, 12);
         InventoryController.Instance.RemoveFromInventory(10, 1, 0);
 
@@ -369,6 +383,7 @@ public class InteractController : MonoBehaviour
     {
         if (InventoryController.Instance.GetCountItem(11) > 0.9)
         {
+            Player.Instance.AnimDrink(true);
             GameController.Instance.AudioManager.PlaySFX("aud_drink_something");
             GameController.Instance.StartTimer(interactObjs[58], interactTimes["cola"] * Player.Instance.GetKPD(), AddDrinkCola);
             return;
@@ -379,6 +394,7 @@ public class InteractController : MonoBehaviour
 
     private void AddDrinkCola()
     {
+        Player.Instance.AnimDrink(false);
         Player.Instance.AddPlayerParameter(0, 8);
         InventoryController.Instance.RemoveFromInventory(11, 1, 0);
 
@@ -395,6 +411,7 @@ public class InteractController : MonoBehaviour
     {
         if (InventoryController.Instance.GetCountItem(0) > 0.9)
         {
+            Player.Instance.AnimPick(true);
             GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
             GameController.Instance.StartTimer(interactObjs[59], interactTimes["cure"] * Player.Instance.GetKPD(), AddEatCure);
             return;
@@ -405,6 +422,7 @@ public class InteractController : MonoBehaviour
 
     public void AddEatCure()
     {
+        Player.Instance.AnimPick(false);
         int randomR = Random.Range(0, 100);
         if (randomR >= 50)
         {
@@ -417,6 +435,7 @@ public class InteractController : MonoBehaviour
     {
         if (InventoryController.Instance.GetCountItem(1) > 0.9)
         {
+            Player.Instance.AnimPick(true);
             GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
             GameController.Instance.StartTimer(interactObjs[60], interactTimes["bandage"] * Player.Instance.GetKPD(), AddEatBandage);
             return;
@@ -427,6 +446,7 @@ public class InteractController : MonoBehaviour
 
     public void AddEatBandage()
     {
+        Player.Instance.AnimPick(false);
         Player.Instance.SetDesease(0, false);
         InventoryController.Instance.RemoveFromInventory(1, 1, 0);
     }
@@ -435,6 +455,7 @@ public class InteractController : MonoBehaviour
     {
         if (InventoryController.Instance.GetCountItem(2) > 0.9)
         {
+            Player.Instance.AnimPick(true);
             GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
             GameController.Instance.StartTimer(interactObjs[61], interactTimes["antibiotic"] * Player.Instance.GetKPD(), AddEatAntibiotic);
             return;
@@ -445,23 +466,23 @@ public class InteractController : MonoBehaviour
 
     public void AddEatAntibiotic()
     {
+        Player.Instance.AnimPick(false);
         Player.Instance.SetDesease(1, false);
         InventoryController.Instance.RemoveFromInventory(2, 1, 0);
     }
 
     public void OpenTrapRatButton()
     {
-        if (InventoryController.Instance.GetCountItem(15) > 0.9)
-        {
-            GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
-            GameController.Instance.StartTimer(RatMineObjects[0].transform.GetChild(0).GetChild(0).gameObject, interactTimes["trap"] * Player.Instance.GetKPD(), AddTrapRat);
-        }
+        Player.Instance.AnimPick(true);
+        GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
+        GameController.Instance.StartTimer(RatMineObjects[0].transform.GetChild(0).GetChild(0).gameObject, interactTimes["trap"] * Player.Instance.GetKPD(), AddTrapRat);
     }
 
 
     //ловушка крысы
     public void AddTrapRat()
     {
+        Player.Instance.AnimPick(false);
         GameController.Instance.TrapRatStatus = 2;
         RatMineObjects[1].SetActive(true);
     }
@@ -477,12 +498,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenGetTrapRatButton()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(RatMineObjects[2].transform.GetChild(0).GetChild(0).gameObject, interactTimes["trap"] * Player.Instance.GetKPD(), AddGetTrapRat);
     }
 
     public void AddGetTrapRat()
     {
+        Player.Instance.AnimPick(false);
         InventoryController.Instance.AddInventoryItemPLayer(6, Random.Range(1, 3), 0);
         GameController.Instance.TrapRatStatus = 1;
         RatMineObjects[0].SetActive(true);
@@ -499,15 +522,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenTrapWaterButton()
     {
-        if (InventoryController.Instance.GetCountItem(13) > 0.9)
-        {
-            GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
-            GameController.Instance.StartTimer(WaterMineObjects[0].transform.GetChild(0).GetChild(0).gameObject, interactTimes["trap"] * Player.Instance.GetKPD(), AddTrapWater);
-        }
+        Player.Instance.AnimPick(true);
+        GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
+        GameController.Instance.StartTimer(WaterMineObjects[0].transform.GetChild(0).GetChild(0).gameObject, interactTimes["trap"] * Player.Instance.GetKPD(), AddTrapWater);
     }
 
     public void AddTrapWater()
     {
+        Player.Instance.AnimPick(false);
         GameController.Instance.TrapWaterStatus = 2;
         endWaterTrapTimer eWTT;
         eWTT = SwipeTrapWaterIcon;
@@ -526,12 +548,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenGetTrapWaterButton()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(WaterMineObjects[2].transform.GetChild(0).GetChild(0).gameObject, interactTimes["trap"] * Player.Instance.GetKPD(), AddGetTrapWater);
     }
 
     public void AddGetTrapWater()
     {
+        Player.Instance.AnimPick(false);
         InventoryController.Instance.AddInventoryItemPLayer(8, 2, 0);
         GameController.Instance.TrapWaterStatus = 1;
         WaterMineObjects[0].SetActive(true);
@@ -545,19 +569,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenTrapMushroomsButton()
     {
-        if (InventoryController.Instance.GetCountItem(13) > 0.9)
-        {
-            GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
-            GameController.Instance.StartTimer(MushroomsMineObjects[0].transform.GetChild(0).GetChild(0).gameObject, interactTimes["trap"] * Player.Instance.GetKPD(), AddTrapMushrooms);
-            return;
-        }
-
-        _inventoryAnimator.SetTrigger("noInventory");
+        Player.Instance.AnimPick(true);
+        GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
+        GameController.Instance.StartTimer(MushroomsMineObjects[0].transform.GetChild(0).GetChild(0).gameObject, interactTimes["trap"] * Player.Instance.GetKPD(), AddTrapMushrooms);
     }
 
     public void AddTrapMushrooms()
     {
-        InventoryController.Instance.RemoveFromInventory(15, 1, 0);
+        Player.Instance.AnimPick(false);
         GameController.Instance.TrapMushroomsStatus = 2;
         endWaterTrapTimer eWTT;
         eWTT = SwipeTrapMushroomsIcon;
@@ -576,12 +595,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenGetTrapMushroomsButton()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(MushroomsMineObjects[2].transform.GetChild(0).GetChild(0).gameObject, interactTimes["trap"] * Player.Instance.GetKPD(), AddGetTrapMushrooms);
     }
 
     public void AddGetTrapMushrooms()
     {
+        Player.Instance.AnimPick(false);
         InventoryController.Instance.AddInventoryItemPLayer(7, 2, 0);
         GameController.Instance.TrapMushroomsStatus = 1;
         MushroomsMineObjects[0].SetActive(true);
@@ -597,13 +618,18 @@ public class InteractController : MonoBehaviour
     {
         if (GameController.Instance.IsEventDone("craftaxe"))
         {
+            Player.Instance.AnimDestroy(true);
             GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
             GameController.Instance.StartTimer(interactObjs[30], interactTimes["crack"] * Player.Instance.GetKPD(), AddDestroy);
+            return;
         }
+
+        _inventoryAnimator.SetTrigger("noInventory");
     }
 
     public void AddDestroy()
     {
+        Player.Instance.AnimDestroy(false);
         GameController.Instance.CallRandomDesease();
         GameController.Instance.SetEventDone("get_destroy");
     }
@@ -612,13 +638,18 @@ public class InteractController : MonoBehaviour
     {
         if (GameController.Instance.IsEventDone("craftaxe"))
         {
+            Player.Instance.AnimDestroy(true);
             GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
             GameController.Instance.StartTimer(interactObjs[31], interactTimes["crack"] * Player.Instance.GetKPD(), AddDestroy2);
+            return;
         }
+
+        _inventoryAnimator.SetTrigger("noInventory");
     }
 
     public void AddDestroy2()
     {
+        Player.Instance.AnimDestroy(false);
         GameController.Instance.CallRandomDesease();
         GameController.Instance.SetEventDone("get_destroy2");
     }
@@ -627,13 +658,18 @@ public class InteractController : MonoBehaviour
     {
         if (GameController.Instance.IsEventDone("craftaxe"))
         {
+            Player.Instance.AnimDestroy(true);
             GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
             GameController.Instance.StartTimer(interactObjs[32], interactTimes["crack"] * Player.Instance.GetKPD(), AddDestroy3);
+            return;
         }
+
+        _inventoryAnimator.SetTrigger("noInventory");
     }
 
     public void AddDestroy3()
     {
+        Player.Instance.AnimDestroy(false);
         GameController.Instance.CallRandomDesease();
         GameController.Instance.SetEventDone("get_destroy3");
     }
@@ -642,14 +678,18 @@ public class InteractController : MonoBehaviour
     {
         if (GameController.Instance.IsEventDone("craftaxe"))
         {
+            Player.Instance.AnimDestroy(true);
             GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
             GameController.Instance.StartTimer(interactObjs[33], interactTimes["crack"] * Player.Instance.GetKPD(), AddDestroy4);
+            return;
         }
+
+        _inventoryAnimator.SetTrigger("noInventory");
     }
 
     public void AddDestroy4()
     {
-        Debug.Log("222");
+        Player.Instance.AnimDestroy(false);
         GameController.Instance.CallRandomDesease();
         GameController.Instance.SetEventDone("get_destroy4");
     }
@@ -658,13 +698,18 @@ public class InteractController : MonoBehaviour
     {
         if (GameController.Instance.IsEventDone("craftaxe"))
         {
+            Player.Instance.AnimDestroy(true);
             GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
             GameController.Instance.StartTimer(interactObjs[34], interactTimes["crack"] * Player.Instance.GetKPD(), AddDestroy5);
+            return;
         }
+
+        _inventoryAnimator.SetTrigger("noInventory");
     }
 
     public void AddDestroy5()
     {
+        Player.Instance.AnimDestroy(false);
         GameController.Instance.CallRandomDesease();
         GameController.Instance.SetEventDone("get_destroy5");
     }
@@ -673,13 +718,18 @@ public class InteractController : MonoBehaviour
     {
         if (GameController.Instance.IsEventDone("craftaxe"))
         {
+            Player.Instance.AnimDestroy(true);
             GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
             GameController.Instance.StartTimer(interactObjs[35], interactTimes["crack"] * Player.Instance.GetKPD(), AddDestroy6);
+            return;
         }
+
+        _inventoryAnimator.SetTrigger("noInventory");
     }
 
     public void AddDestroy6()
     {
+        Player.Instance.AnimDestroy(false);
         GameController.Instance.CallRandomDesease();
         GameController.Instance.SetEventDone("get_destroy6");
     }
@@ -688,13 +738,18 @@ public class InteractController : MonoBehaviour
     {
         if (GameController.Instance.IsEventDone("craftaxe"))
         {
+            Player.Instance.AnimDestroy(true);
             GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
             GameController.Instance.StartTimer(interactObjs[36], interactTimes["crack"] * Player.Instance.GetKPD(), AddDestroy7);
+            return;
         }
+
+        _inventoryAnimator.SetTrigger("noInventory");
     }
 
     public void AddDestroy7()
     {
+        Player.Instance.AnimDestroy(false);
         GameController.Instance.CallRandomDesease();
         GameController.Instance.SetEventDone("get_destroy7");
     }
@@ -703,13 +758,18 @@ public class InteractController : MonoBehaviour
     {
         if (GameController.Instance.IsEventDone("craftaxe"))
         {
+            Player.Instance.AnimDestroy(true);
             GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
             GameController.Instance.StartTimer(interactObjs[37], interactTimes["crack"] * Player.Instance.GetKPD(), AddDestroy8);
+            return;
         }
+
+        _inventoryAnimator.SetTrigger("noInventory");
     }
 
     public void AddDestroy8()
     {
+        Player.Instance.AnimDestroy(false);
         GameController.Instance.CallRandomDesease();
         GameController.Instance.SetEventDone("get_destroy8");
     }
@@ -718,13 +778,18 @@ public class InteractController : MonoBehaviour
     {
         if (GameController.Instance.IsEventDone("craftaxe"))
         {
+            Player.Instance.AnimDestroy(true);
             GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
             GameController.Instance.StartTimer(interactObjs[38], interactTimes["crack"] * Player.Instance.GetKPD(), AddDestroy9);
+            return;
         }
+
+        _inventoryAnimator.SetTrigger("noInventory");
     }
 
     public void AddDestroy9()
     {
+        Player.Instance.AnimDestroy(false);
         GameController.Instance.CallRandomDesease();
         GameController.Instance.SetEventDone("get_destroy9");
     }
@@ -733,13 +798,18 @@ public class InteractController : MonoBehaviour
     {
         if (GameController.Instance.IsEventDone("craftaxe"))
         {
+            Player.Instance.AnimDestroy(true);
             GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
             GameController.Instance.StartTimer(interactObjs[39], interactTimes["crack"] * Player.Instance.GetKPD(), AddDestroy10);
+            return;
         }
+
+        _inventoryAnimator.SetTrigger("noInventory");
     }
 
     public void AddDestroy10()
     {
+        Player.Instance.AnimDestroy(false);
         GameController.Instance.CallRandomDesease();
         GameController.Instance.SetEventDone("get_destroy10");
     }
@@ -750,12 +820,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenItem1Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[0], interactTimes["take"] * Player.Instance.GetKPD(), AddItem1);
     }
 
     public void AddItem1()
     {
+        Player.Instance.AnimPick(false);
         HUD.Instance.LoadNewInventory(1);
         HUD.Instance.ShowSwitchItemsWindow();
         InventoryController.Instance.SetOpenedPlace(1);
@@ -765,12 +837,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenItem2Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[1], interactTimes["take"] * Player.Instance.GetKPD(), AddItem2);
     }
 
     public void AddItem2()
     {
+        Player.Instance.AnimPick(false);
         HUD.Instance.LoadNewInventory(2);
         HUD.Instance.ShowSwitchItemsWindow();
         InventoryController.Instance.SetOpenedPlace(2);
@@ -780,12 +854,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenItem3Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[2], interactTimes["take"] * Player.Instance.GetKPD(), AddItem3);
     }
 
     public void AddItem3()
     {
+        Player.Instance.AnimPick(false);
         HUD.Instance.LoadNewInventory(3);
         HUD.Instance.ShowSwitchItemsWindow();
         InventoryController.Instance.SetOpenedPlace(3);
@@ -795,12 +871,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenItem4Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[3], interactTimes["take"] * Player.Instance.GetKPD(), AddItem4);
     }
 
     public void AddItem4()
     {
+        Player.Instance.AnimPick(false);
         HUD.Instance.LoadNewInventory(4);
         HUD.Instance.ShowSwitchItemsWindow();
         InventoryController.Instance.SetOpenedPlace(4);
@@ -810,12 +888,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenItem5Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[4], interactTimes["take"] * Player.Instance.GetKPD(), AddItem5);
     }
 
     public void AddItem5()
     {
+        Player.Instance.AnimPick(false);
         HUD.Instance.LoadNewInventory(5);
         HUD.Instance.ShowSwitchItemsWindow();
         InventoryController.Instance.SetOpenedPlace(5);
@@ -825,12 +905,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenItem6Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[5], interactTimes["take"] * Player.Instance.GetKPD(), AddItem6);
     }
 
     public void AddItem6()
     {
+        Player.Instance.AnimPick(false);
         HUD.Instance.LoadNewInventory(6);
         HUD.Instance.ShowSwitchItemsWindow();
         InventoryController.Instance.SetOpenedPlace(6);
@@ -840,12 +922,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenItem7Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[6], interactTimes["take"] * Player.Instance.GetKPD(), AddItem7);
     }
 
     public void AddItem7()
     {
+        Player.Instance.AnimPick(false);
         HUD.Instance.LoadNewInventory(7);
         HUD.Instance.ShowSwitchItemsWindow();
         InventoryController.Instance.SetOpenedPlace(7);
@@ -855,12 +939,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenItem8Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[7], interactTimes["take"] * Player.Instance.GetKPD(), AddItem8);
     }
 
     public void AddItem8()
     {
+        Player.Instance.AnimPick(false);
         HUD.Instance.LoadNewInventory(8);
         HUD.Instance.ShowSwitchItemsWindow();
         InventoryController.Instance.SetOpenedPlace(8);
@@ -870,12 +956,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenItem9Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[8], interactTimes["take"] * Player.Instance.GetKPD(), AddItem9);
     }
 
     public void AddItem9()
     {
+        Player.Instance.AnimPick(false);
         HUD.Instance.LoadNewInventory(9);
         HUD.Instance.ShowSwitchItemsWindow();
         InventoryController.Instance.SetOpenedPlace(9);
@@ -885,12 +973,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenItem10Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[9], interactTimes["take"] * Player.Instance.GetKPD(), AddItem10);
     }
 
     public void AddItem10()
     {
+        Player.Instance.AnimPick(false);
         HUD.Instance.LoadNewInventory(10);
         HUD.Instance.ShowSwitchItemsWindow();
         InventoryController.Instance.SetOpenedPlace(10);
@@ -900,12 +990,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenItem11Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[10], interactTimes["take"] * Player.Instance.GetKPD(), AddItem11);
     }
 
     public void AddItem11()
     {
+        Player.Instance.AnimPick(false);
         HUD.Instance.LoadNewInventory(11);
         HUD.Instance.ShowSwitchItemsWindow();
         InventoryController.Instance.SetOpenedPlace(11);
@@ -915,12 +1007,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenItem12Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[11], interactTimes["take"] * Player.Instance.GetKPD(), AddItem12);
     }
 
     public void AddItem12()
     {
+        Player.Instance.AnimPick(false);
         HUD.Instance.LoadNewInventory(12);
         HUD.Instance.ShowSwitchItemsWindow();
         InventoryController.Instance.SetOpenedPlace(12);
@@ -930,12 +1024,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenItem13Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[12], interactTimes["take"] * Player.Instance.GetKPD(), AddItem13);
     }
 
     public void AddItem13()
     {
+        Player.Instance.AnimPick(false);
         HUD.Instance.LoadNewInventory(13);
         HUD.Instance.ShowSwitchItemsWindow();
         InventoryController.Instance.SetOpenedPlace(13);
@@ -945,12 +1041,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenItem14Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[13], interactTimes["take"] * Player.Instance.GetKPD(), AddItem14);
     }
 
     public void AddItem14()
     {
+        Player.Instance.AnimPick(false);
         HUD.Instance.LoadNewInventory(14);
         HUD.Instance.ShowSwitchItemsWindow();
         InventoryController.Instance.SetOpenedPlace(14);
@@ -960,12 +1058,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenItem15Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[14], interactTimes["take"] * Player.Instance.GetKPD(), AddItem15);
     }
 
     public void AddItem15()
     {
+        Player.Instance.AnimPick(false);
         HUD.Instance.LoadNewInventory(15);
         HUD.Instance.ShowSwitchItemsWindow();
         InventoryController.Instance.SetOpenedPlace(15);
@@ -975,12 +1075,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenItem16Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[15], interactTimes["take"] * Player.Instance.GetKPD(), AddItem16);
     }
 
     public void AddItem16()
     {
+        Player.Instance.AnimPick(false);
         HUD.Instance.LoadNewInventory(16);
         HUD.Instance.ShowSwitchItemsWindow();
         InventoryController.Instance.SetOpenedPlace(16);
@@ -990,12 +1092,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenItem17Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[16], interactTimes["take"] * Player.Instance.GetKPD(), AddItem17);
     }
 
     public void AddItem17()
     {
+        Player.Instance.AnimPick(false);
         HUD.Instance.LoadNewInventory(17);
         HUD.Instance.ShowSwitchItemsWindow();
         InventoryController.Instance.SetOpenedPlace(17);
@@ -1005,12 +1109,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenItem18Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[17], interactTimes["take"] * Player.Instance.GetKPD(), AddItem18);
     }
 
     public void AddItem18()
     {
+        Player.Instance.AnimPick(false);
         HUD.Instance.LoadNewInventory(18);
         HUD.Instance.ShowSwitchItemsWindow();
         InventoryController.Instance.SetOpenedPlace(18);
@@ -1020,12 +1126,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenItem19Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[18], interactTimes["take"] * Player.Instance.GetKPD(), AddItem19);
     }
 
     public void AddItem19()
     {
+        Player.Instance.AnimPick(false);
         HUD.Instance.LoadNewInventory(19);
         HUD.Instance.ShowSwitchItemsWindow();
         InventoryController.Instance.SetOpenedPlace(19);
@@ -1035,12 +1143,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenItem20Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[19], interactTimes["take"] * Player.Instance.GetKPD(), AddItem20);
     }
 
     public void AddItem20()
     {
+        Player.Instance.AnimPick(false);
         HUD.Instance.LoadNewInventory(20);
         HUD.Instance.ShowSwitchItemsWindow();
         InventoryController.Instance.SetOpenedPlace(20);
@@ -1050,12 +1160,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenItem21Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[20], interactTimes["take"] * Player.Instance.GetKPD(), AddItem21);
     }
 
     public void AddItem21()
     {
+        Player.Instance.AnimPick(false);
         HUD.Instance.LoadNewInventory(21);
         HUD.Instance.ShowSwitchItemsWindow();
         InventoryController.Instance.SetOpenedPlace(21);
@@ -1065,12 +1177,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenItem22Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[21], interactTimes["take"] * Player.Instance.GetKPD(), AddItem22);
     }
 
     public void AddItem22()
     {
+        Player.Instance.AnimPick(false);
         HUD.Instance.LoadNewInventory(22);
         HUD.Instance.ShowSwitchItemsWindow();
         InventoryController.Instance.SetOpenedPlace(22);
@@ -1080,12 +1194,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenItem23Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[22], interactTimes["take"] * Player.Instance.GetKPD(), AddItem23);
     }
 
     public void AddItem23()
     {
+        Player.Instance.AnimPick(false);
         HUD.Instance.LoadNewInventory(23);
         HUD.Instance.ShowSwitchItemsWindow();
         InventoryController.Instance.SetOpenedPlace(23);
@@ -1095,12 +1211,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenItem24Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[23], interactTimes["take"] * Player.Instance.GetKPD(), AddItem24);
     }
 
     public void AddItem24()
     {
+        Player.Instance.AnimPick(false);
         HUD.Instance.LoadNewInventory(24);
         HUD.Instance.ShowSwitchItemsWindow();
         InventoryController.Instance.SetOpenedPlace(24);
@@ -1110,12 +1228,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenItem25Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[24], interactTimes["take"] * Player.Instance.GetKPD(), AddItem25);
     }
 
     public void AddItem25()
     {
+        Player.Instance.AnimPick(false);
         HUD.Instance.LoadNewInventory(25);
         HUD.Instance.ShowSwitchItemsWindow();
         InventoryController.Instance.SetOpenedPlace(25);
@@ -1125,12 +1245,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenItem26Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[25], interactTimes["take"] * Player.Instance.GetKPD(), AddItem26);
     }
 
     public void AddItem26()
     {
+        Player.Instance.AnimPick(false);
         HUD.Instance.LoadNewInventory(26);
         HUD.Instance.ShowSwitchItemsWindow();
         InventoryController.Instance.SetOpenedPlace(26);
@@ -1140,12 +1262,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenItem27Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[26], interactTimes["take"] * Player.Instance.GetKPD(), AddItem27);
     }
 
     public void AddItem27()
     {
+        Player.Instance.AnimPick(false);
         HUD.Instance.LoadNewInventory(27);
         HUD.Instance.ShowSwitchItemsWindow();
         InventoryController.Instance.SetOpenedPlace(27);
@@ -1155,12 +1279,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenItem28Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[27], interactTimes["take"] * Player.Instance.GetKPD(), AddItem28);
     }
 
     public void AddItem28()
     {
+        Player.Instance.AnimPick(false);
         HUD.Instance.LoadNewInventory(28);
         HUD.Instance.ShowSwitchItemsWindow();
         InventoryController.Instance.SetOpenedPlace(28);
@@ -1170,12 +1296,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenItem29Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[28], interactTimes["take"] * Player.Instance.GetKPD(), AddItem29);
     }
 
     public void AddItem29()
     {
+        Player.Instance.AnimPick(false);
         HUD.Instance.LoadNewInventory(29);
         HUD.Instance.ShowSwitchItemsWindow();
         InventoryController.Instance.SetOpenedPlace(29);
@@ -1185,12 +1313,14 @@ public class InteractController : MonoBehaviour
 
     public void OpenItem30Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[29], interactTimes["take"] * Player.Instance.GetKPD(), AddItem30);
     }
 
     public void AddItem30()
     {
+        Player.Instance.AnimPick(false);
         HUD.Instance.LoadNewInventory(30);
         HUD.Instance.ShowSwitchItemsWindow();
         InventoryController.Instance.SetOpenedPlace(30);
@@ -1203,120 +1333,140 @@ public class InteractController : MonoBehaviour
     /// </summary>
     private void OpenInfoButton()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[40], interactTimes["info"] * Player.Instance.GetKPD(), AddInfo);
     }
 
     private void AddInfo()
     {
+        Player.Instance.AnimPick(false);
         TextController.Instance.SetInfoLabelText(BbtStrings.GetStr("str_info"));
         HUD.Instance.ShowInfoWindow();
     }
 
     private void OpenInfo1Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[41], interactTimes["info"] * Player.Instance.GetKPD(), AddInfo1);
     }
 
     private void AddInfo1()
     {
+        Player.Instance.AnimPick(false);
         TextController.Instance.SetInfoLabelText(BbtStrings.GetStr("str_info1"));
         HUD.Instance.ShowInfoWindow();
     }
 
     private void OpenInfo2Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[42], interactTimes["info"] * Player.Instance.GetKPD(), AddInfo2);
     }
 
     private void AddInfo2()
     {
+        Player.Instance.AnimPick(false);
         TextController.Instance.SetInfoLabelText(BbtStrings.GetStr("str_info2"));
         HUD.Instance.ShowInfoWindow();
     }
 
     private void OpenInfo3Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[43], interactTimes["info"] * Player.Instance.GetKPD(), AddInfo3);
     }
 
     private void AddInfo3()
     {
+        Player.Instance.AnimPick(false);
         TextController.Instance.SetInfoLabelText(BbtStrings.GetStr("str_info3"));
         HUD.Instance.ShowInfoWindow();
     }
 
     private void OpenInfo4Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[44], interactTimes["info"] * Player.Instance.GetKPD(), AddInfo4);
     }
 
     private void AddInfo4()
     {
+        Player.Instance.AnimPick(false);
         TextController.Instance.SetInfoLabelText(BbtStrings.GetStr("str_info4"));
         HUD.Instance.ShowInfoWindow();
     }
 
     private void OpenInfo5Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[45], interactTimes["info"] * Player.Instance.GetKPD(), AddInfo5);
     }
 
     private void AddInfo5()
     {
+        Player.Instance.AnimPick(false);
         TextController.Instance.SetInfoLabelText(BbtStrings.GetStr("str_info5"));
         HUD.Instance.ShowInfoWindow();
     }
 
     private void OpenInfo6Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[46], interactTimes["info"] * Player.Instance.GetKPD(), AddInfo6);
     }
 
     private void AddInfo6()
     {
+        Player.Instance.AnimPick(false);
         TextController.Instance.SetInfoLabelText(BbtStrings.GetStr("str_info6"));
         HUD.Instance.ShowInfoWindow();
     }
 
     private void OpenInfo7Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[47], interactTimes["info"] * Player.Instance.GetKPD(), AddInfo7);
     }
 
     private void AddInfo7()
     {
+        Player.Instance.AnimPick(false);
         TextController.Instance.SetInfoLabelText(BbtStrings.GetStr("str_info7"));
         HUD.Instance.ShowInfoWindow();
     }
 
     private void OpenInfo8Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[48], interactTimes["info"] * Player.Instance.GetKPD(), AddInfo8);
     }
 
     private void AddInfo8()
     {
+        Player.Instance.AnimPick(false);
         TextController.Instance.SetInfoLabelText(BbtStrings.GetStr("str_info8"));
         HUD.Instance.ShowInfoWindow();
     }
 
     private void OpenInfo9Button()
     {
+        Player.Instance.AnimPick(true);
         GameController.Instance.AudioManager.PlaySFX("aud_clk_trech_out");
         GameController.Instance.StartTimer(interactObjs[49], interactTimes["info"] * Player.Instance.GetKPD(), AddInfo9);
     }
 
     private void AddInfo9()
     {
+        Player.Instance.AnimPick(false);
         TextController.Instance.SetInfoLabelText(BbtStrings.GetStr("str_info9"));
         HUD.Instance.ShowInfoWindow();
     }

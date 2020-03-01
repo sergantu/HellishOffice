@@ -61,20 +61,12 @@ public class InventoryController : MonoBehaviour
         new List<int>(){ 5, 2, -3 },//торговец
         new List<int>(){ 6, 1, -3 },//торговец
 
-        new List<int>(){ 1, 5, 0 },
-        new List<int>(){ 2, 10, 0 },
-        new List<int>(){ 3, 15, 0 },
-        new List<int>(){ 4, 20, 0 },
-        new List<int>(){ 6, 25, 0 },
-        new List<int>(){ 7, 30, 0 },
-        new List<int>(){ 8, 8, 0 },
-        new List<int>(){ 9, 9, 0 },
-        new List<int>(){ 10, 11, 0 },
-        new List<int>(){ 11, 12, 0 },
-        new List<int>(){ 13, 13, 0 },
-        new List<int>(){ 14, 14, 0 },
-        new List<int>(){ 15, 14, 0 },
-        new List<int>(){ 16, 16, 0 },
+        new List<int>(){ 0, 1, 0 },
+        new List<int>(){ 1, 1, 0 },
+        new List<int>(){ 5, 1, 0 },
+        new List<int>(){ 7, 2, 0 },
+        new List<int>(){ 9, 2, 0 },
+        new List<int>(){ 14, 20, 0 },
 
         new List<int>(){ 2, 1, 1 },
         new List<int>(){ 8, 2, 1 },

@@ -118,12 +118,13 @@ public class Player : MonoBehaviour
 
     public void SetAnimWalk()
     {
+        AnimNull();
         animator.SetBool( "isWalk", true );
     }
 
     public void DoStepSound()
     {
-        GameController.Instance.AudioManager.PlaySFX("aud_player_steps_3");
+        GameController.Instance.AudioManager.PlaySteps();
     }
 
     public void SetAnimIdle()
@@ -449,6 +450,7 @@ public class Player : MonoBehaviour
 
     public void StartWork()
     {
+        animator.SetBool("isType", true);
         GameController.Instance.AudioManager.StopAllSfx();
         GameController.Instance.AudioManager.PlaySoundLoop("aud_see_player_work");
         coroutine = StartWorkCour();
@@ -456,8 +458,44 @@ public class Player : MonoBehaviour
         lIcon = Instantiate(loopIcon, GameObject.Find("ProgressButton").transform.GetChild(0).GetChild(0).gameObject.transform);
     }
 
+    public void AnimPick(bool state)
+    {
+        animator.SetBool("isPickUp", state);
+    }
+
+    public void AnimEat(bool state)
+    {
+        animator.SetBool("isEat", state);
+    }
+
+    public void AnimDrink(bool state)
+    {
+        animator.SetBool("isDrink", state);
+    }
+
+    public void AnimDestroy(bool state)
+    {
+        animator.SetBool("isWalk", false);
+        animator.SetBool("isDestroy", state);
+    }
+
+    public void AnimSleep(bool state)
+    {
+        animator.SetBool("isSleep", state);
+    }
+
+    public void AnimNull()
+    {
+        animator.SetBool("isEat", false);
+        animator.SetBool("isPickUp", false);
+        animator.SetBool("isDrink", false);
+        animator.SetBool("isDestroy", false);
+    }
+
+
     public void StopWork()
     {
+        animator.SetBool("isType", false);
         if (coroutine != null)
         {
             GameController.Instance.AudioManager.StopSoundLoop("aud_see_player_work");
@@ -504,6 +542,7 @@ public class Player : MonoBehaviour
 
     public void StartSleep()
     {
+        AnimSleep(true);
         playerSleep = true;
         coroutineSleep = StartSleepCour();
         StartCoroutine(coroutineSleep);
@@ -513,7 +552,7 @@ public class Player : MonoBehaviour
 
     public void StopSleep()
     {
-        
+        AnimSleep(false);
         playerSleep = false;
         if (coroutineSleep != null)
         {

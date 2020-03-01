@@ -67,6 +67,9 @@ public class HUD : MonoBehaviour
     [SerializeField] Slider soundLevel;
     [SerializeField] Slider musicLevel;
 
+    CanvasGroup invLabelCanvas;
+    CanvasGroup switchLabelCanvas;
+
     public enum WindowState
     {
         PlayerInventory,
@@ -87,6 +90,9 @@ public class HUD : MonoBehaviour
         InvRamka.transform.localScale = Vector3.zero;
         InvRamka.GetComponent<RectTransform>().offsetMax = Vector2.zero;
         InvRamka.GetComponent<RectTransform>().offsetMin = Vector2.zero;
+
+        invLabelCanvas = invLabel.transform.parent.parent.gameObject.GetComponent<CanvasGroup>();
+        switchLabelCanvas = switchLabel.transform.parent.parent.gameObject.GetComponent<CanvasGroup>();
     }
 
     private void Start()
@@ -486,10 +492,10 @@ public class HUD : MonoBehaviour
             {
                 for (int j = 0; j < inventoryNewItems.transform.childCount; j++)
                 {
-                    if (inventoryNewItems.GetChild(j).GetComponent<InventoryUIButton>() != null)
-                    {
-                        InventoryUIButton curButton = inventoryNewItems.GetChild(j).GetComponent<InventoryUIButton>();
+                    InventoryUIButton curButton = inventoryNewItems.GetChild(j).GetComponent<InventoryUIButton>();
 
+                    if (curButton != null)
+                    {
                         if (InventoryController.Instance.PlayerInventory[i][0] == curButton.ItemVarCur.IdItem && InventoryController.Instance.PlayerInventory[i][2] == curButton.PlaceID)
                         {
                             if (InventoryController.Instance.PlayerInventory[i][1] > 0)
@@ -508,11 +514,10 @@ public class HUD : MonoBehaviour
             {
                 for (int j = 0; j < invTradeDealer.transform.childCount; j++)
                 {
-                    if (invTradeDealer.GetChild(j).GetComponent<InventoryUIButton>() != null)
+                    InventoryUIButton curButton = invTradeDealer.GetChild(j).GetComponent<InventoryUIButton>();
+
+                    if (curButton != null)
                     {
-                        InventoryUIButton curButton = invTradeDealer.GetChild(j).GetComponent<InventoryUIButton>();
-
-
                         if (InventoryController.Instance.PlayerInventory[i][0] == curButton.ItemVarCur.IdItem && InventoryController.Instance.PlayerInventory[i][2] == -3)
                         {
                             if (InventoryController.Instance.PlayerInventory[i][1] > 0)
@@ -532,9 +537,10 @@ public class HUD : MonoBehaviour
             {
                 for (int j = 0; j < resTradeDealer.transform.childCount; j++)
                 {
-                    if (resTradeDealer.GetChild(j).GetComponent<InventoryUIButton>() != null)
+                    InventoryUIButton curButton = resTradeDealer.GetChild(j).GetComponent<InventoryUIButton>();
+
+                    if (curButton != null)
                     {
-                        InventoryUIButton curButton = resTradeDealer.GetChild(j).GetComponent<InventoryUIButton>();
                         if (InventoryController.Instance.PlayerInventory[i][0] == curButton.ItemVarCur.IdItem && InventoryController.Instance.PlayerInventory[i][2] == -5)
                         {
                             if (InventoryController.Instance.PlayerInventory[i][1] > 0)
@@ -554,10 +560,10 @@ public class HUD : MonoBehaviour
             {
                 for (int j = 0; j < resTradePlayer.transform.childCount; j++)
                 {
-                    if (resTradePlayer.GetChild(j).GetComponent<InventoryUIButton>() != null)
-                    {
-                        InventoryUIButton curButton = resTradePlayer.GetChild(j).GetComponent<InventoryUIButton>();
+                    InventoryUIButton curButton = resTradePlayer.GetChild(j).GetComponent<InventoryUIButton>();
 
+                    if (curButton != null)
+                    {
                         if (InventoryController.Instance.PlayerInventory[i][0] == curButton.ItemVarCur.IdItem && InventoryController.Instance.PlayerInventory[i][2] == -4)
                         {
                             if (InventoryController.Instance.PlayerInventory[i][1] > 0)
@@ -577,9 +583,10 @@ public class HUD : MonoBehaviour
             {
                 for (int j = 0; j < inventoryContainer.transform.childCount; j++)
                 {
-                    if (inventoryContainer.GetChild(j).GetComponent<InventoryUIButton>() != null)
+                    InventoryUIButton curButton = inventoryContainer.GetChild(j).GetComponent<InventoryUIButton>();
+
+                    if (curButton != null)
                     {
-                        InventoryUIButton curButton = inventoryContainer.GetChild(j).GetComponent<InventoryUIButton>();
                         InventoryUIButton curButton2 = inventorySwitchContainer.GetChild(j).GetComponent<InventoryUIButton>();
                         InventoryUIButton curButton3 = invTradePlayer.GetChild(j).GetComponent<InventoryUIButton>();
 
@@ -588,8 +595,8 @@ public class HUD : MonoBehaviour
                             if (InventoryController.Instance.PlayerInventory[i][1] > 0)
                             {
                                 curButton.Count.text = InventoryController.Instance.PlayerInventory[i][1].ToString();
-                                curButton2.Count.text = InventoryController.Instance.PlayerInventory[i][1].ToString();
-                                curButton3.Count.text = InventoryController.Instance.PlayerInventory[i][1].ToString();
+                                curButton2.Count.text = curButton.Count.text;
+                                curButton3.Count.text = curButton.Count.text;
                             }
                             else
                             {
@@ -623,11 +630,13 @@ public class HUD : MonoBehaviour
         }
     }
 
+    
+
     public void UpdateChoosedItem( InventoryUIButton item )
     {
         if ( OpenedWindow == WindowState.PlayerInventory )
         {
-            invLabel.transform.parent.parent.gameObject.GetComponent<CanvasGroup>().alpha = 1;
+            invLabelCanvas.alpha = 1;
             invImage.sprite = InventoryController.Instance.inventoryIcons.Single(s => s.name == item.ItemVarCur.SpriteRef);
             invLabel.text = item.ItemVarCur.Name;
             invDescription.text = item.ItemVarCur.Description;
@@ -636,7 +645,7 @@ public class HUD : MonoBehaviour
         }
         else if ( OpenedWindow == WindowState.SwitchInventory )
         {
-            switchLabel.transform.parent.parent.gameObject.GetComponent<CanvasGroup>().alpha = 1;
+            switchLabelCanvas.alpha = 1;
             switchImage.sprite = InventoryController.Instance.inventoryIcons.Single(s => s.name == item.ItemVarCur.SpriteRef);
             switchLabel.text = item.ItemVarCur.Name;
             switchDescription.text = item.ItemVarCur.Description;
@@ -650,8 +659,8 @@ public class HUD : MonoBehaviour
         }
         else
         {
-            invLabel.transform.parent.parent.gameObject.GetComponent<CanvasGroup>().alpha = 0;
-            switchLabel.transform.parent.parent.gameObject.GetComponent<CanvasGroup>().alpha = 0;
+            invLabelCanvas.alpha = 0;
+            switchLabelCanvas.alpha = 0;
             InventoryController.Instance.ChoosedItem = null;
             invRamka.transform.SetParent(gameObject.transform.GetChild(1).transform);
             InvRamka.transform.localScale = Vector3.zero;

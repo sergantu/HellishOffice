@@ -12,8 +12,6 @@ public enum LockClick { True, False }
 public delegate void InventoryUsedCallback(InventoryUIButton item); // делегат на нажатия инвентаря (сделать показать инфы по предмету, обводка иконкой и установка как выбранный)
 public delegate void CraftUsedCallback(CraftUIButton craft); // делегат на нажатия инвентаря (сделать показать инфы по предмету, обводка иконкой и установка как выбранный)
 
-
-
 public class GameController : MonoBehaviour
 {
     static GameController _instance;
@@ -73,7 +71,9 @@ public class GameController : MonoBehaviour
     [SerializeField]
     GameObject floorShadow5;
 
-
+    [SerializeField] GameObject ratTrap;
+    [SerializeField] GameObject waterTrap;
+    [SerializeField] GameObject mushTrap;
 
 
     public Dictionary<string, bool> gameEvents = new Dictionary<string, bool>()
@@ -309,17 +309,197 @@ public class GameController : MonoBehaviour
 
     private void craftmushtrap_end()
     {
-
+        mushTrap.SetActive(true);
     }
 
     private void craftrattrap_end()
     {
-
+        ratTrap.SetActive(true);
     }
 
     private void craftwatertrap_end()
     {
+        waterTrap.SetActive(true);
+    }
 
+    private void get_item1_end()
+    {
+        GameObject item = GameObject.Find("Item1");
+        Destroy(item);
+    }
+
+    private void get_item2_end()
+    {
+        GameObject item = GameObject.Find("Item2");
+        Destroy(item);
+    }
+
+    private void get_item3_end()
+    {
+        GameObject item = GameObject.Find("Item3");
+        Destroy(item);
+    }
+
+    private void get_item4_end()
+    {
+        GameObject item = GameObject.Find("Item4");
+        Destroy(item);
+    }
+
+    private void get_item5_end()
+    {
+        GameObject item = GameObject.Find("Item5");
+        Destroy(item);
+    }
+
+    private void get_item6_end()
+    {
+        GameObject item = GameObject.Find("Item6");
+        Destroy(item);
+    }
+
+    private void get_item7_end()
+    {
+        GameObject item = GameObject.Find("Item7");
+        Destroy(item);
+    }
+
+    private void get_item8_end()
+    {
+        GameObject item = GameObject.Find("Item8");
+        Destroy(item);
+    }
+
+    private void get_item9_end()
+    {
+        GameObject item = GameObject.Find("Item9");
+        Destroy(item);
+    }
+
+    private void get_item10_end()
+    {
+        GameObject item = GameObject.Find("Item10");
+        Destroy(item);
+    }
+
+    private void get_item11_end()
+    {
+        GameObject item = GameObject.Find("Item11");
+        Destroy(item);
+    }
+
+    private void get_item12_end()
+    {
+        GameObject item = GameObject.Find("Item12");
+        Destroy(item);
+    }
+
+    private void get_item13_end()
+    {
+        GameObject item = GameObject.Find("Item13");
+        Destroy(item);
+    }
+
+    private void get_item14_end()
+    {
+        GameObject item = GameObject.Find("Item14");
+        Destroy(item);
+    }
+
+    private void get_item15_end()
+    {
+        GameObject item = GameObject.Find("Item15");
+        Destroy(item);
+    }
+
+    private void get_item16_end()
+    {
+        GameObject item = GameObject.Find("Item16");
+        Destroy(item);
+    }
+
+    private void get_item17_end()
+    {
+        GameObject item = GameObject.Find("Item17");
+        Destroy(item);
+    }
+
+    private void get_item18_end()
+    {
+        GameObject item = GameObject.Find("Item18");
+        Destroy(item);
+    }
+
+    private void get_item19_end()
+    {
+        GameObject item = GameObject.Find("Item19");
+        Destroy(item);
+    }
+
+    private void get_item20_end()
+    {
+        GameObject item = GameObject.Find("Item20");
+        Destroy(item);
+    }
+
+    private void get_item21_end()
+    {
+        GameObject item = GameObject.Find("Item21");
+        Destroy(item);
+    }
+
+    private void get_item22_end()
+    {
+        GameObject item = GameObject.Find("Item22");
+        Destroy(item);
+    }
+
+    private void get_item23_end()
+    {
+        GameObject item = GameObject.Find("Item23");
+        Destroy(item);
+    }
+
+    private void get_item24_end()
+    {
+        GameObject item = GameObject.Find("Item24");
+        Destroy(item);
+    }
+
+    private void get_item25_end()
+    {
+        GameObject item = GameObject.Find("Item25");
+        Destroy(item);
+    }
+
+    private void get_item26_end()
+    {
+        GameObject item = GameObject.Find("Item26");
+        Destroy(item);
+    }
+
+    private void get_item27_end()
+    {
+        GameObject item = GameObject.Find("Item27");
+        Destroy(item);
+    }
+
+    private void get_item28_end()
+    {
+        GameObject item = GameObject.Find("Item28");
+        Destroy(item);
+    }
+
+    private void get_item29_end()
+    {
+        GameObject item = GameObject.Find("Item29");
+        Destroy(item);
+    }
+
+    private void get_item30_end()
+    {
+        GameObject item = GameObject.Find("Item30");
+        Destroy(item);
     }
 
     private void craftkey1_end()
@@ -454,7 +634,6 @@ public class GameController : MonoBehaviour
         pathsgc = Path.Combine(Application.persistentDataPath, "saves\\SaveGame.json");
         pathspc = Path.Combine(Application.persistentDataPath, "saves\\SavePlayer.json");
         pathsic = Path.Combine(Application.persistentDataPath, "saves\\SaveInventory.json");
-        pathshc = Path.Combine(Application.persistentDataPath, "saves\\SaveHud.json");
 #else
         pathsgc = Path.Combine(Application.dataPath, "saves\\SaveGame.json");
         pathspc = Path.Combine(Application.dataPath, "saves\\SavePlayer.json");
@@ -503,7 +682,6 @@ public class GameController : MonoBehaviour
         pathsgc = Path.Combine(Application.persistentDataPath, "saves\\SaveGame.json");
         pathspc = Path.Combine(Application.persistentDataPath, "saves\\SavePlayer.json");
         pathsic = Path.Combine(Application.persistentDataPath, "saves\\SaveInventory.json");
-        pathshc = Path.Combine(Application.persistentDataPath, "saves\\SaveHud.json");
 #else
         pathsgc = Path.Combine(Application.dataPath, "saves\\SaveGame.json");
         pathspc = Path.Combine(Application.dataPath, "saves\\SavePlayer.json");
@@ -675,7 +853,7 @@ public class GameController : MonoBehaviour
         audioManager.SourceSFX = gameObject.AddComponent<AudioSource>();
         audioManager.SourceMusic = gameObject.AddComponent<AudioSource>();
         audioManager.SourceOkr = gameObject.AddComponent<AudioSource>();
-        gameObject.AddComponent<AudioSource>();
+        audioManager.StepsAudio = gameObject.AddComponent<AudioSource>();
     }
 
 
@@ -725,20 +903,26 @@ public class GameController : MonoBehaviour
         currentPlaceDo = GameObject.Find("UseCraftTable");
         GameObject timerIcon = Instantiate(TimerIcon, currentPlaceDo.transform);
         timerIcon.GetComponent<ThisTimer>().time = time;
+        AudioManager.StopAllSfx();
+        AudioManager.PlaySoundLoop("aud_craft_unit");
 
         yield return new WaitForSeconds(time);
+        Player.Instance.AnimDestroy(false);
+        AudioManager.StopAllSfx();
 
         func_end(craft);
     }
 
     public void StartTimerCraft(float time, CraftEnd func_end, CraftUIButton craft)
     {
+        Player.Instance.AnimDestroy(true);
         corTimer = StartCraftCourutine(time, func_end, craft);
         StartCoroutine(corTimer);
     }
 
     public void StopTimerCraft()
     {
+        Player.Instance.AnimDestroy(false);
         if (corTimer != null)
         {
             if (currentPlaceDo != null && currentPlaceDo.transform.childCount > 0)
