@@ -67,22 +67,22 @@ public static class BbtStrings
         ,{ "str_project",                       new string[]{ "Проект",                 "Project" } }
 
         //inventory description не переведено
-        ,{ "str_inv_cure_desc",                 new string[]{ "Средство от легкой болезни",                                             "Cure" } }
-        ,{ "str_inv_bandage_desc",              new string[]{ "Средство от физических ранений",                                         "Bandage" } }
-        ,{ "str_inv_antibiotic_desc",           new string[]{ "Средство от тяжелой формы болезни",                                      "Antibiotic" } }
-        ,{ "str_inv_friedmushrooms_desc",       new string[]{ "Вкусные жареные грибочки",                                               "Soupe" } }
-        ,{ "str_inv_energybar_desc",            new string[]{ "Энергетический батончик не только восполняет сытость, но и энергию",     "Energybar" } }
-        ,{ "str_inv_noodles_desc",              new string[]{ "Питательная лапша быстрого приготовления",                               "Noodles" } }
-        ,{ "str_inv_rat_desc",                  new string[]{ "Не считая дивана, единственное мясо в этом офисе",                       "Rat" } }
-        ,{ "str_inv_mushrooms_desc",            new string[]{ "Нету суши, нету пиццы, ешьте вы пучки грибицы",                         "Mushrooms" } }
-        ,{ "str_inv_water_desc",                new string[]{ "Чистейшая вода",                                                         "Water" } }
-        ,{ "str_inv_coffee_desc",               new string[]{ "Топливо для программиста",                                               "Coffee" } }
-        ,{ "str_inv_juice_desc",                new string[]{ "Кто додумался давить сок из чеснока?",                                   "Juice" } }
-        ,{ "str_inv_cola_desc",                 new string[]{ "Не употреблять вместе с кофе!",                                          "Cola" } }
-        ,{ "str_inv_axe_desc",                  new string[]{ "Убойный инструмент против босса",                                        "Axe" } }
-        ,{ "str_inv_stuff_desc",                new string[]{ "Из гвоздя, скрепки и бумажки сделаю спутниковое ТВ",                     "Stuff" } }
-        ,{ "str_inv_money_desc",                new string[]{ "Программисту заплатите чеканной... Кхм",                                 "Money" } }
-        ,{ "str_inv_humus_desc",                new string[]{ "Сила в перегное!",                                                       "Humus" } }
+        ,{ "str_inv_cure_desc",                 new string[]{ "Средство от легкой болезни", "Mild illness remedy" } }
+        ,{ "str_inv_bandage_desc",              new string[]{ "Средство от физических ранений", "Remedy for physical injuries" } }
+        ,{ "str_inv_antibiotic_desc",           new string[]{ "Средство от тяжелой формы болезни", "Средство от тяжелой формы болезни" } }
+        ,{ "str_inv_friedmushrooms_desc",       new string[]{ "Вкусные жареные грибочки", "Delicious fried mushrooms" } }
+        ,{ "str_inv_energybar_desc",            new string[]{ "Энергетический батончик не только восполняет сытость, но и энергию", "Energy bar not only replenishes satiety, but also energy" } }
+        ,{ "str_inv_noodles_desc",              new string[]{ "Питательная лапша быстрого приготовления", "Instant noodles" } }
+        ,{ "str_inv_rat_desc",                  new string[]{ "Не считая дивана, единственное мясо в этом офисе", "Apart from the sofa, the only meat in this office" } }
+        ,{ "str_inv_mushrooms_desc",            new string[]{ "Нету суши, нету пиццы, ешьте вы пучки грибицы", "No sushi, no pizza, eat bunches of mushrooms" } }
+        ,{ "str_inv_water_desc",                new string[]{ "Чистейшая вода", "Clear water" } }
+        ,{ "str_inv_coffee_desc",               new string[]{ "Топливо для программиста", "Fuel for the programmer" } }
+        ,{ "str_inv_juice_desc",                new string[]{ "Кто додумался давить сок из чеснока?", "Who thought of crushing juice from garlic?" } }
+        ,{ "str_inv_cola_desc",                 new string[]{ "Не употреблять вместе с кофе!", "Do not drink with coffee!" } }
+        ,{ "str_inv_axe_desc",                  new string[]{ "Убойный инструмент против босса", "Killing tool against the boss" } }
+        ,{ "str_inv_stuff_desc",                new string[]{ "Из гвоздя, скрепки и бумажки сделаю спутниковое ТВ", "I will make satellite TV from a nail, paper clip and paper" } }
+        ,{ "str_inv_money_desc",                new string[]{ "Программисту заплатите чеканной... Кхм", "Toss a Coin to Your Programmer" } }
+        ,{ "str_inv_humus_desc",                new string[]{ "Сила в перегное!", "Strength in humus!" } }
         ,{ "str_inv_friedrat_desc",             new string[]{ "С хрустящим хвостиком!", "With a crispy ponytail!" } }
         ,{ "str_inv_computer_desc",             new string[]{ "Играть в рабочее время станет намного веселее", "Play during working hours will be much more fun" } }
         ,{ "str_inv_crafttable_desc",           new string[]{ "Поможет быстрее мастерить предметы", "It will help to craft items faster." } }
