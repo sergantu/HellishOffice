@@ -75,6 +75,9 @@ public class GameController : MonoBehaviour
     [SerializeField] GameObject waterTrap;
     [SerializeField] GameObject mushTrap;
 
+    [SerializeField] GameObject firModel;
+    [SerializeField] GameObject condeyModel;
+
 
     public Dictionary<string, bool> gameEvents = new Dictionary<string, bool>()
     {
@@ -284,7 +287,7 @@ public class GameController : MonoBehaviour
 
     private void craftcondey_end()
     {
-
+        condeyModel.SetActive(true);
     }
 
     private void craftcrafttable_end()
@@ -294,7 +297,7 @@ public class GameController : MonoBehaviour
 
     private void craftfir_end()
     {
-
+        firModel.SetActive(true);
     }
 
     private void craftkreslo_end()
