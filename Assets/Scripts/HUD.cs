@@ -153,12 +153,16 @@ public class HUD : MonoBehaviour
 
     [SerializeField] Text datePanel;
 
+    Color colorLiftGreen = new Color(0.0f, 0.97f, 0.05f);
+    Color colorLiftRed = new Color(0.0f, 0.97f, 0.05f);
+
     public void UpdateDateTime( string doneDate )
     {
         datePanel.text = doneDate;
 
         for ( int i = 0; i < InteractController.Instance.ElevatorButtons.Count; i++ )
         {
+
             InteractController.Instance.ElevatorButtons[i].interactable = GameController.Instance.StatusIsNight;
         }
 

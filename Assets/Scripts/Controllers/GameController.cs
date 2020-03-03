@@ -78,6 +78,8 @@ public class GameController : MonoBehaviour
     [SerializeField] GameObject firModel;
     [SerializeField] GameObject condeyModel;
 
+    [SerializeField] Transform _interactContainer;
+
 
     public Dictionary<string, bool> gameEvents = new Dictionary<string, bool>()
     {
@@ -112,39 +114,22 @@ public class GameController : MonoBehaviour
         ,{ "opn_floor2", false }
         ,{ "opn_floor4", false }
         ,{ "opn_floor5", false }
-
-        /*{ "craftsofa", true }
-        ,{ "craftkey1", true }
-        ,{ "craftkey2", true }
-        ,{ "craftkey4", true }
-        ,{ "craftkey5", true }
-        ,{ "craftaxe", true }
-        ,{ "craftcomputer", true }
-        ,{ "craftcondey", true }
-        ,{ "craftcrafttable", true }
-        ,{ "craftfir", true }
-        ,{ "craftkreslo", true }
-        ,{ "craftmonitor", true }
-        ,{ "craftmushtrap", true }
-        ,{ "craftrattrap", true }
-        ,{ "craftwatertrap", true }
-
-        ,{ "get_destroy", false }
-        ,{ "get_destroy2", false }
-        ,{ "get_destroy3", false }
-        ,{ "get_destroy4", false }
-        ,{ "get_destroy5", false }
-        ,{ "get_destroy6", false }
-        ,{ "get_destroy7", false }
-        ,{ "get_destroy8", false }
-        ,{ "get_destroy9", false }
-        ,{ "get_destroy10", false }
-
-        ,{ "opn_floor1", true }
-        ,{ "opn_floor2", true }
-        ,{ "opn_floor4", true }
-        ,{ "opn_floor5", true }*/
     };
+
+    private GameObject FindRecursiveChildren(Transform container, string name)
+    {
+        Transform[] tranforms = container.GetComponentsInChildren<Transform>();
+
+        foreach (Transform trans in tranforms)
+        {
+            if(trans.gameObject.name == name)
+            {
+                return trans.gameObject;
+            }
+        }
+
+        return null;
+    }
 
     //////////////////////////////////////////////////////////////////////////////////////////////
     ///GAME EVENTS
@@ -172,102 +157,102 @@ public class GameController : MonoBehaviour
 
     private void get_destroy1_end()
     {
-        GameObject objForRemove = InteractController.Instance.FindInterectObj("UseDestroy");
+        GameObject objForRemove = FindRecursiveChildren(_interactContainer, "Destroy");
         if(objForRemove == null)
         {
             return;
         }
-        Destroy(objForRemove.transform.parent.parent.parent.gameObject);
+        Destroy(objForRemove);
     }
 
     private void get_destroy2_end()
     {
-        GameObject objForRemove = InteractController.Instance.FindInterectObj("UseDestroy2");
+        GameObject objForRemove = FindRecursiveChildren(_interactContainer, "Destroy2");
         if (objForRemove == null)
         {
             return;
         }
-        Destroy(objForRemove.transform.parent.parent.parent.gameObject);
+        Destroy(objForRemove);
     }
 
     private void get_destroy3_end()
     {
-        GameObject objForRemove = InteractController.Instance.FindInterectObj("UseDestroy3");
+        GameObject objForRemove = FindRecursiveChildren(_interactContainer, "Destroy3");
         if (objForRemove == null)
         {
             return;
         }
-        Destroy(objForRemove.transform.parent.parent.parent.gameObject);
+        Destroy(objForRemove);
     }
 
     private void get_destroy4_end()
     {
-        GameObject objForRemove = InteractController.Instance.FindInterectObj("UseDestroy4");
+        GameObject objForRemove = FindRecursiveChildren(_interactContainer, "Destroy4");
         if (objForRemove == null)
         {
             return;
         }
-        Destroy(objForRemove.transform.parent.parent.parent.gameObject);
+        Destroy(objForRemove);
     }
 
     private void get_destroy5_end()
     {
-        GameObject objForRemove = InteractController.Instance.FindInterectObj("UseDestroy5");
+        GameObject objForRemove = FindRecursiveChildren(_interactContainer, "Destroy5");
         if (objForRemove == null)
         {
             return;
         }
-        Destroy(objForRemove.transform.parent.parent.parent.gameObject);
+        Destroy(objForRemove);
     }
 
     private void get_destroy6_end()
     {
-        GameObject objForRemove = InteractController.Instance.FindInterectObj("UseDestroy6");
+        GameObject objForRemove = FindRecursiveChildren(_interactContainer, "Destroy6");
         if (objForRemove == null)
         {
             return;
         }
-        Destroy(objForRemove.transform.parent.parent.parent.gameObject);
+        Destroy(objForRemove);
     }
 
     private void get_destroy7_end()
     {
-        GameObject objForRemove = InteractController.Instance.FindInterectObj("UseDestroy7");
+        GameObject objForRemove = FindRecursiveChildren(_interactContainer, "Destroy7");
         if (objForRemove == null)
         {
             return;
         }
-        Destroy(objForRemove.transform.parent.parent.parent.gameObject);
+        Destroy(objForRemove);
     }
 
     private void get_destroy8_end()
     {
-        GameObject objForRemove = InteractController.Instance.FindInterectObj("UseDestroy8");
+        GameObject objForRemove = FindRecursiveChildren(_interactContainer, "Destroy8");
         if (objForRemove == null)
         {
             return;
         }
-        Destroy(objForRemove.transform.parent.parent.parent.gameObject);
+        Destroy(objForRemove);
     }
 
     private void get_destroy9_end()
     {
-        GameObject objForRemove = InteractController.Instance.FindInterectObj("UseDestroy9");
+        GameObject objForRemove = FindRecursiveChildren(_interactContainer, "Destroy9");
         if (objForRemove == null)
         {
             return;
         }
-        Destroy(objForRemove.transform.parent.parent.parent.gameObject);
+        Destroy(objForRemove);
     }
 
     private void get_destroy10_end()
     {
-        GameObject objForRemove = InteractController.Instance.FindInterectObj("UseDestroy10");
+        GameObject objForRemove = FindRecursiveChildren(_interactContainer, "Destroy10");
         if (objForRemove == null)
         {
             return;
         }
-        Destroy(objForRemove.transform.parent.parent.parent.gameObject);
+        Destroy(objForRemove);
     }
 
     private void craftsofa_end()
@@ -287,7 +272,7 @@ public class GameController : MonoBehaviour
 
     private void craftcondey_end()
     {
-        condeyModel.SetActive(true);
+        //condeyModel.SetActive(true);
     }
 
     private void craftcrafttable_end()
@@ -327,181 +312,181 @@ public class GameController : MonoBehaviour
 
     private void get_item1_end()
     {
-        GameObject item = GameObject.Find("Item1");
+        GameObject item = FindRecursiveChildren(_interactContainer, "Item1");
         Destroy(item);
     }
 
     private void get_item2_end()
     {
-        GameObject item = GameObject.Find("Item2");
+        GameObject item = FindRecursiveChildren(_interactContainer, "Item2");
         Destroy(item);
     }
 
     private void get_item3_end()
     {
-        GameObject item = GameObject.Find("Item3");
+        GameObject item = FindRecursiveChildren(_interactContainer, "Item3");
         Destroy(item);
     }
 
     private void get_item4_end()
     {
-        GameObject item = GameObject.Find("Item4");
+        GameObject item = FindRecursiveChildren(_interactContainer, "Item4");
         Destroy(item);
     }
 
     private void get_item5_end()
     {
-        GameObject item = GameObject.Find("Item5");
+        GameObject item = FindRecursiveChildren(_interactContainer, "Item5");
         Destroy(item);
     }
 
     private void get_item6_end()
     {
-        GameObject item = GameObject.Find("Item6");
+        GameObject item = FindRecursiveChildren(_interactContainer, "Item6");
         Destroy(item);
     }
 
     private void get_item7_end()
     {
-        GameObject item = GameObject.Find("Item7");
+        GameObject item = FindRecursiveChildren(_interactContainer, "Item7");
         Destroy(item);
     }
 
     private void get_item8_end()
     {
-        GameObject item = GameObject.Find("Item8");
+        GameObject item = FindRecursiveChildren(_interactContainer, "Item8");
         Destroy(item);
     }
 
     private void get_item9_end()
     {
-        GameObject item = GameObject.Find("Item9");
+        GameObject item = FindRecursiveChildren(_interactContainer, "Item9");
         Destroy(item);
     }
 
     private void get_item10_end()
     {
-        GameObject item = GameObject.Find("Item10");
+        GameObject item = FindRecursiveChildren(_interactContainer, "Item10");
         Destroy(item);
     }
 
     private void get_item11_end()
     {
-        GameObject item = GameObject.Find("Item11");
+        GameObject item = FindRecursiveChildren(_interactContainer, "Item11");
         Destroy(item);
     }
 
     private void get_item12_end()
     {
-        GameObject item = GameObject.Find("Item12");
+        GameObject item = FindRecursiveChildren(_interactContainer, "Item12");
         Destroy(item);
     }
 
     private void get_item13_end()
     {
-        GameObject item = GameObject.Find("Item13");
+        GameObject item = FindRecursiveChildren(_interactContainer, "Item13");
         Destroy(item);
     }
 
     private void get_item14_end()
     {
-        GameObject item = GameObject.Find("Item14");
+        GameObject item = FindRecursiveChildren(_interactContainer, "Item14");
         Destroy(item);
     }
 
     private void get_item15_end()
     {
-        GameObject item = GameObject.Find("Item15");
+        GameObject item = FindRecursiveChildren(_interactContainer, "Item15");
         Destroy(item);
     }
 
     private void get_item16_end()
     {
-        GameObject item = GameObject.Find("Item16");
+        GameObject item = FindRecursiveChildren(_interactContainer, "Item16");
         Destroy(item);
     }
 
     private void get_item17_end()
     {
-        GameObject item = GameObject.Find("Item17");
+        GameObject item = FindRecursiveChildren(_interactContainer, "Item17");
         Destroy(item);
     }
 
     private void get_item18_end()
     {
-        GameObject item = GameObject.Find("Item18");
+        GameObject item = FindRecursiveChildren(_interactContainer, "Item18");
         Destroy(item);
     }
 
     private void get_item19_end()
     {
-        GameObject item = GameObject.Find("Item19");
+        GameObject item = FindRecursiveChildren(_interactContainer, "Item19");
         Destroy(item);
     }
 
     private void get_item20_end()
     {
-        GameObject item = GameObject.Find("Item20");
+        GameObject item = FindRecursiveChildren(_interactContainer, "Item20");
         Destroy(item);
     }
 
     private void get_item21_end()
     {
-        GameObject item = GameObject.Find("Item21");
+        GameObject item = FindRecursiveChildren(_interactContainer, "Item21");
         Destroy(item);
     }
 
     private void get_item22_end()
     {
-        GameObject item = GameObject.Find("Item22");
+        GameObject item = FindRecursiveChildren(_interactContainer, "Item22");
         Destroy(item);
     }
 
     private void get_item23_end()
     {
-        GameObject item = GameObject.Find("Item23");
+        GameObject item = FindRecursiveChildren(_interactContainer, "Item23");
         Destroy(item);
     }
 
     private void get_item24_end()
     {
-        GameObject item = GameObject.Find("Item24");
+        GameObject item = FindRecursiveChildren(_interactContainer, "Item24");
         Destroy(item);
     }
 
     private void get_item25_end()
     {
-        GameObject item = GameObject.Find("Item25");
+        GameObject item = FindRecursiveChildren(_interactContainer, "Item25");
         Destroy(item);
     }
 
     private void get_item26_end()
     {
-        GameObject item = GameObject.Find("Item26");
+        GameObject item = FindRecursiveChildren(_interactContainer, "Item26");
         Destroy(item);
     }
 
     private void get_item27_end()
     {
-        GameObject item = GameObject.Find("Item27");
+        GameObject item = FindRecursiveChildren(_interactContainer, "Item27");
         Destroy(item);
     }
 
     private void get_item28_end()
     {
-        GameObject item = GameObject.Find("Item28");
+        GameObject item = FindRecursiveChildren(_interactContainer, "Item28");
         Destroy(item);
     }
 
     private void get_item29_end()
     {
-        GameObject item = GameObject.Find("Item29");
+        GameObject item = FindRecursiveChildren(_interactContainer, "Item29");
         Destroy(item);
     }
 
     private void get_item30_end()
     {
-        GameObject item = GameObject.Find("Item30");
+        GameObject item = FindRecursiveChildren(_interactContainer, "Item30");
         Destroy(item);
     }
 
@@ -735,7 +720,7 @@ public class GameController : MonoBehaviour
 
         string finalDate = date.ToString() + " " + month + " " + time.ToString() + ":00";
 
-        /*for (int i = 0; i < Player.Instance.PlayerParametres.Count; i++)
+        for (int i = 0; i < Player.Instance.PlayerParametres.Count; i++)
         {
             if (i == 2 && Player.Instance.playerSleep)
             {
@@ -758,7 +743,7 @@ public class GameController : MonoBehaviour
         else
         {
             SunLight.transform.rotation = Quaternion.Euler(50, 63, 0);
-        }*/
+        }
 
         HUD.Instance.UpdateDateTime(finalDate);
         HUD.Instance.UpdateMainParamIcons();
@@ -817,7 +802,7 @@ public class GameController : MonoBehaviour
             int rnd = Random.Range(0, 24);
             if(rnd == 0)
             {
-                //ShowRandomEvent();
+                ShowRandomEvent();
             }
         }
 

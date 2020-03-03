@@ -72,19 +72,6 @@ public class InteractController : MonoBehaviour
         SetScaleButton();
     }
 
-    public GameObject FindInterectObj(string name)
-    {
-        for (int i = 0; i < interactObjs.Count; i++)
-        {
-            if (interactObjs[i].name.Equals(name))
-            {
-                return interactObjs[i];
-            }
-        }
-
-        return null;
-    }
-
     /// <summary>
     /// Обновление размера кнопок в мире при скролле
     /// </summary>
