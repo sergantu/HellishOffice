@@ -21,6 +21,10 @@ public class HUD : MonoBehaviour
     public Image travmaIcon;
     public Image deseaseIcon;
 
+    [SerializeField] GameObject invCell;
+    [SerializeField] GameObject SPCell;
+    [SerializeField] GameObject SNCell;
+
     [SerializeField] GameObject Outro;
 
     [SerializeField] Text thinksLabel;
@@ -286,7 +290,8 @@ public class HUD : MonoBehaviour
     public InventoryUIButton AddNewInventoryItem(ItemVar newItemVar, int count, int placeID)  //создать кнопку инвентаря, добавить в окнока инвентаря игрока, вернуть объект этой кнопки
     {
         InventoryUIButton newItem = Instantiate(inventoryItemPrefab) as InventoryUIButton;
-        if ( placeID == 0 )
+
+        if ( placeID == 0)
         {
             newItem.transform.SetParent(inventoryContainer);
             newItem.ItemVarCur = newItemVar;
@@ -345,10 +350,30 @@ public class HUD : MonoBehaviour
     /// </summary>
     public void LoadInventory() // загрущка инвентаря, назначение делегата на нажатие кнопки
     {
+        int mainInv = GameController.Instance.isHome() ? 0 : -10;
+
+        int n = inventoryContainer.childCount;
+        for (int i = 0; i < n; i++)
+        {
+            Destroy(inventoryContainer.GetChild(i).gameObject);
+        }
+
+        n = inventorySwitchContainer.childCount;
+        for (int i = 0; i < n; i++)
+        {
+            Destroy(inventorySwitchContainer.GetChild(i).gameObject);
+        }
+
+        n = invTradePlayer.childCount;
+        for (int i = 0; i < n; i++)
+        {
+            Destroy(invTradePlayer.GetChild(i).gameObject);
+        }
+
         InventoryUsedCallback callback = new InventoryUsedCallback(InventoryController.Instance.InventoryItemShow);
         for (int i = 0; i < InventoryController.Instance.PlayerInventory.Count; i++)
         {
-            if (InventoryController.Instance.PlayerInventory[i][2] == 0)
+            if (InventoryController.Instance.PlayerInventory[i][2] == mainInv)
             {
                 try //заебала ошибку выдавать, хуй знает в чем проблема пусть будет так
                 {
@@ -489,29 +514,7 @@ public class HUD : MonoBehaviour
     {
         for ( int i = 0; i < InventoryController.Instance.PlayerInventory.Count; i++ )
         {
-            if (inventoryNewItems.transform.childCount > 0 && InventoryController.Instance.PlayerInventory[i][2] > 0)
-            {
-                for (int j = 0; j < inventoryNewItems.transform.childCount; j++)
-                {
-                    InventoryUIButton curButton = inventoryNewItems.GetChild(j).GetComponent<InventoryUIButton>();
-
-                    if (curButton != null)
-                    {
-                        if (InventoryController.Instance.PlayerInventory[i][0] == curButton.ItemVarCur.IdItem && InventoryController.Instance.PlayerInventory[i][2] == curButton.PlaceID)
-                        {
-                            if (InventoryController.Instance.PlayerInventory[i][1] > 0)
-                            {
-                                curButton.Count.text = InventoryController.Instance.PlayerInventory[i][1].ToString();
-                            }
-                            else
-                            {
-                                Destroy(curButton.gameObject);
-                            }
-                        }
-                    }
-                }
-            }
-            if (invTradeDealer.transform.childCount > 0 && InventoryController.Instance.PlayerInventory[i][2] == -3 )
+            if (invTradeDealer.transform.childCount > 0 && InventoryController.Instance.PlayerInventory[i][2] == -3)
             {
                 for (int j = 0; j < invTradeDealer.transform.childCount; j++)
                 {
@@ -580,7 +583,37 @@ public class HUD : MonoBehaviour
                 }
             }
 
-            if (inventoryContainer.transform.childCount > 0 && InventoryController.Instance.PlayerInventory[i][2] == 0)
+
+
+
+
+
+            if (inventoryNewItems.transform.childCount > 0 && (InventoryController.Instance.PlayerInventory[i][2] > 0 || InventoryController.Instance.PlayerInventory[i][2] == -10 && GameController.Instance.isHome()))
+            {
+                for (int j = 0; j < inventoryNewItems.transform.childCount; j++)
+                {
+                    InventoryUIButton curButton = inventoryNewItems.GetChild(j).GetComponent<InventoryUIButton>();
+
+                    if (curButton != null)
+                    {
+                        if (InventoryController.Instance.PlayerInventory[i][0] == curButton.ItemVarCur.IdItem && InventoryController.Instance.PlayerInventory[i][2] == curButton.PlaceID)
+                        {
+                            if (InventoryController.Instance.PlayerInventory[i][1] > 0)
+                            {
+                                curButton.Count.text = InventoryController.Instance.PlayerInventory[i][1].ToString();
+                            }
+                            else
+                            {
+                                Destroy(curButton.gameObject);
+                            }
+                        }
+                    }
+                }
+            }            
+
+            int mainInv = GameController.Instance.isHome() ? 0 : -10;
+
+            if (inventoryContainer.transform.childCount > 0 && InventoryController.Instance.PlayerInventory[i][2] == mainInv)
             {
                 for (int j = 0; j < inventoryContainer.transform.childCount; j++)
                 {
@@ -591,7 +624,9 @@ public class HUD : MonoBehaviour
                         InventoryUIButton curButton2 = inventorySwitchContainer.GetChild(j).GetComponent<InventoryUIButton>();
                         InventoryUIButton curButton3 = invTradePlayer.GetChild(j).GetComponent<InventoryUIButton>();
 
-                        if (InventoryController.Instance.PlayerInventory[i][0] == curButton.ItemVarCur.IdItem && InventoryController.Instance.PlayerInventory[i][2] == curButton.PlaceID)
+
+
+                        if (InventoryController.Instance.PlayerInventory[i][0] == curButton.ItemVarCur.IdItem)
                         {
                             if (InventoryController.Instance.PlayerInventory[i][1] > 0)
                             {
@@ -866,8 +901,28 @@ public class HUD : MonoBehaviour
     /// <summary>
     /// Показать окно инвентаря игрока
     /// </summary>
-    public void ShowSwitchItemsWindow() //показать окно обмена предметами
+    public void ShowSwitchItemsWindow(bool isPort = false) //показать окно обмена предметами
     {
+        TextController.Instance.newitemsLabel.text = BbtStrings.GetStr("str_newitemsLabel");
+        if (GameController.Instance.isHome())
+        {
+            
+            SPCell.SetActive(false);
+            SNCell.SetActive(false);
+        }
+        else
+        {
+            SPCell.SetActive(true);
+            SNCell.SetActive(false);
+        }
+
+        if (isPort)
+        {
+            TextController.Instance.newitemsLabel.text = BbtStrings.GetStr("str_newitemsLabel2");
+            SPCell.SetActive(false);
+            SNCell.SetActive(true);
+        }
+
         OpenedWindow = WindowState.SwitchInventory;
         ShowWindow(GetWindow("SwitchItemsWindow").GetComponent<CanvasGroup>());
     }
@@ -875,19 +930,29 @@ public class HUD : MonoBehaviour
     /// <summary>
     /// Скрыть окно обмена предметами
     /// </summary>
-    public void HideSwitchItemsWindow() //скрыть окно обмена предметами
+    public void HideSwitchItemsWindow(bool isPort = false) //скрыть окно обмена предметами
     {
         OpenedWindow = WindowState.Closed;
         UpdateChoosedItem(null);
         HideWindow(GetWindow("SwitchItemsWindow").GetComponent<CanvasGroup>());
 
-        if(!InventoryController.Instance.HasItemsInPlace())
+        if(!InventoryController.Instance.HasItemsInPlace() && !isPort)
         {
             GameController.Instance.SetEventDone("get_item" + InventoryController.Instance.OpenedPlace);
         }
 
-        InventoryController.Instance.SetOpenedPlace(0);
+        int openedPlace = GameController.Instance.isHome() ? 0 : -10;
 
+        InventoryController.Instance.SetOpenedPlace(openedPlace);
+
+    }
+
+    public void ShowPortInvWindow()
+    {
+        Player.Instance.AnimPick(false);
+        HUD.Instance.LoadNewInventory(-10);
+        HUD.Instance.ShowSwitchItemsWindow(true);
+        InventoryController.Instance.SetOpenedPlace(-10);
     }
 
 
@@ -920,6 +985,14 @@ public class HUD : MonoBehaviour
     /// </summary>
     public void ShowInventoryItemsWindow() //показать окно обмена предметами
     {
+        if (GameController.Instance.isHome())
+        {
+            invCell.SetActive(false);
+        }
+        else
+        {
+            invCell.SetActive(true);
+        }
         OpenedWindow = WindowState.PlayerInventory;
         ShowWindow(GetWindow("InventoryWindow").GetComponent<CanvasGroup>());
     }
@@ -990,7 +1063,7 @@ public class HUD : MonoBehaviour
         if ( !CameraControl.Instance.AlignCameraWithPlayer() )
         {
             thinksLabel.text = BbtStrings.GetStr("thinks");
-            string rnd = "str_status_player_" +  UnityEngine.Random.Range(0, 9);
+            string rnd = "str_status_player_" +  UnityEngine.Random.Range(0, 10);
             thinksDescription.text = BbtStrings.GetStr(rnd);
             ShowWindow(GetWindow("PlayerWindow").GetComponent<CanvasGroup>());
         }

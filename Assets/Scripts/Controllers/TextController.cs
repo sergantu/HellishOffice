@@ -40,7 +40,7 @@ public class TextController : MonoBehaviour
     [SerializeField] Text chooseElevator;
     [SerializeField] Text dealerLabel;
     [SerializeField] Text playerDealer;
-    [SerializeField] Text newitemsLabel;
+    public Text newitemsLabel;
     [SerializeField] Text playerItems;
     [SerializeField] Text playerInfo;
     [SerializeField] Text craftLabel;

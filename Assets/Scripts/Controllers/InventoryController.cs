@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 public class InventoryController : MonoBehaviour
 {
@@ -52,6 +53,8 @@ public class InventoryController : MonoBehaviour
 
     public List<List<int>> PlayerInventory = new List<List<int>>()  //бд с текущими инвентарными предметами ( id предмета, количество, id места )
     {
+        //-10 -походный инвентарь
+
         ///////////////////////-5 - торговец вирутальный
         ///////////////////////-4 - игрок вирутальный
         new List<int>(){ 1, 6, -3 },//торговец
@@ -61,31 +64,12 @@ public class InventoryController : MonoBehaviour
         new List<int>(){ 5, 2, -3 },//торговец
         new List<int>(){ 6, 1, -3 },//торговец
 
-        /*new List<int>(){ 0, 1, 0 },
+        new List<int>(){ 0, 1, 0 },
         new List<int>(){ 1, 1, 0 },
         new List<int>(){ 5, 1, 0 },
         new List<int>(){ 7, 2, 0 },
         new List<int>(){ 9, 2, 0 },
-        new List<int>(){ 14, 20, 0 },*/
-
-        new List<int>(){ 1, 50, 0 },
-        new List<int>(){ 2, 50, 0 },
-        new List<int>(){ 3, 50, 0 },
-        new List<int>(){ 4, 50, 0 },
-        new List<int>(){ 6, 50, 0 },
-        new List<int>(){ 7, 50, 0 },
-        new List<int>(){ 8, 50, 0 },
-        new List<int>(){ 9, 50, 0 },
-        new List<int>(){ 10, 50, 0 },
-        new List<int>(){ 11, 50, 0 },
-        new List<int>(){ 13, 50, 0 },
-        new List<int>(){ 14, 50, 0 },
-        new List<int>(){ 15, 50, 0 },
-        new List<int>(){ 16, 50, 0 },
-        new List<int>(){ 19, 50, 0 },
-        new List<int>(){ 24, 50, 0 },
-        new List<int>(){ 33, 50, 0 },
-        new List<int>(){ 34, 50, 0 },
+        new List<int>(){ 14, 20, 0 },
 
         new List<int>(){ 2, 1, 1 },
         new List<int>(){ 8, 2, 1 },
@@ -96,9 +80,9 @@ public class InventoryController : MonoBehaviour
         new List<int>(){ 4, 1, 2 },
         new List<int>(){ 15, 10, 2 },
 
-        new List<int>(){ 0, 1, 3 },
-        new List<int>(){ 0, 2, 3 },
-        new List<int>(){ 0, 100, 3 },
+        new List<int>(){ 5, 1, 3 },
+        new List<int>(){ 8, 2, 3 },
+        new List<int>(){ 14, 100, 3 },
 
         new List<int>(){ 0, 1, 4 },
         new List<int>(){ 16, 1, 4 },
@@ -335,7 +319,7 @@ public class InventoryController : MonoBehaviour
 
         for (int i = 0; i < PlayerInventory.Count; i++)
         {
-            if (PlayerInventory[i][2] < 1 && PlayerInventory[i][0] == id && PlayerInventory[i][2] > -3)
+            if ((PlayerInventory[i][2] < 1  && PlayerInventory[i][2] > -3 || PlayerInventory[i][2] == -10) && PlayerInventory[i][0] == id)
             {
                 count = PlayerInventory[i][1];
                 break;
@@ -440,7 +424,7 @@ public class InventoryController : MonoBehaviour
                 int curId = PlayerInventory[i][0];
                 int curCount = PlayerInventory[i][1];
                 PlayerInventory.RemoveAt(i);
-                AddInventoryItemPLayer(curId, curCount, 0);
+                AddInventoryItemPLayer(curId, curCount, -10);
                 i--;
             }
         }
@@ -473,7 +457,7 @@ public class InventoryController : MonoBehaviour
                     int curId = PlayerInventory[i][0];
                     int curCount = PlayerInventory[i][1];
                     PlayerInventory.RemoveAt(i);
-                    AddInventoryItemPLayer(curId, curCount, 0);
+                    AddInventoryItemPLayer(curId, curCount, -10);
                     i--;
                 }
             }
@@ -543,8 +527,82 @@ public class InventoryController : MonoBehaviour
                 TextController.Instance.SetTradeLabelText("str_good_trade_3");
                 doThisTrade = true;
             }
+        }
+
+        if (IsFullForTrade())
+        {
+            TextController.Instance.SetTradeLabelText("str_good_full");
+            doThisTrade = false;
+        }
+    }
+
+    private bool IsFullForTrade()
+    {
+        List<List<int>> virTrade1 = new List<List<int>>(PlayerInventory.Where(p => p[2] == -5).ToList<List<int>>());
+        List<List<int>> virPl1 = new List<List<int>>(PlayerInventory.Where(p => p[2] == -4).ToList<List<int>>());
+        List<List<int>> relPl1 = new List<List<int>>(PlayerInventory.Where(p => p[2] == -10).ToList<List<int>>());
+
+        List<List<int>> virTrade = new List<List<int>>();
+        List<List<int>> virPl = new List<List<int>>();
+        List<List<int>> relPl = new List<List<int>>();
+        List<List<int>> itogo = new List<List<int>>();
+
+        if(virTrade1.Count > 0)
+        {
+            for (int i = 0; i < virTrade1.Count; i++)
+            {
+                virTrade.Add(new List<int> { virTrade1[i][0], virTrade1[i][1], virTrade1[i][2] });
+
+            }
+        }
+
+        if (virPl1.Count > 0)
+        {
+            for (int i = 0; i < virPl1.Count; i++)
+            {
+                virPl.Add(new List<int> { virPl1[i][0], virPl1[i][1], virPl1[i][2] });
+            }
 
         }
+
+        if (relPl1.Count > 0)
+        {
+            for (int i = 0; i < relPl1.Count; i++)
+            {
+                itogo.Add(new List<int> { relPl1[i][0], relPl1[i][1], relPl1[i][2] });
+                relPl.Add(new List<int> { relPl1[i][0], relPl1[i][1], relPl1[i][2] });
+            }
+        }
+
+
+        for (int i = 0; i < virTrade.Count; i++)
+        {
+            if(relPl.Count > 0 && virTrade.Count > 0)
+            {
+                bool hasI = false;
+                for (int j = 0; j < relPl.Count; j++)
+                {
+                    if (virTrade[i][0] == relPl[j][0])
+                    {
+                        hasI = true;
+                        break;
+                    }
+                }
+
+                if (!hasI)
+                {
+                    itogo.Add(new List<int>() { virTrade[i][0], virTrade[i][1], virTrade[i][2] });
+                }
+            }
+            
+        }
+
+        if (itogo.Count > 3)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     /// <summary>
@@ -560,11 +618,16 @@ public class InventoryController : MonoBehaviour
         }
         else
         {
-            InventoryUIButton newUiButton = HUD.Instance.AddNewInventoryItem(InventoryVariables[itemID], count, placeID);
+            int p = placeID;
+            if(placeID == -10 && !GameController.Instance.isHome())
+            {
+                p = 0;
+            }
+            InventoryUIButton newUiButton = HUD.Instance.AddNewInventoryItem(InventoryVariables[itemID], count, p);
             InventoryUsedCallback callback = new InventoryUsedCallback(InventoryItemShow);
             newUiButton.Callback = callback;
 
-            if ( placeID == 0 )
+            if ( placeID == 0 || (placeID == -10 && !GameController.Instance.isHome()))
             {
                 InventoryUIButton newUiButton1 = HUD.Instance.AddNewInventoryItem(InventoryVariables[itemID], count, -1);
                 InventoryUsedCallback callback1 = new InventoryUsedCallback(InventoryItemShow);
@@ -574,7 +637,6 @@ public class InventoryController : MonoBehaviour
                 InventoryUsedCallback callback2 = new InventoryUsedCallback(InventoryItemShow);
                 newUiButton2.Callback = callback;
             }
-            
 
             PlayerInventory.Add(new List<int>() { itemID, count, placeID });
         }
@@ -613,13 +675,20 @@ public class InventoryController : MonoBehaviour
     //перемещение предмета между окнами
     public void MoveShotItem()
     {
+        int mainInv = GameController.Instance.isHome() ? 0 : -10;
+
         if (ChoosedItem != null)
         {
             int idItem = ChoosedItem.ItemVarCur.IdItem;
             int idCurPlayInv = 0;
 
-            if (ChoosedItem.PlaceID > 0) //перемещаем в инвентарь игрока
+            if (ChoosedItem.PlaceID > 0 || GameController.Instance.isHome() && ChoosedItem.PlaceID == -10) //перемещаем в инвентарь игрока
             {
+                if (Has3InHome(idItem, mainInv))
+                {
+                    return;
+                }
+
                 for (int i = 0; i < PlayerInventory.Count; i++) //ищем строку из которой удалять предмет
                 {
                     if (OpenedPlace == PlayerInventory[i][2] && PlayerInventory[i][0] == idItem)
@@ -650,21 +719,25 @@ public class InventoryController : MonoBehaviour
                 }
 
                 //добавление
-                AddInventoryItemPLayer(idItem, 1, 0);
+                AddInventoryItemPLayer(idItem, 1, mainInv);
 
                 HUD.Instance.LastUpdateInventory();
 
             }
             else        //перемещаем из инвентаря игрока
             {
-                
+                if (Has3InHome(idItem, OpenedPlace))
+                {
+                    return;
+                }
+
                 for (int i = 0; i < PlayerInventory.Count; i++) //ищем строку из которой удалять предмет
                 {
-                    if (PlayerInventory[i][2] < 1 && PlayerInventory[i][2] > -3 && PlayerInventory[i][0] == idItem)
+                    if ((PlayerInventory[i][2] < 1 && PlayerInventory[i][2] > -3 && mainInv == 0 || PlayerInventory[i][2] == -10 && mainInv == -10) && PlayerInventory[i][0] == idItem)
                     {
                         idCurPlayInv = i;
                         break;
-                    }
+                    }              
                 }
 
                 
@@ -682,19 +755,50 @@ public class InventoryController : MonoBehaviour
                 //добавление
                 AddInventoryItemPLayer(idItem, 1, OpenedPlace);
                 HUD.Instance.LastUpdateInventory();
-
-
             }
+        }
+    }
+
+    private bool Has3InHome(int itemID, int openedPlace)
+    {
+        if (openedPlace != -10)
+        {
+            return false;
+        }
+
+        int idExistedItem = CheckInventoryItemExist(itemID, -10);
+        if (idExistedItem < 0 && PortIsFull())
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void RemoveBackPack()
+    {
+        List<int> ids = new List<int>();
+
+        List<List<int>> newLis = PlayerInventory.Where(p => p[2] == -10).ToList();
+
+        foreach(List<int> l in newLis)
+        {
+            ids.Add(l[0]);
+        }
+
+        foreach (int l in ids)
+        {
+            RemoveFromInventory(l, 10000, -10);
         }
     }
 
     public void RemoveFromInventory( int idItem, int count, int place )
     {
         int idCurPlayInv = 0;
+        int mainInv = GameController.Instance.isHome() ? 0 : -10;
 
         if ( place == -1 || place == -2 )
         {
-            place = 0;
+            place = mainInv;
         }
 
         for (int i = 0; i < PlayerInventory.Count; i++) //ищем строку из которой удалять предмет
@@ -723,13 +827,20 @@ public class InventoryController : MonoBehaviour
         HUD.Instance.InvRamka.GetComponent<RectTransform>().offsetMax = Vector2.zero;
         HUD.Instance.InvRamka.GetComponent<RectTransform>().offsetMin = Vector2.zero;
 
+        int mainInv = GameController.Instance.isHome() ? 0 : -10;
+
         for (int i = 0; i < PlayerInventory.Count; i++) //ищем строку из которой удалять предмет
         {
+            if(mainInv == -10 && PortIsFull())
+            {
+                break;
+            }
+
             if (OpenedPlace == PlayerInventory[i][2])
             {
                 int curCountItems = PlayerInventory[i][1];
                 PlayerInventory[i][1] = 0;
-                AddInventoryItemPLayer(PlayerInventory[i][0], curCountItems, 0);
+                AddInventoryItemPLayer(PlayerInventory[i][0], curCountItems, mainInv);
 
                 if (PlayerInventory[i][1] <= 0)
                 {
@@ -750,6 +861,39 @@ public class InventoryController : MonoBehaviour
 
         HUD.Instance.LastUpdateInventory();
 
+    }
+
+    public void PortToInv()
+    {
+        List<List<int>> port = new List<List<int>>(PlayerInventory.Where(p => p[2] == -10).ToList<List<int>>());
+
+        foreach (List<int> p in port)
+        {
+            List<int> inInv = PlayerInventory.FirstOrDefault(l => l[0] == p[0] && l[2] == 0);
+
+            if (inInv == null)
+            {
+                PlayerInventory.Add(new List<int> { p[0], p[1], 0 });
+            }
+            else
+            {
+                inInv[1] += p[1];
+            }
+
+            for (int i = 0; i < PlayerInventory.Count; i++)
+            {
+                if (PlayerInventory[i][0] == p[0] && PlayerInventory[i][2] == p[2])
+                {
+                    PlayerInventory.RemoveAt(i);
+                }
+            }
+        }
+    }
+
+    public bool PortIsFull()
+    {
+        List<List<int>> l = PlayerInventory.Where(p => p[2] == -10).ToList<List<int>>();
+        return l.Count > 2;
     }
 
 
@@ -822,6 +966,7 @@ public class InventoryController : MonoBehaviour
             int idItem = ChoosedItem.ItemVarCur.IdItem;
             int idCurPlayInv = 0;
 
+
             if (ChoosedItem.PlaceID == -3) //перемещаем из торговца
             {
                 for (int i = 0; i < PlayerInventory.Count; i++) //ищем строку из которой удалять предмет
@@ -864,7 +1009,7 @@ public class InventoryController : MonoBehaviour
 
                 for (int i = 0; i < PlayerInventory.Count; i++) //ищем строку из которой удалять предмет
                 {
-                    if (PlayerInventory[i][2] < 1 && PlayerInventory[i][2] > -3 && PlayerInventory[i][0] == idItem)
+                    if (PlayerInventory[i][2] == -10 && PlayerInventory[i][0] == idItem)
                     {
                         idCurPlayInv = i;
                         break;
@@ -914,7 +1059,7 @@ public class InventoryController : MonoBehaviour
                     ChoosedItem = null;
                 }
                 //добавление
-                AddInventoryItemPLayer(idItem, 1, 0);
+                AddInventoryItemPLayer(idItem, 1, -10);
                 HUD.Instance.LastUpdateInventory();
             }
             else if (ChoosedItem.PlaceID == -5)       //что предлагает игрок

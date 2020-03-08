@@ -528,7 +528,7 @@ public class GameController : MonoBehaviour
     public int time;
     [SerializeField] float timePerHour = 30f;
     [SerializeField] GameObject SunLight;
-    [SerializeField] int base_station = 1;
+    [SerializeField] int base_station = 3;
 
     private bool statusIsNight = false;
     public bool StatusIsNight { get => statusIsNight; set => statusIsNight = value; }
@@ -692,6 +692,11 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public bool isHome()
+    {
+        return Player.Instance.Current_station == base_station;
+    }
+
     void AddTickAndUpdate()
     {
         if (ticks > 110)
@@ -772,11 +777,6 @@ public class GameController : MonoBehaviour
             {
                 TextController.Instance.SetInfoLabelText(BbtStrings.GetStr("str_late"));
                 HUD.Instance.ShowInfoWindow();
-                ticks++;
-                AddTickAndUpdate();
-                ticks++;
-                AddTickAndUpdate();
-                //наказание!
             }
 
             Player.Instance.NavMeshAgent.enabled = false;
@@ -785,11 +785,13 @@ public class GameController : MonoBehaviour
             Player.Instance.NavMeshAgent.enabled = true;
             CameraControl.Instance.AlignCameraWithPlayer();
 
+            InventoryController.Instance.RemoveBackPack();
+
         }
 
         if (time == 12)
         {
-            //ShowEverydayEvent();
+            ShowEverydayEvent();
         }
 
         if (time == 14)
@@ -797,7 +799,7 @@ public class GameController : MonoBehaviour
             InventoryController.Instance.ChangeDealerInventory();
         }
 
-        if ( time != 12 )
+        if ( time != 12 || time != 9 || time != 8 )
         {
             int rnd = Random.Range(0, 24);
             if(rnd == 0)

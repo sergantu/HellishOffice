@@ -351,32 +351,12 @@ public class DefaultInventory : SaveInventoryClass
         new List<int>(){ 5, 2, -3 },//торговец
         new List<int>(){ 6, 1, -3 },//торговец
 
-        /*new List<int>(){ 0, 1, 0 },
+        new List<int>(){ 0, 1, 0 },
         new List<int>(){ 1, 1, 0 },
         new List<int>(){ 5, 1, 0 },
         new List<int>(){ 7, 2, 0 },
         new List<int>(){ 9, 2, 0 },
-        new List<int>(){ 14, 20, 0 },*/
-
-        new List<int>(){ 0, 50, 0 },
-        new List<int>(){ 1, 50, 0 },
-        new List<int>(){ 2, 50, 0 },
-        new List<int>(){ 3, 50, 0 },
-        new List<int>(){ 4, 50, 0 },
-        new List<int>(){ 6, 50, 0 },
-        new List<int>(){ 7, 50, 0 },
-        new List<int>(){ 8, 50, 0 },
-        new List<int>(){ 9, 50, 0 },
-        new List<int>(){ 10, 50, 0 },
-        new List<int>(){ 11, 50, 0 },
-        new List<int>(){ 13, 50, 0 },
-        new List<int>(){ 14, 50, 0 },
-        new List<int>(){ 15, 50, 0 },
-        new List<int>(){ 16, 50, 0 },
-        new List<int>(){ 19, 50, 0 },
-        new List<int>(){ 24, 50, 0 },
-        new List<int>(){ 33, 50, 0 },
-        new List<int>(){ 34, 50, 0 },
+        new List<int>(){ 14, 20, 0 },
 
         new List<int>(){ 2, 1, 1 },
         new List<int>(){ 8, 2, 1 },
@@ -387,9 +367,9 @@ public class DefaultInventory : SaveInventoryClass
         new List<int>(){ 4, 1, 2 },
         new List<int>(){ 15, 10, 2 },
 
-        new List<int>(){ 0, 1, 3 },
-        new List<int>(){ 0, 2, 3 },
-        new List<int>(){ 0, 100, 3 },
+        new List<int>(){ 5, 1, 3 },
+        new List<int>(){ 8, 2, 3 },
+        new List<int>(){ 14, 100, 3 },
 
         new List<int>(){ 0, 1, 4 },
         new List<int>(){ 16, 1, 4 },

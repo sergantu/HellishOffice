@@ -55,6 +55,8 @@ public class InteractController : MonoBehaviour
     public List<GameObject> WaterMineObjects = new List<GameObject>();
     public List<GameObject> MushroomsMineObjects = new List<GameObject>();
 
+    [SerializeField] GameObject _portButton;
+
     Animator _inventoryAnimator;
 
     private void Awake()
@@ -135,6 +137,7 @@ public class InteractController : MonoBehaviour
     {
         GameController.Instance.AudioManager.PlaySFX("aud_clk_button_elevator_1");
         GameController.Instance.StartTimer(ElevatorButtons[0].gameObject, interactTimes["elevator"] * Player.Instance.GetKPD(), AddElevatorWindow1);
+        _portButton.SetActive(false);
     }
 
     private void AddElevatorWindow1()
@@ -149,6 +152,7 @@ public class InteractController : MonoBehaviour
     {
         GameController.Instance.AudioManager.PlaySFX("aud_clk_button_elevator_1");
         GameController.Instance.StartTimer(ElevatorButtons[1].gameObject, interactTimes["elevator"] * Player.Instance.GetKPD(), AddElevatorWindow1);
+        _portButton.SetActive(false);
     }
 
     /// <summary>
@@ -158,6 +162,7 @@ public class InteractController : MonoBehaviour
     {
         GameController.Instance.AudioManager.PlaySFX("aud_clk_button_elevator_1");
         GameController.Instance.StartTimer(ElevatorButtons[2].gameObject, interactTimes["elevator"] * Player.Instance.GetKPD(), AddElevatorWindow1);
+        _portButton.SetActive(true);
     }
 
     /// <summary>
@@ -167,6 +172,7 @@ public class InteractController : MonoBehaviour
     {
         GameController.Instance.AudioManager.PlaySFX("aud_clk_button_elevator_1");
         GameController.Instance.StartTimer(ElevatorButtons[3].gameObject, interactTimes["elevator"] * Player.Instance.GetKPD(), AddElevatorWindow1);
+        _portButton.SetActive(false);
     }
    
     /// <summary>
@@ -176,6 +182,7 @@ public class InteractController : MonoBehaviour
     {
         GameController.Instance.AudioManager.PlaySFX("aud_clk_button_elevator_1");
         GameController.Instance.StartTimer(ElevatorButtons[4].gameObject, interactTimes["elevator"] * Player.Instance.GetKPD(), AddElevatorWindow1);
+        _portButton.SetActive(false);
     }
 
     /// <summary>

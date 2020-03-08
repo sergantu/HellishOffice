@@ -54,5 +54,12 @@ public class ElevatorController : MonoBehaviour
         {
             GameController.Instance.SetEventDone("opn_floor" + realFloor);
         }
+
+        if(realFloor == 3)
+        {
+            InventoryController.Instance.PortToInv();
+        }
+
+        HUD.Instance.LoadInventory();
     }
 }

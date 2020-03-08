@@ -110,6 +110,7 @@ public static class BbtStrings
         ,{ "str_good_trade_1",                  new string[]{ "Думаю это справедливо.", "I think it's fair" } }
         ,{ "str_good_trade_2",                  new string[]{ "Отличное предложение!", "Great offer!" } }
         ,{ "str_good_trade_3",                  new string[]{ "Какая щедрость!", "What a generosity!" } }
+        ,{ "str_good_full",                     new string[]{ "Ты столько не унесешь!", "You won’t take so much!" } }
 
         //фразы состояния
         ,{ "thinks",               new string[]{ "Мысли", "Thoughts" } }
@@ -122,6 +123,7 @@ public static class BbtStrings
         ,{ "str_status_player_6",               new string[]{ "Против любой болезни поможет клизма!", "An enema helps against any disease!" } }
         ,{ "str_status_player_7",               new string[]{ "Я доделал проект! О нет. Мне это приснилось.", "I completed the project! Oh no. I dreamed it." } }
         ,{ "str_status_player_8",               new string[]{ "Подушка - мой лучший друг.", "Pillow is my best friend." } }
+        ,{ "str_status_player_9",               new string[]{ "Моя одежда блестит. Потому что я - блестящий программист.", "My clothes are shiny. Because I am a shiny programmer." } }
 
         //фразы рандомных событий
         ,{ "str_random_event_0",                new string[]{ "Уснул на клавиатуре. Удалил половину проекта. Удалено 3% проекта", "I fell asleep on the keyboard. Deleted half of the project. Removed 3% of the projectю" } }
@@ -244,6 +246,7 @@ public static class BbtStrings
         ,{ "str_dealerLabel",              new string[]{ "Продавец",  "Dealer" } }
         ,{ "str_playerDealer",              new string[]{ "Ты",  "You" } }
         ,{ "str_newitemsLabel",              new string[]{ "Найденные предметы",  "Finded items" } }
+        ,{ "str_newitemsLabel2",              new string[]{ "Рюкзак",  "BackPack" } }
         ,{ "str_playerItems",              new string[]{ "Инвентарь",  "Inventory" } }
         ,{ "str_playerInfo",              new string[]{ "Ты",  "You" } }
         ,{ "str_craftLabel",              new string[]{ "Создать предмет",  "Craft item" } }
@@ -262,7 +265,7 @@ public static class BbtStrings
         ,{ "str_info9",              new string[]{ "Это же парень из нашей компании. Он пропал после корпоративного праздника. Не стоит злоупотреблять вишневым соком!", "This is the guy from our company. He disappeared after a corporate holiday. Do not abuse cherry juice!" } }
 
 
-        ,{ "str_late",              new string[]{ "Сработала сигнализация. Охрана задержала вас. Вы потеряли несколько часов.", "The alarm went off. The guard has delayed you. You have lost a few hours." } }
+        ,{ "str_late",              new string[]{ "Сработала сигнализация. Охрана задержала вас. Вы потеряли вещи из рюкзака.", "The alarm went off. The guard has delayed you. You have lost inventory from your backpack." } }
 
         ,{ "str_time_lose",    new string[]{ "Проект не был завершен вовремя. Вы уволены. Но, благодаря вашей ловкости, вы успели взять с собой пару жареных крыс.", "The project was not completed on time. You're fired. But, thanks to your dexterity, you managed to take a couple of fried rats with you." } }
         ,{ "str_health_lose",              new string[]{ "С занозой в пальце вы были госпитализированы.", "With a splinter in your finger, you were hospitalized." } }
